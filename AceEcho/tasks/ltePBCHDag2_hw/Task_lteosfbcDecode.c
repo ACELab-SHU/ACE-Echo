@@ -203,22 +203,23 @@ int Task_lteosfbcDecode(__v4096i8 in_real, __v4096i8 in_imag, __v4096i8 hest_rea
     vclaim(indexback); 
     vclaim(index2367);
 
-    index2367 = vadd(index0145,2,MASKREAD_OFF,inLength/2);
+    index2367 = vsadd(index0145,2,MASKREAD_OFF,inLength/2);
 
     vbrdcst(hestnew_real_1,0,MASKREAD_OFF,inLength);
     vshuffle(hestnew_real_1, index0145, hest_real0, SHUFFLE_GATHER, inLength/2);
-    vshuffle(temp, index2367, hest_real1, SHUFFLE_GATHER, 120);
+    //vshuffle(temp, index2367, hest_real1, SHUFFLE_GATHER, 120);
+    vshuffle(temp, index2367, hest_real1, SHUFFLE_GATHER, inLength/2);
     vrange(indexback,inLength/2);
     indexback = vsadd(indexback,inLength/2,MASKREAD_OFF,inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     hestnew_real_1 = vsadd(tempback,hestnew_real_1,MASKREAD_OFF,inLength);
 
     vbrdcst(hestnew_real_2,0,MASKREAD_OFF,inLength);
     vshuffle(hestnew_real_2, index0145, hest_real2, SHUFFLE_GATHER, inLength/2);
     vshuffle(temp, index2367, hest_real3, SHUFFLE_GATHER, inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     hestnew_real_2 = vsadd(tempback,hestnew_real_2,MASKREAD_OFF,inLength);
 
  
@@ -226,14 +227,14 @@ int Task_lteosfbcDecode(__v4096i8 in_real, __v4096i8 in_imag, __v4096i8 hest_rea
     vshuffle(hestnew_imag_1, index0145, hest_imag0, SHUFFLE_GATHER, inLength/2);
     vshuffle(temp, index2367, hest_imag1, SHUFFLE_GATHER, inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     hestnew_imag_1 = vsadd(tempback,hestnew_imag_1,MASKREAD_OFF,inLength);
 
     vbrdcst(hestnew_imag_2,0,MASKREAD_OFF,inLength);
     vshuffle(hestnew_imag_2, index0145, hest_imag2, SHUFFLE_GATHER, inLength/2);
     vshuffle(temp, index2367, hest_imag3, SHUFFLE_GATHER, inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     hestnew_imag_2 = vsadd(tempback,hestnew_imag_2,MASKREAD_OFF,inLength);
 
 
@@ -247,14 +248,14 @@ int Task_lteosfbcDecode(__v4096i8 in_real, __v4096i8 in_imag, __v4096i8 hest_rea
     vshuffle(innew_real, index0145, in_real, SHUFFLE_GATHER, inLength/2);
     vshuffle(temp, index2367, in_real, SHUFFLE_GATHER, inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     innew_real = vsadd(tempback,innew_real,MASKREAD_OFF,inLength);
 
     vbrdcst(innew_imag,0,MASKREAD_OFF,inLength);
     vshuffle(innew_imag, index0145, in_imag, SHUFFLE_GATHER, inLength/2);
     vshuffle(temp, index2367, in_imag, SHUFFLE_GATHER, inLength/2);
     vbrdcst(tempback,0,MASKREAD_OFF,inLength);
-    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength);
+    vshuffle(tempback,indexback,temp,SHUFFLE_SCATTER,inLength/2);
     innew_imag = vsadd(tempback,innew_imag,MASKREAD_OFF,inLength);
 
 
@@ -446,5 +447,5 @@ int Task_lteosfbcDecode(__v4096i8 in_real, __v4096i8 in_imag, __v4096i8 hest_rea
   out_real = vsadd(out_real, 0, MASKREAD_OFF, inLength);
   out_imag = vsadd(out_imag, 0, MASKREAD_OFF, inLength);
   csi = vsadd(csi, 0, MASKREAD_OFF, inLength);
-  vreturn(out_real, sizeof(out_real), out_imag, sizeof(out_imag), csi, sizeof(csi));
+  vreturn(out_real, inLength, out_imag, inLength, csi, inLength);
 }

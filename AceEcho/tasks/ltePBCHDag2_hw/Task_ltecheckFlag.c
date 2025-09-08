@@ -136,5 +136,5 @@
   // printf("nfmod4:%hd\n",&(nfmod4.data));
   short_struct CrcError_out;
   CrcError_out.data = crcError;
-  vreturn(Crcout, sizeof(Crcout), &cellrefnum, sizeof(cellrefnum), &nfmod4, sizeof(nfmod4), &CrcError_out, sizeof(CrcError_out));
+  vreturn(Crcout, 24, &cellrefnum, sizeof(cellrefnum), &nfmod4, sizeof(nfmod4), &CrcError_out, sizeof(CrcError_out));
  }

@@ -3,7 +3,7 @@
  * @Date: 2024-11-19 15:03:23
  * @LastEditors: Yihao Shen shenyihao@shu.edu.cn
  * user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2025-05-19 10:58:29
+ * @LastEditTime: 2025-06-09 10:48:39
  * @FilePath: /5G-Lite-0530/venus_soc/software/emulator/task_src/lteSssSearch.c
  * @Description:
  *
@@ -385,7 +385,7 @@ int Task_lteSssSearch(__v4096i8 OFDM_Real, __v4096i8 OFDM_Imag, short_struct NCE
   nCELLID.data = 3 * NID_1 + NID2;
   short_struct subFrameNum;
   subFrameNum.data = subframe_num;
-  printf("subFrameNum:%d\n", &subFrameNum.data);
-  printf("NCELLID:%d\n", &nCELLID.data);
+  // printf("subFrameNum:%d\n", &subFrameNum.data);
+  // printf("NCELLID:%d\n", &nCELLID.data);
   vreturn(&nCELLID, sizeof(nCELLID), &subFrameNum, sizeof(subFrameNum));
 }

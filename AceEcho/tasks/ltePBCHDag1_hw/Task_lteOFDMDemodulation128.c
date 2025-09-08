@@ -84,8 +84,8 @@ int Task_lteOFDMDemodulation128(__v4096i8 vin_real, __v4096i8 vin_imag, short_st
   vshuffle(Data_without_CP_imag, Remove_CP_Index, vin_imag, SHUFFLE_GATHER, N_FFT);
 
 
-  Data_without_CP_real = vsra(Data_without_CP_real,1,MASKREAD_OFF,N_FFT);
-  Data_without_CP_imag = vsra(Data_without_CP_imag,1,MASKREAD_OFF,N_FFT);
+//   Data_without_CP_real = vsra(Data_without_CP_real,1,MASKREAD_OFF,N_FFT);
+//   Data_without_CP_imag = vsra(Data_without_CP_imag,1,MASKREAD_OFF,N_FFT);
   //  STEP 1 'END'---------
 
   //  --------STEP 2 : FFT

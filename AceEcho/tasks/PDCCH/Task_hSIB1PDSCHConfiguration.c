@@ -93,16 +93,20 @@ int Task_hSIB1PDSCHConfiguration(nrPDCCHConfig pdcch, DCIFormat1_0_SIRNTI dci, i
   uint8_t       k_0;   // output
 
   // initial config for pdsch
-  pdsch.Modulation                          = QPSK;
-  pdsch.NumLayers                           = 1;
-  pdsch.NumCodewords                        = 1;
-  pdsch.VRBToPRBInterleaving                = 0;
-  pdsch.VRBBundleSize                       = 2;
-  pdsch.MappingType                         = 0;
-  pdsch.SymbolAllocation[0]                 = 0;
-  pdsch.SymbolAllocation[1]                 = 14;
-  pdsch.RNTI                                = 1;
-  pdsch.EnablePTRS                          = 0;
+  pdsch.Modulation           = QPSK;
+  pdsch.NumLayers            = 1;
+  pdsch.NumCodewords         = 1;
+  pdsch.VRBToPRBInterleaving = 0;
+  pdsch.VRBBundleSize        = 2;
+  pdsch.MappingType          = 0;
+  pdsch.SymbolAllocation[0]  = 0;
+  pdsch.SymbolAllocation[1]  = 14;
+  pdsch.RNTI                 = 1;
+  pdsch.EnablePTRS           = 0;
+  for (int i = 0; i < 52; i++) {
+    /* code */
+    pdsch.PRBSet[i] = i;
+  }
   pdsch.DMRS.DMRSConfigurationType          = 1;
   pdsch.DMRS.DMRSReferencePoint             = CRB0;
   pdsch.DMRS.NumCDMGroupsWithoutData        = 2;
@@ -184,6 +188,7 @@ int Task_hSIB1PDSCHConfiguration(nrPDCCHConfig pdcch, DCIFormat1_0_SIRNTI dci, i
   pdsch.DMRS.DMRSTypeAPosition       = DMRSTypeAPosition;
   pdsch.DMRS.NIDNSCID[0]             = 0;
   pdsch.DMRS.NIDNSCID_length         = 0;
+  pdsch.Modulation                   = QPSK;
   pdsch.DMRS.NSCID                   = 0;
   pdsch.NumLayers                    = 1;
   pdsch.DMRS.DMRSPortSet_length      = 0;
@@ -202,7 +207,7 @@ int Task_hSIB1PDSCHConfiguration(nrPDCCHConfig pdcch, DCIFormat1_0_SIRNTI dci, i
 
   pdsch.DMRS.DMRSReferencePoint             = PRB0;
   pdsch.EnablePTRS                          = FALSE;
-  pdsch.NSizeBWP                            = NSizeBWP;
+  pdsch.NSizeBWP                            = 0;
   pdsch.NStartBWP                           = 0;
   pdsch.DMRS.CustomSymbolSet_length         = 0;
   pdsch.ReservedPRBSetLen                   = 0;
@@ -212,8 +217,7 @@ int Task_hSIB1PDSCHConfiguration(nrPDCCHConfig pdcch, DCIFormat1_0_SIRNTI dci, i
     pdsch.DMRS.DMRSSubcarrierLocations[i] = 2 * i;
   }
 
-  pdsch.TargetCodeRate = TargetCodeRateTable[dci.ModulationCoding] / 1024.0;
-  // pdsch.Modulation     = ModulationTable[dci.ModulationCoding];
+  pdsch.TargetCodeRate     = ModulationTable[dci.ModulationCoding] / 1024.0;
   pdsch.DMRS.CDMLengths[0] = pdsch.DMRS.CDMLengths[1] = 1;
 
   pdsch.rv = dci.RedundancyVersion;

@@ -138,5 +138,5 @@ int Task_ltePBCHRateDematch(__v4096i8 softBits, __v2048i16 outindex_De)
 
     // short a = 123;
     // printf("%hd",&a);
-    vreturn(d0,sizeof(d0),d1,sizeof(d1),d2,sizeof(d2));
+    vreturn(d0,K2,d1,K2,d2,K2);
 }

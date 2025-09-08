@@ -2,7 +2,7 @@
  * @Author: Yihao Shen shenyihao@shu.edu.cn
  * @Date: 2025-05-06 09:42:04
  * @LastEditors: Yihao Shen shenyihao@shu.edu.cn
- * @LastEditTime: 2025-05-19 11:04:51
+ * @LastEditTime: 2025-06-18 15:43:07
  * @FilePath: /VEMU/AceEcho/tasks/ltePBCHDag2_hw/Task_ltePBCHCRC.c
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -91,5 +91,5 @@ int Task_ltePBCHCRC(__v4096i8 input, __v4096i8 crcGen, __v4096i8 crcmask, short_
     // printf("checkFlag: %d\n", &checkFlag.data);
     //VENUS_PRINTVEC_CHAR(output, K-16);
     output = vsadd(output, 0, MASKREAD_OFF, K-16);
-    vreturn(output, sizeof(output), &checkFlag, sizeof(checkFlag));
+    vreturn(output, K-16, &checkFlag, sizeof(checkFlag));
 }
