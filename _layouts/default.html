@@ -72,10 +72,11 @@
     {% endif %}
 
 </head>
-<body>
+<body class="{% if page.url == '/' or page.url == '/index.html' %}home-page{% endif %}">
 {% include topnav.html %}
 <!-- Page Content -->
-<div class="container">
+<div class="site-shell">
+<div class="container main-shell">
   <div id="main">
     <!-- Content Row -->
     <div class="row">
@@ -98,7 +99,8 @@
 </div>
 <!-- /#main -->
     </div>
-
+{% include footer.html %}
+</div>
 </body>
 {% if site.google_analytics %}
 {% include google_analytics.html %}
