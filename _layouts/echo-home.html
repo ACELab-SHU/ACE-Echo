@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ page.title }} · ACE Lab</title>
-  <meta name="description" content="ACE-Echo 1.0: an open development platform for Venus 1.0, with Gem5 cycle-level simulation, C/BAS programming, DAG execution and RTL comparison.">
+  <meta name="description" content="{{ page.summary | default: 'ACE-Echo: the open development platform for Venus, our programmable processor for communication–AI convergence.' | escape }}">
   <meta name="theme-color" content="#142b47">
-  <link rel="canonical" href="https://acelab-shu.github.io/ACE-Echo/">
-  <meta property="og:title" content="ACE-Echo 1.0 — From a DAG to cycle-level insight">
-  <meta property="og:description" content="Build communication workloads for Venus 1.0. Compile, simulate and compare with a Gem5-based development platform.">
+  <link rel="canonical" href="https://acelab-shu.github.io/ACE-Echo{{ page.url }}">
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.summary | default: 'Communication and AI on Venus. Explore the chip, the open development platform and our Agent development roadmap.' | escape }}">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/echo-1.css?v=1.0.1">
-  <script src="js/echo-1.js?v=1.0.1" defer></script>
+  <link rel="stylesheet" href="css/echo-story.css?v=1.0.2">
+  <link rel="icon" href="images/favicon.ico">
 </head>
 <body>{{ content }}</body>
 </html>

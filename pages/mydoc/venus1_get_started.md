@@ -1,13 +1,13 @@
 ---
 title: Get started with ACE-Echo 1.0
 layout: echo-doc
-summary: "Build and run Venus 1.0 workloads with the Gem5 backend."
+summary: "Develop Venus applications, estimate performance with Gem5, and begin using the Agent-assisted development framework."
 sidebar: mydoc_sidebar
 permalink: venus1_get_started.html
 folder: mydoc
 ---
 
-ACE-Echo 1.0 brings the Venus 1.0 development flow to Gem5. The public distribution lives in `platform/`; the repository's older root-level tools belong to the legacy release.
+ACE-Echo is the open development platform for our Venus communication–AI processor. Version 1.0 provides a Gem5-based simulator and an initial Agent-assisted development framework, so developers can build Venus applications and quickly explore their approximate performance. The public distribution lives in `platform/`; the repository's older root-level tools belong to the legacy release.
 
 ## Prepare your tools
 
@@ -53,6 +53,12 @@ make smoke
 The smoke compiles a fresh two-task DAG, runs Gem5 fast mode and compares both task outputs against its software reference. Its report includes the active clock and timing boundaries. This is an installation check; it does not qualify the eight radio algorithms or replace an RTL regression.
 
 Continue with the commands and backend contracts in `platform/docs/GETTING_STARTED.md`, `platform/docs/HARDWARE_SELECTION.md` and the CLI `--help` output. Read the [Venus1 validation report](venus1_validation.html) before interpreting timing or correctness results.
+
+## Agent-assisted development
+
+The 1.0 release includes the initial Forge development framework, which connects an AI coding host to the platform's toolchain, simulator and validation workflow. Read the repository's Forge documentation and skill instructions when using it. The CLI initializes and records work; the AI coding host provides the Agent, and developers guide and review the result.
+
+Fully automated intent-to-deployable-application generation is the **2.0 roadmap goal**, rather than a capability promised by the 1.0 release. See the [platform roadmap](index.html#roadmap).
 
 ## Existing users
 
