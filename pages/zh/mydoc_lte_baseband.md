@@ -13,7 +13,7 @@ translation_url: mydoc_lte_baseband.html
 keywords: ACE-Echo, Venus, Venus 上的 LTE
 ---
 
-LTE 工作负载属于 Venus 开发和回归集合。旧版“未来两个月内提供”的占位说明已由本次发布记录的实际范围替代。
+LTE 工作负载属于 Venus 开发和回归集合。下文介绍支持的用例与评估结果。
 
 ## 已发布回归中的 DAG
 {: #dags-in-the-published-regression }

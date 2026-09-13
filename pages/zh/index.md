@@ -18,7 +18,7 @@ content_status: ''
 <main id="main" class="echo-home">
   <div class="hero-grid"><div class="hero-copy">
     <p class="eyebrow">通信与 AI 融合芯片的开源开发平台</p>
-    <p class="hero-product">ACE-Echo</p><h1>通信。<br><span>智能。</span><br>同一架构。</h1>
+    <p class="hero-product">ACE-Echo</p><h1 class="hero-title-zh"><span class="hero-line">通信</span><span class="hero-line hero-accent">智能</span><span class="hero-line">同一架构</span></h1>
     <p class="hero-summary">以可编程 RISC-V 通信–AI 融合处理器 <strong>Venus</strong> 为基础。了解我们的架构，为真实硬件开发应用，一起探索下一步。</p>
     <div class="hero-actions"><a class="hero-button primary" href="zh_venus1_get_started.html">探索 ACE-Echo 1.0</a><a class="hero-button secondary" href="zh_news.html">项目动态</a></div>
   </div><div class="hero-panel"><p class="panel-kicker">Echo 生态</p><ul class="hero-list">

@@ -41,7 +41,7 @@ ACE-Echo 1.0 是面向 Venus 应用的开发平台。当前支持范围由发布
 ## 范围边界
 {: #scope-boundaries }
 
-本次发布不包含自动 BAS 转 RTL 导出器、通用 CPU/GPU 回退执行、可视化 DAG 编辑器或自动 ASIC 功耗与资源报告。旧网站对这些功能的描述超出了 1.0 已实现的范围。
+本次发布不包含自动 BAS 转 RTL 导出器、通用 CPU/GPU 回退执行、可视化 DAG 编辑器或自动 ASIC 功耗与资源报告。
 
 L1 应用契约引擎对 Scheduler 的执行计划建模，不执行完整的标量 Scheduler 固件。RTL 运行需要另外提供硬件源码与工具。完整的“意图到可部署应用”生成属于 [2.0 路线图](zh_roadmap.html)。
 

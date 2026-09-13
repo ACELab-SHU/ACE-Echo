@@ -1,6 +1,6 @@
 ---
 layout: echo-doc
-title: This theme example has been retired
+title: Explore ACE-Echo
 summary: Find the ACE-Echo project, application guides and current development workflow below.
 permalink: p1_sample6.html
 hide_sidebar: true
@@ -12,6 +12,6 @@ lang: en
 translation_url: zh_p1_sample6.html
 ---
 
-This address belonged to a sample page in the original website theme. It does not describe an ACE-Echo product or a supported platform feature.
+Discover the Venus communication–AI architecture, explore the development guides, and follow the ACE-Echo roadmap.
 
 <div class="related-links"><a href="mydoc_introduction.html">Explore the project ↗</a><a href="venus1_get_started.html">Develop with ACE-Echo 1.0 ↗</a><a href="roadmap.html">Read the roadmap ↗</a></div>

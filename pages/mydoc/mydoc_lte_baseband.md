@@ -12,7 +12,7 @@ lang: en
 translation_url: zh_mydoc_lte_baseband.html
 ---
 
-LTE workloads are part of the Venus development and regression set. The old “available within two months” placeholder has been replaced with the recorded release scope.
+LTE workloads are part of the Venus development and regression set. The supported cases and evaluation results are described below.
 
 ## DAGs in the published regression
 

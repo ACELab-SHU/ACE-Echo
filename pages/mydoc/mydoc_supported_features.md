@@ -37,7 +37,7 @@ The bundled two-task vector smoke is the starting point for installation checks.
 
 ## Scope boundaries
 
-The release does not provide an automatic BAS-to-RTL exporter, a general CPU/GPU execution fallback, a visual DAG editor, or automatic ASIC power/resource reports. The website's earlier descriptions of these features were broader than the implemented 1.0 platform.
+The release does not provide an automatic BAS-to-RTL exporter, a general CPU/GPU execution fallback, a visual DAG editor, or automatic ASIC power/resource reports.
 
 The L1 application-contract engine models a Scheduler execution plan; it does not execute the complete scalar Scheduler firmware. RTL runs need separately supplied hardware sources and tools. Full intent-to-deployable-application generation belongs to the [2.0 roadmap](roadmap.html).
 

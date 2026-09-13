@@ -33,4 +33,4 @@ The 2.0 column describes planned behavior. Its release date and final supported 
 
 ## Previous plans
 
-The old v0.5/v1.0 beta timeline and January 2026 target have been superseded by this roadmap. The [v0.1 release record](mydoc_beta_release_notes.html) remains available as project history.
+Explore the platform's early development in the [v0.1 release record](mydoc_beta_release_notes.html). The roadmap above describes the current direction.

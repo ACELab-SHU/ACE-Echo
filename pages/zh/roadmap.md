@@ -37,4 +37,4 @@ keywords: ACE-Echo, Venus, ACE-Echo 路线图
 ## 早期规划
 {: #previous-plans }
 
-早期 v0.5/v1.0 beta 时间表及 2026 年 1 月目标已由本路线图取代。[v0.1 发布记录](zh_mydoc_beta_release_notes.html)仍保留为项目历史。
+通过 [v0.1 发布记录](zh_mydoc_beta_release_notes.html)了解平台的早期发展。当前发展方向见上方路线图。

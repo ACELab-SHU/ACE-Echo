@@ -24,7 +24,7 @@ translation_url: zh_mydoc_developers.html
 
 ## Developer Team Overview
 
-Our open-source initiative brings together students and researchers working on three key subprojects: **Echo**, **Venus**, and **AURA**. The contributor list below is retained from the original project record. It acknowledges contributions rather than claiming a complete current staffing roster.
+Our open-source initiative brings together students and researchers working on three key subprojects: **Echo**, **Venus**, and **AURA**. We thank the following contributors for their work on the project.
 
 
 ### Echo: Applications and the development platform

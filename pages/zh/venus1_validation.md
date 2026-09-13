@@ -53,6 +53,6 @@ L1 契约引擎解释固件执行计划并建模传输，不执行完整的 L1 �
 - 八个 DAG workload：`2c0feaf8b5e773553711cf4431ada59e9b434329`
 - RTL 参考：`a34a99aeb9245e01178d7a357c226e87a4249aef`
 
-发布包增加了打包、文档和入门示例，未改变这八个 DAG 的实现。公开发行的来源记录见 `platform/PUBLIC_https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/_MANIFEST.json`。
+发布包增加了打包、文档和入门示例，未改变这八个 DAG 的实现。公开发行的来源记录见 [PUBLIC_SOURCE_MANIFEST.json](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/PUBLIC_SOURCE_MANIFEST.json)。
 
 [开始使用 Venus 1.0](zh_venus1_get_started.html)或[返回平台概览](zh_index.html)。

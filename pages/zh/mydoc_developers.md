@@ -25,7 +25,7 @@ content_status: ''
 ## 开发团队
 {: #developer-team-overview }
 
-开源项目汇聚了围绕 **Echo**、**Venus** 和 **AURA** 三个子项目开展工作的学生与研究者。以下名单保留自原始项目记录，用于致谢贡献，不代表完整的当前人员名册。
+开源项目汇聚了围绕 **Echo**、**Venus** 和 **AURA** 三个子项目开展工作的学生与研究者。感谢以下贡献者为项目研究与开发付出的努力。
 
 ### Echo：应用与开发平台
 {: #echo-applications-and-the-development-platform }

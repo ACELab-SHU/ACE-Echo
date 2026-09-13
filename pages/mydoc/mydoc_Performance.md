@@ -21,7 +21,7 @@ These measurements are tied to the listed input matrix and model. A small timing
 
 ## Earlier architecture research
 
-The figures below are retained from the original project website. Their data and visual encodings are unchanged. They describe earlier experimental configurations and should be read with the corresponding research source, rather than interpreted as new 1.0 measurements.
+The following benchmarks evaluate earlier architecture configurations. Read them with the corresponding experimental settings and publications; ACE-Echo 1.0 simulator measurements are reported separately above.
 
 ### Tile-level comparison
 
@@ -41,4 +41,4 @@ The figures below are retained from the original project website. Their data and
 
 ## Read the original context
 
-The [academic archive](academic_achievements.html) links the project's architecture publications. The [original performance page](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_Performance.md) preserves its full experimental descriptions. Earlier broad claims about being faster or more energy-efficient than all CPU/GPU solutions are not carried forward as release guarantees.
+The [academic archive](academic_achievements.html) links the project's architecture publications. The [original performance page](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_Performance.md) preserves its full experimental descriptions.

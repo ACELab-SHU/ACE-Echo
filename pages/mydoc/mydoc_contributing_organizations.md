@@ -12,18 +12,18 @@ lang: en
 translation_url: zh_mydoc_contributing_organizations.html
 ---
 
-ACE-Echo builds on the work of the project's academic and industrial contributors. The organizations below are acknowledged in the original project record.
+Academic and industrial partners contribute to the research and development of ACE-Echo and Venus.
 
 ## Shanghai University
 
 The core research team comes from the School of Communication and Information Engineering, Shanghai University.
 
-{% include image.html file="shu_logo_vi.jpg" caption="Shanghai University. Original institutional mark, reproduced unchanged." max-width="300" %}
+{% include image.html file="shu_logo_vi.jpg" caption="Shanghai University" max-width="300" %}
 
 ## Deep Transcend Ltd.
 
-Deep Transcend Ltd. is the industrial contributor named in the project record.
+Deep Transcend Ltd. is an industrial contributor to the project.
 
-{% include image.html file="DT_logo.png" caption="Deep Transcend Ltd. Original organizational mark, reproduced unchanged." max-width="300" %}
+{% include image.html file="DT_logo.png" caption="Deep Transcend Ltd." max-width="300" %}
 
 For collaboration, contact [shenyihao@shu.edu.cn](mailto:shenyihao@shu.edu.cn). [Meet the developer team](mydoc_developers.html).

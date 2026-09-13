@@ -11,3 +11,18 @@
 html[lang="zh-CN"] body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3,html[lang="zh-CN"] h4{letter-spacing:-.02em;line-height:1.18}html[lang="zh-CN"] .hero-summary{line-height:1.65;letter-spacing:0}html[lang="zh-CN"] .hero-copy h1{line-height:1.13}html[lang="zh-CN"] .section-intro{letter-spacing:0;line-height:1.6}
 @media(max-width:900px) and (min-width:761px){.nav-inner{gap:12px}#site-nav{gap:13px}}
 @media(max-width:760px){.nav-inner{gap:12px}.wordmark{margin-right:auto}.language-switch{order:1;padding:10px}.menu-toggle{order:2;margin-left:0}#site-nav{margin-left:0}.language-switch span{display:none}}
+
+/* Selected cobalt wordmark: show the original PNG without its presentation margins. */
+.echo-selected-wordmark{display:block;position:relative;width:170px;aspect-ratio:1930/295;overflow:hidden;flex-shrink:0;mix-blend-mode:multiply}
+.echo-selected-wordmark img{position:absolute;display:block;width:110.3109%;max-width:none;height:auto;left:-5.18135%;top:-67.7966%}
+.wordmark{flex-shrink:0}
+.footer-wordmark{display:inline-block}
+.footer-wordmark .echo-selected-wordmark{width:190px}
+@media(max-width:900px) and (min-width:761px){.wordmark .echo-selected-wordmark{width:145px}}
+@media(max-width:380px){.wordmark .echo-selected-wordmark{width:145px}}
+
+/* Chinese display headings use centered text lines without punctuation advance. */
+html[lang="zh-CN"] .hero-copy .hero-title-zh{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.18;letter-spacing:-.025em;text-align:center}
+html[lang="zh-CN"] .hero-title-zh .hero-line{display:block;width:fit-content;max-width:100%;margin-inline:auto;background:none;color:var(--ink);white-space:nowrap}
+html[lang="zh-CN"] .hero-title-zh .hero-accent{background:linear-gradient(105deg,#005fcc 15%,#7953cc 56%,#bb448e 95%);background-clip:text;-webkit-background-clip:text;color:transparent}
+html[lang="zh-CN"] .hero-summary{line-height:1.65;text-wrap:pretty}

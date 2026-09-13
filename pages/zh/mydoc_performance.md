@@ -24,7 +24,7 @@ ACE-Echo 1.0 帮助开发者估计 Venus 应用的性能。我们通过指定用
 ## 早期架构研究
 {: #earlier-architecture-research }
 
-以下图片保留自项目原网站，数据与图形编码未改动。它们描述早期实验配置，应结合相应研究资料解读，不能视为新的 1.0 测量结果。
+以下基准测试评估早期架构配置，需结合对应的实验设置与论文解读。ACE-Echo 1.0 仿真器的测量结果单独列于上文。
 
 ### Tile 级比较
 {: #tile-level-comparison }
@@ -49,4 +49,4 @@ ACE-Echo 1.0 帮助开发者估计 Venus 应用的性能。我们通过指定用
 ## 阅读原始背景
 {: #read-the-original-context }
 
-[学术成果](zh_academic_achievements.html)收录项目的架构论文。[原性能页面](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_Performance.md)保留完整实验描述。早期关于全面优于 CPU/GPU 速度或能效的宽泛表述，不作为本次发布保证。
+[学术成果](zh_academic_achievements.html)收录项目的架构论文。[原性能页面](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_Performance.md)保留完整实验描述。
