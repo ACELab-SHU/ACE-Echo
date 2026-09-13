@@ -10,6 +10,7 @@ permalink: venus1-first-light.html
 tags: [news]
 ---
 
+
 <p class="document-date">Published 13 September 2026 · Silicon milestone</p>
 
 Our first-generation chip has successfully completed tape-out and achieved first light. The 5G-Lite project has progressed from software and RTL through physical implementation, fabrication, packaging and evaluation-board bring-up. Venus now runs on real silicon.

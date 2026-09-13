@@ -1,38 +1,38 @@
 ---
 title: Developers
-keywords: developers, Email 
+keywords: developers, Email
 last_updated: June 10, 2025
 #tags: [navigation]
-summary: "Welcome to the official developer page of our open-source project —— Echo! This project is proudly initiated and maintained by students and researchers from Shanghai University, aimed at advancing AI-native wireless communication. Below is an introduction to our core team members, their roles, and contributions."
+summary: "The people behind Venus, AURA and the ACE-Echo development platform."
 sidebar: mydoc_sidebar
 permalink: mydoc_developers.html
 toc: false
 folder: mydoc
+section: Community
+last_reviewed: 2026-09-13
 ---
 
 
 
----
 
-## 🌐 Project Overview
 
-- **Project Name**: Echo  
+## Project Overview
+
+- **Project Name**: Echo
 - **Affiliation**: Shanghai University, School of communication and information engineering
-- **Project Duration**: October 2022 – Present  
+- **Project Duration**: October 2022 – Present
 - **Supervisors**:  **Prof. Zhiyuan Jiang**  & **Prof. Shan Cao**
 - **Mission**: Building scalable, high-efficiency RISC-V based architectures and simulation platforms for AI-integrated communication systems.
 
----
 
-## 👥 Developer Team Overview
+## Developer Team Overview
 
-Our open-source initiative brings together students and researchers working on three key subprojects: **Echo**, **Venus**, and **AURA**. Below is an overview of team members grouped by project responsibility.
+Our open-source initiative brings together students and researchers working on three key subprojects: **Echo**, **Venus**, and **AURA**. The contributor list below is retained from the original project record. It acknowledges contributions rather than claiming a complete current staffing roster.
 
----
 
-### Echo: Open Platform, Protocol Stack & Simulator
+### Echo: Applications and the development platform
 
-**Project Lead**: Yihao Shen  
+**Project Lead**: Yihao Shen
 **Contributors**: Yi Shi, Limin Jiang, Qingyu Deng, Siyi Xu, Feng Yuan, Xiaoxiao Chen, Qianli Wang, Fangfang Ye, Si Wang
 
 **Focus**:
@@ -43,20 +43,18 @@ Our open-source initiative brings together students and researchers working on t
 
 * Design and optimization of reusable communication operator libraries
 
-* Construction of full-stack simulators for system-level verification
+* Simulation and application-validation workflows for Venus
 
 * * *
 
 ### Venus: Domain-Specific RISC-V Architecture
----------------------------------------------
 
-**Project Leads**: Limin Jiang, Yi Shi  
+**Project Leads**: Limin Jiang, Yi Shi
 **Contributors**: Yintao Liu, Bo Ruan, Haiqin Hu, Qingyu Deng, Siyi Xu, Feng Yuan
 
 * * *
 
-### AURA: Compiler & Runtime Toolchain for AI + Communication
-------------------------------------------------------------
+### AURA: Architecture and programming foundation
 
 **Contributors**: Shared team members from both the Echo and Venus projects
 
@@ -68,14 +66,9 @@ Our open-source initiative brings together students and researchers working on t
 
 * Toolchain support for AI-integrated, communication-intensive applications across diverse platforms
 
----
 
-
-
-## 📫 Get in Touch
+## Get in Touch
 
 - **Email**: shenyihao@shu.edu.cn
 
 We welcome contributors, collaborators, and curious minds from around the world. Join us in shaping the future of open communication and AI-driven systems!
-
-{% include links.html %}

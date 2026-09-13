@@ -1,6 +1,9 @@
 ---
 title: Get started with ACE-Echo 1.0
 layout: echo-doc
+content_status: ACE-Echo 1.0
+last_reviewed: 2026-09-13
+section: Documentation
 summary: "Develop Venus applications, estimate performance with Gem5, and begin using the Agent-assisted development framework."
 sidebar: mydoc_sidebar
 permalink: venus1_get_started.html
@@ -15,8 +18,11 @@ Use a Linux host with Python 3.8 or later, Git, Make, a C/C++ compiler and the d
 
 ## Clone the source
 
+The 1.0 source is currently available in the release branch below while [upstream PR #5](https://github.com/ACELab-SHU/ACE-Echo/pull/5) is under review. This preview documents the pinned `db763e2` release snapshot; cloning the upstream default branch before that PR merges does not provide the same `platform/` distribution.
+
 ```bash
-git clone https://github.com/ACELab-SHU/ACE-Echo.git
+git clone --branch release/ace-echo-1.0 --single-branch \
+  https://github.com/HorryShenYH/ACE-Echo.git
 cd ACE-Echo/platform
 ```
 
@@ -58,7 +64,7 @@ Continue with the commands and backend contracts in `platform/docs/GETTING_START
 
 The 1.0 release includes the initial Forge development framework, which connects an AI coding host to the platform's toolchain, simulator and validation workflow. Read the repository's Forge documentation and skill instructions when using it. The CLI initializes and records work; the AI coding host provides the Agent, and developers guide and review the result.
 
-Fully automated intent-to-deployable-application generation is the **2.0 roadmap goal**, rather than a capability promised by the 1.0 release. See the [platform roadmap](index.html#roadmap).
+Fully automated intent-to-deployable-application generation is the **2.0 roadmap goal**, rather than a capability promised by the 1.0 release. See the [platform roadmap](roadmap.html).
 
 ## Existing users
 

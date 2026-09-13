@@ -1,6 +1,9 @@
 ---
 title: Venus 1.0 validation
 layout: echo-doc
+content_status: Recorded regression
+last_reviewed: 2026-09-13
+section: Evaluation
 summary: "Measured Gem5–RTL agreement, with explicit timing and correctness boundaries."
 sidebar: mydoc_sidebar
 permalink: venus1_validation.html

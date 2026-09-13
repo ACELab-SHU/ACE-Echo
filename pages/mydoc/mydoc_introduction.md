@@ -1,131 +1,45 @@
 ---
-title: "Echo"
-keywords: Echo, Venus, AURA, Feature, Email, Community
-
-# tags: [getting_started]
+title: "Meet ACE-Echo"
+layout: echo-doc
+toc: false
+summary: "The open development platform for our Venus communication\u2013AI processor."
 sidebar: mydoc_sidebar
 permalink: mydoc_introduction.html
-summary:  
+section: Project
+content_status: "ACE-Echo 1.0"
+last_reviewed: 2026-09-13
 ---
 
- Echo — The Open Platform for Communication–AI Convergence Fusion
-===================================================================
+ACE-Echo connects our communication–AI chip research with application development. **Venus** is the programmable RISC-V processor. **AURA** is the architecture and programming foundation. **ACE-Echo** is the open platform used to develop applications for that hardware.
 
-* * *
+## Architecture, silicon and software
 
-🌍 What Is Echo?
-----------------
+AURA brings together Venus Language, the Zoozve compiler and mathematical libraries. Its dataflow approach connects task-level computation with the movement of data between tasks.
 
-**Echo** is an open-source development platform built on **Venus**, our RISC-V processor designed for communication-AI fusion. Echo empowers developers to build, test, and deploy next-generation applications where signal processing meets intelligent computation.
+{% include image.html file="aura-architecture.png" caption="AURA groups the programming language, compiler and mathematical libraries. These are components, not sequential pipeline stages." %}
 
- **Echo includes:**
+Venus combines programmable Tiles, a Scheduler and a digital front end. Our research explores communication processing and AI workloads on this shared hardware foundation.
 
-* Communication & AI operators for FFT, Decoder, Conv2D/3D, GELU/SiLU and more
-* A full toolchain: compiler, debugger and hardware simulator
-* Functional & Performance Simulator: Simulates Venus workloads and output Latency & throughput estimation
-* Real-world application demos (5G/LTE, AI-Based Channel Estimation, GNSS, LORA, etc.)
-* Comprehensive documentation & tutorials
+{% include image.html file="venus-architecture.png" caption="Venus hardware components: Tile, Scheduler and digital front end." %}
 
-* * *
+Our first-generation chip has completed tape-out and achieved first light. Bring-up and real-signal NR cell search are documented in the [silicon announcement](venus1-first-light.html). That milestone is distinct from the validation scope of the open simulator.
 
-🔋 Powered by AURA Architecture & Venus Chip
-----------------------------------------------
-**<span class="intro-emphasis">AURA: AI Unified Radio Architecture</span>**
+## Build applications with 1.0
 
-AURA is the foundational computing architecture behind Echo. It is designed for **tight integration of perception, communication, and computation**, optimized for edge and low-latency scenarios.It is composed of Venus Language, Zoozve Compiler, and Mathematic Libraries. ( If you want to learn more about compilers, you can see [Zoozve: A Strip-Mining-Free RISC-V Vector Extension with Arbitrary Register Grouping Compilation Support (WIP)](https://dl.acm.org/doi/abs/10.1145/3735452.3735526.html) )
-<div style="text-align: center;">
-  {% include image.html file="aura-architecture.png" max-width = '600'%}
-</div>
-<br><br>
+ACE-Echo 1.0 provides a usable Gem5-based simulator and an initial Agent-assisted framework. Developers can write Venus applications, check outputs and quickly estimate their approximate performance. Custom Venus LLVM and other host tools remain separate prerequisites.
 
-**<span class="intro-emphasis">Venus: Our RISC-V Communication-AI Chip</span>**
+{% include echo-workflow.html %}
 
-Venus is a custom RISC-V processor based on the AURA architecture:
+Start with the [installation guide](venus1_get_started.html), then explore the [programming model](mydoc_programming_model.html) and [supported scope](mydoc_supported_features.html).
 
-* Instruction set extensions for communication and neural workloads
-* Built-in accelerators (vector engine, etc.)
-* Composed of Venus Tile, Venus Scheduler, and Venus DFE ( For details, see [A Hierarchical Dataflow-Driven Heterogeneous Architecture for Wireless Baseband Processing](https://dl.acm.org/doi/abs/10.1145/3658617.3697558.html) )
-<div style="text-align: center;">
-  {% include image.html file="venus-architecture.png" max-width = '600'%}
-</div>
-<br><br>
+## From assistance to intent
 
-* Ideal for 5G/6G, GNSS, LoRa, edge AI, V2X, and more 
+{% include echo-roadmap.html %}
 
-* * *
+The [roadmap](roadmap.html) replaces earlier beta dates and feature forecasts. ACE-Echo software versions and Venus hardware generations are separate version names.
 
-✅ Why Choose Echo?
-------------------
+## Built for collaboration
 
-| Feature                      | Highlights                                                                          |
-| ---------------------------- | ------------------------------------------------------------------------------------|
-| Unified Programming Model    | A single programming framework bridging communication systems and AI workloads.     |
-| Modular by Design            | Flexible architecture for rapid prototyping                                         |
-| Plug & Play                  | No hardware background required to get started                                      |
-| Full Toolchain               | Simulation + compilation + deployment all included                                  |
-| Cycle-Accurate Simulator     | It is for software-hardware co-design                                               |
-| Open Collaboration           | Contribute operators, apps, or hardware extensions                                  |
-| Communication & AI operators | It can provide AI Operator Library and Richer Operator Library of signal processing |
-| Real Use Cases               | Validated in live projects with measurable performance                              |
+Researchers can explore hardware-aware algorithms; application developers can compare implementations before hardware evaluation. Contributions to examples, documentation and reproducible experiments help extend the shared platform.
 
-* * *
-
-👨‍💻 Who Is Echo For?
--------------------
-
-**<span class="intro-emphasis">Academia & Researchers</span>****→ Open-Source Platform for Communication-AI Research**
-
-Echo provides a low-cost, low-power environment to prototype and validate communication algorithms with real-world performance. Ideal for academic research and rapid innovation.
-<br><br>
-
-**<span class="intro-emphasis">Industry</span>****→ Decoupled Software-Hardware Baseband Chip Solution**
-
-Accelerate your baseband chip development with a modular, software-first approach.
-
-• **R&D Cycle Reduced:** From 12–18 months to just 3–6 months.
-<br><br>
-
-**<span class="intro-emphasis">Standards Organizations</span>****→ Fast-Track 6G Technology Validation**
-
-Streamline the path to 6G standardization with efficient tools and full-stack communication-AI libraries.
-
-• Cut traditional prototype cycles (3–5 years) down to months.
-<br><br>
-**Echo is your playground.**
-> Whether you're building, testing, or scaling — Echo gives you the freedom to create.
-
-* * *
-
-🚗 Future Roadmap of Echo
----------------------------------------
-
-**Echo v1.0 beta** is Scheduled for release before January 1, 2026.
-A major milestone in our open-source journey —— officially introducing a unified programming paradigm for Communication-AI fusion.
-<div style="text-align: center;">
-  {% include image.html file="EchoTimeline.png" max-width = '800'%}
-</div>
-
-* * *
-
-🚀 Get Started Now
-------------------
-
-1. Visit our quick-start guide: [Get Started with OpenEcho / ACE-LAB Echo](https://acelab-shu.github.io/ACE-Echo/mydoc_get_started.html)
-2. Download the toolchain & examples
-3. Join the community and start building!
-
-* * *
-
-📣 Join the Echo Community
---------------------------
-
-&emsp;Email: [shenyihao@shu.edu.cn](mailto:shenyihao@shu.edu.cn)
-
-&emsp;Community: [coming soon]
-<br><br>
-**<span style="font-size: 150%; color: red;">“Echo is not just a platform — it’s a call to build the future of Communication.”</span>**
-
-> We warmly welcome more developers, researchers, and collaborators to join us on this journey.
-
-* * *
-
+[Meet the team](mydoc_developers.html) · [Contributing organizations](mydoc_contributing_organizations.html) · [Contact ACE Lab](mailto:shenyihao@shu.edu.cn)

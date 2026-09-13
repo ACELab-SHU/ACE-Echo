@@ -1,29 +1,35 @@
 ---
-title: Get Started with Echo
+title: Legacy installation (v0.1)
 #tags: [getting_started, troubleshooting]
 keywords: Echo, Venus, docker, deploy, start, run, install
 summary: "This guide provides a comprehensive getting started tutorial for developers working with the Echo × Venus open-source platform."
 sidebar: mydoc_sidebar
 permalink: mydoc_get_started.html
 folder: mydoc
+content_status: Historical workflow
+section: Archive
+last_reviewed: 2026-09-13
 ---
 
-> **Legacy guide.** For the Gem5-based ACE-Echo 1.0 / Venus 1.0 release, use the [new getting-started guide](venus1_get_started.html).
+> **For older experiments only.** These commands describe the original VEMU-era installation. For ACE-Echo 1.0, follow the [Gem5 getting-started guide](venus1_get_started.html); its compiler and backend configuration is different.
 
 
 
-&emsp;&emsp;Welcome to  the **Echo** project! We offer two methods: **local compilation chain deployment (Option 1)** and **Docker rapid deployment (Option 2)** to help you quickly set up the development environment, install dependencies and build the code base. 
 
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Option 1</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: Suitable for long-term development, or low-level code debugging.  </font>
 
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Option 2</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: Suitable for quick project experience, temporary validation, or scenarios requiring environment consistency. </font>
+
+Welcome to  the **Echo** project! We offer two methods: **local compilation chain deployment (Option 1)** and **Docker rapid deployment (Option 2)** to help you quickly set up the development environment, install dependencies and build the code base.
+
+<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Option 1</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: Suitable for long-term development, or low-level code debugging.  </font>
+
+<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Option 2</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: Suitable for quick project experience, temporary validation, or scenarios requiring environment consistency. </font>
 
 
 
 <br><br>
 ## ✅ System Requirements
 
-⚠️ **Linux only** — Ubuntu 18.04+(18.04, 20.04, 22.04, 24.04 is tested) or Debian 10+ recommended
+⚠ **Linux only** — Ubuntu 18.04+(18.04, 20.04, 22.04, 24.04 is tested) or Debian 10+ recommended
 
 * CPU: 4+ cores
 
@@ -36,20 +42,20 @@ folder: mydoc
 * Python ≥ 3.8
 
 * CMake ≥ 3.16
-  
-<br> 
+
+<br>
 <br>
 
-## 🏷️Option 1: Local compilation chain deployment  
+## Option 1: Local compilation chain deployment
 
-<span style="font-size: 120%; color: red;">1. Install Dependencies</span>
+**1. Install Dependencies**
 
 ```bash
 sudo apt update
 sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev
 ```
 
-<span style="font-size: 120%; color: red;">2. Install RISC-V Toolchain & our modified LLVM (for Venus backend)</span>
+**2. Install RISC-V Toolchain & our modified LLVM (for Venus backend)**
 
 ```bash
 # Install RISC-V Toolchain
@@ -85,7 +91,7 @@ Make sure to remember these two paths, as you will need to update them later in 
 
 
 
-<span style="font-size: 120%; color: red;">3. Clone the Echo Project</span>
+**3. Clone the Echo Project**
 
 ```bash
 git clone https://github.com/ACELab-SHU/ACE-Echo.git
@@ -101,7 +107,7 @@ You can also modify `TARGET_DAG` to change the build target, but it's recommende
 
 
 
-<span style="font-size: 120%; color: red;">4. Run a Demo or Test</span>
+**4. Run a Demo or Test**
 
 Open the Echo folder in VSCode, making sure that the top-level folder is **Echo**, then press F5 to start debugging mode directly.
 
@@ -115,14 +121,14 @@ If everything works correctly, you will see the following information printed in
 
 <br><br>
 
-## 🏷️Option 2: Use Docker for rapid deployment
+## Option 2: Use Docker for rapid deployment
 
-<span style="font-size: 120%; color: red;">🔍Overview </span>
+**Overview **
 
 <font style="color:rgba(0, 0, 0, 0.85) !important;">This Docker image is designed for the rapid deployment of the Venus emulator, providing LTE/5G-related routines.</font>
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Image Link</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: </font>[<font style="color:rgb(9, 105, 218);">https://zenodo.org/records/15803394</font>](https://zenodo.org/records/15803394)<font style="color:rgba(0, 0, 0, 0.85) !important;"> </font>
+<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">Image Link</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: </font>[<font style="color:rgb(9, 105, 218);">https://zenodo.org/records/15803394</font>](https://zenodo.org/records/15803394)<font style="color:rgba(0, 0, 0, 0.85) !important;"> </font>
 
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">GitHub Repository</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: </font>[<font style="color:rgb(9, 105, 218);">https://github.com/ACELab-SHU/ACE-Echo/tree/master</font>](https://github.com/ACELab-SHU/ACE-Echo/tree/master)
+<font style="color:rgba(0, 0, 0, 0.85) !important;">● </font><font style="color:rgb(0, 0, 0) !important;">GitHub Repository</font><font style="color:rgba(0, 0, 0, 0.85) !important;">: </font>[<font style="color:rgb(9, 105, 218);">https://github.com/ACELab-SHU/ACE-Echo/tree/master</font>](https://github.com/ACELab-SHU/ACE-Echo/tree/master)
 
 **<font style="color:rgb(0, 0, 0) !important;">Notes</font>**<font style="color:rgba(0, 0, 0, 0.85) !important;">:</font>
 
@@ -131,9 +137,9 @@ If everything works correctly, you will see the following information printed in
 
 <br>
 
-<span style="font-size: 120%; color: red;">📝Solution 1: Run via Terminal and Access via Browser</span>
+**Solution 1: Run via Terminal and Access via Browser**
 
-<span style="font-size: 120%;">1. Obtain the Image (Download from Zenodo)</span>
+**1. Obtain the Image (Download from Zenodo)**
 
 1. <font style="color:rgba(0, 0, 0, 0.85) !important;">Visit the Zenodo dataset page and download the image tarball (<b>ace-echo-docker.tar</b>).</font>
 2. <font style="color:rgba(0, 0, 0, 0.85) !important;">Import it into your local Docker environment:</font>**<font style="color:rgba(0, 0, 0, 0.85);"></font>**
@@ -142,12 +148,12 @@ If everything works correctly, you will see the following information printed in
 # Replace `[path]` with the actual path.
 docker load -i /[path]/ace-echo-docker.tar
 ```
-<span style="font-size: 120%;">2. Launch the Container</span>
+**2. Launch the Container**
 
 ```bash
 docker run -it -p 8080:8080 -v $(pwd):/root/ACE-Echo ace-echo
 ```
-<span style="font-size: 120%;">3. Execute Code in Browser</span>
+**3. Execute Code in Browser**
 
 1. <font style="color:rgba(0, 0, 0, 0.85) !important;">Open your browser and navigate to <b>http://localhost:8080</b> to access the interface. </font>
 2. <font style="color:rgba(0, 0, 0, 0.85) !important;">Set the folder path to <b>/root/ACE-Echo/AURA/Docker_Echo/ACE-Echo/</b> and click <b>Start Debugging</b> to run the application.</font>
@@ -159,13 +165,13 @@ docker run -it -p 8080:8080 -v $(pwd):/root/ACE-Echo ace-echo
 
 
 <br>
-<span style="font-size: 120%; color: red;">📝Solution 2: Run via VSCode + Docker Extension</span>  
-<span style="font-size: 120%;">Prerequisites</span>
+**Solution 2: Run via VSCode + Docker Extension**
+**Prerequisites**
 
 1. <font style="color:rgba(0, 0, 0, 0.85) !important;">Install</font>[<font style="color:rgb(9, 105, 218);">VSCode</font>](https://code.visualstudio.com/)<font style="color:rgba(0, 0, 0, 0.85) !important;">.</font>
 2. <font style="color:rgba(0, 0, 0, 0.85) !important;">Install the</font><font style="color:rgba(0, 0, 0, 0.85) !important;"> </font>[<font style="color:rgb(9, 105, 218);">Docker Extension</font>](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)<font style="color:rgba(0, 0, 0, 0.85) !important;">.</font>
 
-<span style="font-size: 120%;">1. Import the Image (Same as Solution 1)</span>
+**1. Import the Image (Same as Solution 1)**
 
 <font style="color:rgba(0, 0, 0, 0.85) !important;">Import the Zenodo-downloaded image via the terminal:</font>
 
@@ -173,21 +179,21 @@ docker run -it -p 8080:8080 -v $(pwd):/root/ACE-Echo ace-echo
 # Replace `[path]` with the actual path.
 docker load -i /[path]/ace-echo-docker.tar
 ```
-<span style="font-size: 120%;">2. Start the Container in VSCode</span>
+**2. Start the Container in VSCode**
 
 1. <font style="color:rgba(0, 0, 0, 0.85) !important;">Open VSCode and click the<b> Containers</b> icon in the Activity Bar.</font>
 2. <font style="color:rgba(0, 0, 0, 0.85) !important;">Locate <b>ace-echo-docker</b> in the Containers list, then right-click and select <b>Start</b><font style="color:rgba(0, 0, 0, 0.85) !important;">.</font>
 
-<span style="font-size: 120%;">3. Run the Application</span>
+**3. Run the Application**
 
-**🧪Method 1: Execute Code in Browser**
+**Method 1: Execute Code in Browser**
 
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">Right-click the running <b>ace-echo-docker</b> container and select <b>Open in Browser</b>. Follow Step 3 from Solution 1 thereafter.</font>
+<font style="color:rgba(0, 0, 0, 0.85) !important;">Right-click the running <b>ace-echo-docker</b> container and select <b>Open in Browser</b>. Follow Step 3 from Solution 1 thereafter.</font>
 
 
-**🧪Method 2: Manage the Container within VSCode**
+**Method 2: Manage the Container within VSCode**
 
-&emsp;&emsp;<font style="color:rgba(0, 0, 0, 0.85) !important;">Extensions need to be installed: </font>[<font style="color:rgb(9, 105, 218);">Dev Containers</font>](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)<font style="color:rgba(0, 0, 0, 0.85) !important;"> and </font>[<font style="color:rgb(9, 105, 218);">C/C++ Debug (gdb)</font>](https://marketplace.visualstudio.com/items?itemName=KylinIdeTeam.cppdebug)<font style="color:rgba(0, 0, 0, 0.85) !important;">.</font>
+<font style="color:rgba(0, 0, 0, 0.85) !important;">Extensions need to be installed: </font>[<font style="color:rgb(9, 105, 218);">Dev Containers</font>](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)<font style="color:rgba(0, 0, 0, 0.85) !important;"> and </font>[<font style="color:rgb(9, 105, 218);">C/C++ Debug (gdb)</font>](https://marketplace.visualstudio.com/items?itemName=KylinIdeTeam.cppdebug)<font style="color:rgba(0, 0, 0, 0.85) !important;">.</font>
 
 
 1. <font style="color:rgba(0, 0, 0, 0.85) !important;">Click<b> Open a Remote Window</b> at the bottom-left corner.</font>
@@ -197,11 +203,11 @@ docker load -i /[path]/ace-echo-docker.tar
 
 <br><br>
 
-## 📂Project Structure (Overview)
+## Project Structure (Overview)
 
 ```plain
 ACE-ECHO/
-├── .vscode/                   
+├── .vscode/
 ├── AceEcho/
 │   └── tasks/                 # Collection of task-related modules
 │       ├── include/           # Header files directory for tasks
@@ -215,89 +221,54 @@ ACE-ECHO/
 │       └── Test_Single_Task/  # Collection of single-task test cases
 ├── Debug/                     # Directory for debugging artifacts and logs
 │   ├── emulator_vins_result/  # Output directory for emulator (vins) runtime results
-│   ├── .gitignore/            
-│   ├── console.log/           
-│   ├── DAGRet_nCellID.log/    
-│   ├── DAGRet_subFrameNum.log/ 
-│   ├── emu_dsll.log/         
-│   └── Emulator/              
+│   ├── .gitignore/
+│   ├── console.log/
+│   ├── DAGRet_nCellID.log/
+│   ├── DAGRet_subFrameNum.log/
+│   ├── emu_dsll.log/
+│   └── Emulator/
 ├── dsl/                       # Directory for Domain-Specific Language (DSL) related files
-│   ├── bin/                  
-│   ├── final_output/          
-│   ├── heft_new/            
-│   ├── IJ/                  
-│   ├── ply/                  
-│   ├── script/               
-│   ├── variable/             
-│   ├── venus_test/           
-│   ├── .config.mk.swp/        
-│   ├── .gitignore/            
+│   ├── bin/
+│   ├── final_output/
+│   ├── heft_new/
+│   ├── IJ/
+│   ├── ply/
+│   ├── script/
+│   ├── variable/
+│   ├── venus_test/
+│   ├── .config.mk.swp/
+│   ├── .gitignore/
 │   ├── config.mk/             # Makefile configuration for DSL builds
-│   ├── debug.txt/            
-│   ├── ltePBCHDag1_hw.bas/    
-│   ├── ltePBCHDag1.bas/      
-│   └── Makefile/              
-├── firmware/                 
-│   ├── check.hex/             
-│   ├── dhrystone.hex/         
-│   ├── firmware_cordic.hex/   
-│   ├── firmware.hex/          
-│   └── rot13.hex/           
-├── include/                  
-│   ├── nlohmann/              
-│   ├── RISCV.h/              
-│   └── venus_ext.h/         
-├── source/                  
-│   ├── main.cpp/              
-│   ├── RISCV.cpp/             
-│   └── venus_ext.cpp/       
+│   ├── debug.txt/
+│   ├── ltePBCHDag1_hw.bas/
+│   ├── ltePBCHDag1.bas/
+│   └── Makefile/
+├── firmware/
+│   ├── check.hex/
+│   ├── dhrystone.hex/
+│   ├── firmware_cordic.hex/
+│   ├── firmware.hex/
+│   └── rot13.hex/
+├── include/
+│   ├── nlohmann/
+│   ├── RISCV.h/
+│   └── venus_ext.h/
+├── source/
+│   ├── main.cpp/
+│   ├── RISCV.cpp/
+│   └── venus_ext.cpp/
 ├── task_utils/                # Directory for task-related utility functions and helper code
 │   ├── riscv_printf.h/        # Header file for RISCV architecture-compatible printf implementation
 │   └── venus.h/               # Core header file for Venus module
-├── .clang-format/          
-├── .gitignore/                
-├── analysis.py/             
-├── Makefile/                 
+├── .clang-format/
+├── .gitignore/
+├── analysis.py/
+├── Makefile/
 ├── README.md/                 # Project documentation
 └── register_analysis.sh/      # Shell script (for register analysis)
 ```
 
 <br><br>
 
-## 📬Connect
-&emsp;&emsp;If you encounter any problems during use, please contact: [shenyihao@shu.edu.cn](mailto:shenyihao@shu.edu.cn).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Connect
+If you encounter any problems during use, please contact: [shenyihao@shu.edu.cn](mailto:shenyihao@shu.edu.cn).

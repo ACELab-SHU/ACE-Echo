@@ -1,7 +1,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
+<meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 | escape }}{% endif %}">
+{% if page.robots %}<meta name="robots" content="{{ page.robots | escape }}">{% endif %}
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
 <title>{{ page.title }} | {{ site.site_title }}</title>
 <link rel="stylesheet" href="{{ "css/syntax.css" }}">
@@ -39,6 +40,6 @@
 {% comment %} Copyright 2021 Google LLC {% endcomment %}
 
 <link rel="stylesheet" href="css/echo-classic.css?v=5">
-<link rel="stylesheet" href="css/echo-pages.css?v=2">
+<link rel="stylesheet" href="css/echo-pages.css?v=3">
 <script src="js/echo-classic.js?v=4" defer></script>
 <script src="js/echo-pages.js?v=2" defer></script>

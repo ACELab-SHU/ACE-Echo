@@ -1,82 +1,46 @@
 ---
-title: L1 Scheduler User Guide
-audience: writer, designer
-#tags: [navigation]
-last_updated: June 10, 2025
-keywords: l1, scheduler, user, guide, language, dag, bas
-summary: "L1 scheduler"
+title: "Scheduler and application execution"
+layout: echo-doc
+summary: "Understand DAG execution, Scheduler packaging and the 1.0 application-contract model."
 sidebar: mydoc_sidebar
 permalink: mydoc_l1_scheduler_user_guide.html
-folder: mydoc
+section: Documentation
+content_status: "ACE-Echo 1.0"
+last_reviewed: 2026-09-13
 ---
 
+The Scheduler connects task execution with dependencies and data movement. ACE-Echo 1.0 distinguishes a Gem5 DAG run, a compiled Scheduler package and an application-contract run.
 
-**<span style="font-size: 150%;">Step 1: Prepare Your DSL DAG Project</span>**
+| Operation | Scope |
+|---|---|
+| `run dag` | Execute a supplied graph with the selected Gem5 Scheduler model |
+| `scheduler build` | Build the platform's Scheduler sources into `l1.elf` / `l1.bin` |
+| `run application --scheduler-engine contract` | Decode the firmware's application plan and execute it with the model |
+| Full Scheduler firmware execution | The scalar CPU/peripheral backend is not implemented as a qualified 1.0 mode |
 
-**Make sure your DSL DAG project has been properly generated. The following files are required for integration with the L1 simulator:**
+## Work from generated artifacts
 
-* The compiled DAG binary image: `<project_path>/dsl/bin/<dag_name>.bin`
-* The DAG metadata file: `<project_path>/dsl/final_output/<dag_name>.json`
-* The individual task binary images: `<project_path>/dsl/venus_test/ir/<task_name>.hex`
+Compile the DAG first and use the JSON, combined BIN and task-image paths recorded by that run. The example below shows the command shape; replace every `/path/to/` entry with your own generated artifact.
 
-These files will be used by the L1 simulator for joint debugging and integration.
+```bash
+./ace-echo --config .ace-echo/host/local.toml scheduler build \
+  --backend .ace-echo/host/backend.json \
+  --dag-name my_dag --dag-json /path/to/dag.json \
+  --dag-bin /path/to/dag.bin
+```
 
-* * *
+A fully static DAG with no runtime inputs can use the backend's `--auto-static-main` option. Dynamic application inputs require an appropriate launcher and input contract.
 
-**<span style="font-size: 150%;">Step 2: Write the L1 Runtime Code</span>**
+```bash
+./ace-echo --config .ace-echo/host/local.toml run application \
+  --backend .ace-echo/host/backend.json \
+  --l1-elf /path/to/l1.elf --scheduler-engine contract --mode fast
+```
 
-**2.1 Acquire the input and output sequence of the DAG by running dagInfoPaser script:**
+## What a successful run establishes
 
-```cd <project_path>/l1_main && python ./dagInfoPaser.py <dag_name>```
+Read the run's coverage fields, output comparisons and timing boundaries. Application-contract completion is not execution of the complete scalar Scheduler firmware and does not establish a fresh RTL pass. Hardware and RTL evaluation need the matching separately supplied sources, toolchains and test inputs.
 
-**2.2 Retrieve the order of input and output variables from the file:**
+See [dynamic input handling](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/docs/DYNAMIC_APPLICATION_INPUTS.md), [RTL evidence](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/docs/RTL_EVIDENCE_AND_LIFECYCLE.md) and the [published validation scope](venus1_validation.html).
 
-`<project_path>/l1_main/daginfo/<dag_name>.txt`
-
-**2.3 Update `<dag_name>/source/l1.cpp` to declare the input and output variables for your DAG.** Ensure that the variable types and lengths strictly match those defined in the associated `.bas` file.
-
-Then, establish the DAG-to-DAG dependencies to define execution order and data flow.
-
-**For example, suppose the following input and output variables are declared in your .bas file:**
-
-    ' input parameter
-      dfedata char dfe_input[4388]
-      dag_input short nCellid[1]
-    
-    ' output parameter
-      return_value short subFrameNum[1]
-
-**Suppose your DAG’s input and output variable names are defined as follows:**
-
-    # Input Names
-    nCellid
-    dfe_input
-    # Return Output Names
-    subFrameNum
-
-**You can then invoke the DAG in `l1.cpp` as follows:**
-
-* `fire_dag` API Parameters:
-
-| Parameter Index | Description | Source | Example Value |
-| --- | --- | --- | --- |
-| 0   | Name of the DAG | Defined in your DSL project | `dag_name` |
-| 1   | Number of input parameters | Defined in your `.bas` file | `12` |
-| 2   | Number of output parameters | Defined in your `.bas` file | `6` |
-
-You can use the `fire_dag` function to instruct L1 to deploy and run the specified DAG for computation.
-
-    #include "l1_api.h"
-    char dfe_input[4388] = {...};
-    short nCellid[1] = {2};
-    short subFrameNum[1];
-    
-    void l1_process() {
-      fire_dag(dag_name, 2, 1, &dfe_input, &nCellid, &subFrameNum);
-    
-      // You can connect the output of this DAG as the input
-      // to the next DAG to represent data flow and dependencies between DAGs.
-    }
-
-
-{% include links.html %}
+The old `dagInfoPaser.py` / `l1_main` instructions describe the [legacy integration path](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_l1_Scheduler_user_guide.md).

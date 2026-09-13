@@ -123,10 +123,7 @@ toc: false
       <p class="section-tag">Roadmap</p>
       <h2>Assistance today.<br>Intent-driven development next.</h2>
     </div>
-    <div class="roadmap-card">
-      <article class="roadmap-version current"><p class="roadmap-status">CURRENT RELEASE</p><h3>1.0</h3><h4>You develop.<br>Echo assists.</h4><p>Develop Venus applications with Gem5, quickly estimate performance and begin using the Agent-assisted development framework.</p><a href="venus1_get_started.html">Get started with 1.0 <span aria-hidden="true">↗</span></a></article>
-      <article class="roadmap-version future"><p class="roadmap-status">PLANNED DIRECTION</p><h3>2.0</h3><h4>Your intent.<br>An application for Venus.</h4><p>Our goal: describe the application you want, and let an Agent generate, refine and validate an implementation deployable on our hardware.</p><p class="roadmap-note">Intent-to-deployment automation is a future goal, beyond the initial 1.0 framework.</p></article>
-    </div>
+    {% include echo-roadmap.html %}
   </section>
 
   <section class="section-block latest-news" id="news"><div class="section-heading"><p class="section-tag">Latest from ACE Lab</p><h2>Silicon is only<br>the beginning.</h2></div><a class="news-feature" href="venus1-first-light.html"><span class="news-kicker">CHIP MILESTONE · 2026</span><h3>First-generation chip.<br>Successful tape-out. First light.</h3><p>From fabrication and packaging to bring-up and real-signal NR cell search.</p><span class="news-more">Read the announcement ↗</span></a><a class="all-news" href="news.html">All project news ↗</a></section>

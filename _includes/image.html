@@ -1,3 +1,6 @@
-<figure>{% if {{include.url}} %}<a class="no_icon" target="_blank" rel="noopener" href="{{include.url}}">{% endif %}<img class="docimage" src="images/{{include.file}}" alt="{{include.alt}}" {% if {{include.max-width}} %}style="max-width: {{include.max-width}}px"{% endif %} />{% if {{include.url}} %}</a>{% endif %}{% if {{include.caption}} %}<figcaption>{{include.caption}}</figcaption>{% endif %}</figure>
-
-{% comment %} Copyright 2021 Google LLC {% endcomment %}
+{% assign figure_alt = include.alt | default: include.caption | default: include.file %}
+<figure class="doc-figure"{% if include.max-width %} style="max-width:{{ include.max-width }}px"{% endif %}>
+<a class="figure-link" href="{% if include.url %}{{ include.url }}{% else %}images/{{ include.file }}{% endif %}" target="_blank" rel="noopener" aria-label="Open full-size figure: {{ figure_alt | strip_html | escape }}">
+<img class="docimage" src="images/{{ include.file }}" alt="{{ figure_alt | strip_html | escape }}" loading="lazy" decoding="async"><span class="figure-open" aria-hidden="true">View full size ↗</span></a>
+{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>

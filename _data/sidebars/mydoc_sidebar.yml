@@ -15,6 +15,9 @@ entries:
     - title: Programming model
       url: /mydoc_programming_model.html
       output: web, pdf
+    - title: Roadmap
+      url: /roadmap.html
+      output: web, pdf
   - title: Overview
     output: web, pdf
     folderitems:
