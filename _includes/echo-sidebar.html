@@ -19,5 +19,4 @@
     </details>{% endif %}{% endfor %}{% endfor %}
   </nav>
 </details>
-<script src="js/jekyll-search.js"></script>
-<script>SimpleJekyllSearch.init({searchInput:document.getElementById('search-input'),resultsContainer:document.getElementById('results-container'),dataSource:'{% if current_lang == 'zh-CN' %}search-zh.json{% else %}search.json{% endif %}',searchResultTemplate:'<li><a href="{url}">{title}</a></li>',noResultsText:{{ t.no_results | jsonify }},limit:8,fuzzy:true});</script>
+<script src="js/echo-search.js?v=1" defer></script>
