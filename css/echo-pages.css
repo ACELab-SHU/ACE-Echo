@@ -53,6 +53,7 @@
 @media(max-width:900px){.doc-navigation>summary{display:block}.post-content pre,.post-content pre.highlight{font-size:14px;padding:20px;line-height:1.75}}
 
 /* Editorial components share the homepage's quiet surfaces and type. */
+.post-content .guide-index,.post-content .guide-archive{margin:28px 0;padding:20px 24px;border:1px solid #e5e5ea;border-radius:16px;background:#fafafa}.guide-index>summary,.guide-archive>summary{cursor:pointer;font-size:15px;font-weight:600;color:#1d1d1f;line-height:1.6}.guide-index #toc{margin:20px 0 0;padding:0;background:transparent;max-height:360px;overflow:auto}.guide-index #toc:before{display:none}.guide-archive[open]>summary{margin-bottom:24px}
 .roadmap-card .anchorjs-link,.process-cards .anchorjs-link,#toc .anchorjs-link{display:none}
 .content-status{display:inline-block;margin:0 0 20px!important;padding:6px 11px;border-radius:8px;background:#eef3fb;color:#4e6284;font-size:11px!important;font-weight:600;letter-spacing:.02em;line-height:1.4}
 .post-content .doc-figure{margin:32px auto 38px;width:100%;padding:18px;border:1px solid #e6e6ed;border-radius:20px;background:#fafafa}
