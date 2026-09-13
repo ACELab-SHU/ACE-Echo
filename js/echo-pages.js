@@ -10,7 +10,20 @@
     wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Scrollable table');
     table.before(wrap); wrap.append(table);
   });
-  document.querySelectorAll('.doc-sidebar a').forEach(link => {
-    if (new URL(link.href).pathname === location.pathname) link.setAttribute('aria-current', 'page');
+  const groups = [...document.querySelectorAll('.doc-navigation nav > details.sidebar-group')];
+  let activeGroup = null;
+  document.querySelectorAll('.doc-sidebar nav a').forEach(link => {
+    if (new URL(link.href).pathname !== location.pathname) return;
+    link.setAttribute('aria-current', 'page');
+    let parent = link.parentElement;
+    while (parent && parent !== navigation) {
+      if (parent.matches('details')) parent.open = true;
+      if (groups.includes(parent)) activeGroup = parent;
+      parent = parent.parentElement;
+    }
   });
+  if (!activeGroup && groups.length) groups[0].open = true;
+  groups.forEach(group => group.addEventListener('toggle', () => {
+    if (group.open) groups.forEach(other => { if (other !== group) other.open = false; });
+  }));
 })();

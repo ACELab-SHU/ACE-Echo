@@ -4,15 +4,14 @@
   <ul id="results-container" aria-live="polite"></ul>
 </div>
 <details class="doc-navigation" open>
-  <summary>Explore ACE-Echo</summary>
+  <summary>{% if page.sidebar == "mydoc_sidebar" %}Documentation{% else %}Explore ACE-Echo{% endif %}</summary>
   <nav aria-label="Documentation sections">
-    <div class="sidebar-group"><span>ACE-Echo 1.0</span><a href="venus1_get_started.html">Get started</a><a href="venus1_validation.html">Validation scope</a><a href="news.html">Project news</a></div>
     {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
     {% for entry in sidebar %}{% for folder in entry.folders %}{% if folder.output contains 'web' %}
-    <details class="sidebar-group" open><summary>{{ folder.title }}</summary>
+    <details class="sidebar-group"><summary>{{ folder.title }}</summary>
       {% for item in folder.folderitems %}{% if item.output contains 'web' %}
       {% if item.url or item.external_url %}<a href="{% if item.external_url %}{{ item.external_url }}{% else %}{{ item.url | remove_first: '/' }}{% endif %}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endif %}
-      {% for sub in item.subfolders %}{% if sub.output contains 'web' %}<details class="sidebar-subgroup" open><summary>{{ sub.title }}</summary>
+      {% for sub in item.subfolders %}{% if sub.output contains 'web' %}<details class="sidebar-subgroup"><summary>{{ sub.title }}</summary>
       {% for child in sub.subfolderitems %}{% if child.output contains 'web' %}<a href="{% if child.external_url %}{{ child.external_url }}{% else %}{{ child.url | remove_first: '/' }}{% endif %}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a>{% endif %}{% endfor %}
       </details>{% endif %}{% endfor %}
       {% endif %}{% endfor %}

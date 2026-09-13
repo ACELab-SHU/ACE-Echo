@@ -14,7 +14,7 @@
 .document-summary,.doc-main .summary{font-size:21px;line-height:1.5;letter-spacing:-.3px;color:var(--muted);background:none;border:0;padding:0;margin:0 0 32px}
 .post-content{font-size:17px;line-height:1.8;color:#424247}.post-content p{margin:0 0 22px}.post-content h2{font-size:32px;font-weight:650;margin:52px 0 22px;color:var(--ink)}.post-content h3{font-size:24px;font-weight:600;margin:34px 0 18px;color:var(--ink)}.post-content h4{font-size:20px;margin:28px 0 16px;color:var(--ink)}.post-content h1{font-size:36px;margin:40px 0 22px}.post-content ul,.post-content ol{padding-left:24px;margin:0 0 24px}.post-content li{margin:7px 0}.post-content strong{color:var(--ink);font-weight:600}.post-content a{overflow-wrap:anywhere}.post-content hr{border:0;border-top:1px solid #e5e5ea;margin:40px 0}
 .post-meta,.document-date{font-size:12px;color:var(--muted);line-height:1.6}.post-content img{height:auto;max-width:100%!important;border-radius:14px}.post-content figure{margin:28px 0}.post-content figcaption{font-size:12px;line-height:1.6;color:var(--muted);margin:12px 0 0}.post-content .news-photo{max-width:520px;margin:32px auto 42px}.post-content .news-photo img{width:100%;max-height:580px;object-fit:cover;object-position:center}.post-content iframe,.post-content video{max-width:100%}
-.post-content code{font: .85em/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;color:#4b477f;background:#f3f3f6;padding:3px 6px;border-radius:5px;overflow-wrap:anywhere}.post-content pre{padding:24px;background:#1d1d24;border:0;border-radius:16px;color:#e8e8ed;margin:24px 0;max-width:100%;overflow:auto;white-space:pre}.post-content pre code{background:none;color:inherit;padding:0;white-space:pre;overflow-wrap:normal}.post-content .highlight{background:transparent}.post-content .highlight .c,.post-content .highlight .c1{color:#a1a1ad}.post-content .highlight .s,.post-content .highlight .s1,.post-content .highlight .s2{color:#a8d8b5}.post-content .highlight .k,.post-content .highlight .nb{color:#9abaff}.post-content .highlight .o,.post-content .highlight .p{color:#d4d4df}
+.post-content code{font: .9em/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;color:#4b477f;background:#f3f3f6;padding:3px 6px;border-radius:5px;overflow-wrap:anywhere}.post-content pre{padding:24px;background:#1d1d24;border:0;border-radius:16px;color:#e8e8ed;margin:24px 0;max-width:100%;overflow:auto;white-space:pre}.post-content pre code{background:none;color:inherit;padding:0;white-space:pre;overflow-wrap:normal}.post-content div.highlight{background:transparent}.post-content .highlight .c,.post-content .highlight .c1{color:#a1a1ad}.post-content .highlight .s,.post-content .highlight .s1,.post-content .highlight .s2{color:#a8d8b5}.post-content .highlight .k,.post-content .highlight .nb{color:#9abaff}.post-content .highlight .o,.post-content .highlight .p{color:#d4d4df}
 .table-scroll{overflow:auto;max-width:100%;margin:25px 0;border:1px solid #e5e5ea;border-radius:16px}.post-content table{width:100%;border-collapse:collapse;font-size:14px;margin:0}.post-content th{background:#f5f5f7;color:var(--ink);font-weight:600;text-align:left}.post-content th,.post-content td{padding:15px 18px;border:0;border-bottom:1px solid #e5e5ea;vertical-align:top;line-height:1.65;min-width:110px}.post-content tr:last-child td{border-bottom:0}
 #toc:empty{display:none}#toc{background:#f5f5f7;padding:24px 28px;border-radius:18px;margin:28px 0 38px;font-size:13px}#toc:before{content:'On this page';display:block;font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px}#toc ul{margin:0;padding-left:18px}#toc>ul{padding-left:0;list-style:none}#toc li{margin:5px 0}#toc a{color:#515154}
 .post-content blockquote,.post-content .alert{padding:22px 26px;background:#f5f5f7;border:0;border-left:3px solid #8a9bdf;border-radius:0 14px 14px 0;font-size:16px;color:#515154;margin:26px 0}.post-content blockquote p:last-child,.post-content .alert p:last-child{margin-bottom:0}.tags{font-size:12px;color:var(--muted);margin-top:40px}.doc-main .btn{border-radius:20px;font-size:12px;border-color:#dedee4;background:#f5f5f7;color:#515154}.doc-main .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -28,3 +28,26 @@
 @media(prefers-reduced-motion:reduce){.post-header{animation:none}}
 
 .post-content .intro-emphasis{font-size:1.15em;color:var(--ink)}.post-content .highlight span{color:inherit}.post-content .highlight .c,.post-content .highlight .c1{color:#a1a1ad}.post-content .highlight .s,.post-content .highlight .s1,.post-content .highlight .s2{color:#a8d8b5}.post-content .highlight .k,.post-content .highlight .nb{color:#9abaff}
+
+/* Rouge puts .highlight on both the wrapper and pre: keep the surface on pre. */
+.post-content pre,.post-content pre.highlight{
+  background:#1d1d24;color:#f2f2f7;border:1px solid #30303b;
+  font:15px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace;
+  padding:24px 26px;border-radius:16px;tab-size:4;
+}
+.post-content pre code{font:inherit;color:inherit;background:transparent;border:0}
+.post-content pre span{background:transparent;color:inherit}
+.post-content pre .c,.post-content pre .c1,.post-content pre .cm,.post-content pre .cp{color:#aeb4c4;font-style:normal}
+.post-content pre .k,.post-content pre .kd,.post-content pre .kn,.post-content pre .nb,.post-content pre .nt{color:#a7c5ff}
+.post-content pre .s,.post-content pre .s1,.post-content pre .s2,.post-content pre .sb,.post-content pre .se{color:#b1e3bf}
+.post-content pre .m,.post-content pre .mi,.post-content pre .mf{color:#e4c5ff}
+.post-content pre .o,.post-content pre .p,.post-content pre .nv,.post-content pre .n{color:#f2f2f7}
+.doc-navigation>summary{display:none}
+.sidebar-group{padding:8px 0 4px}
+.sidebar-group>summary{font-size:13px;color:#424247;letter-spacing:0;padding:11px 10px;line-height:1.4}
+.sidebar-group>summary:after{content:'›';font-size:17px;color:#86868b;transform:rotate(90deg);transition:transform .2s}
+.sidebar-group:not([open])>summary:after{content:'›';transform:rotate(0deg)}
+.sidebar-group a{font-size:13px;padding:8px 12px;margin:2px 0 2px 10px;border-left:2px solid transparent;border-radius:0 8px 8px 0}
+.sidebar-group a[aria-current=page]{border-left-color:#0071e3;background:#edf5ff}
+.doc-navigation nav{padding-top:12px}
+@media(max-width:900px){.doc-navigation>summary{display:block}.post-content pre,.post-content pre.highlight{font-size:14px;padding:20px;line-height:1.75}}
