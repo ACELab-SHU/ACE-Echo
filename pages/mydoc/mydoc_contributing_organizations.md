@@ -1,31 +1,29 @@
 ---
-title: Contributing Organizations
-keywords: contributing, organizations, Shanghai University, Deep Transcend
-last_updated: June 10, 2025
-#tags: [navigation]
-# summary: "contributing organizations for Echo"
+title: Contributing organizations
+layout: echo-doc
 toc: false
+summary: Academic and industrial contributors to the Echo and Venus project.
 sidebar: mydoc_sidebar
 permalink: mydoc_contributing_organizations.html
-folder: mydoc
-
+section: Community
+content_status: Project contributors
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_contributing_organizations.html
 ---
-Echo is made possible through the joint efforts of leading academic and industrial contributors.
-We gratefully acknowledge the foundational support and ongoing contributions from:
 
-### 🏛️ Academic Partner
-The core development team comes from the School of Communication and Information Engineering, **Shanghai University**.
+Academic and industrial partners contribute to the research and development of ACE-Echo and Venus.
 
-<div style="text-align: center;">
-  {% include image.html file="shu_logo_vi.jpg" max-width = '300' %}
-</div>
+## Shanghai University
 
-### 🏢 Industry Partner
-Deep Transcend Ltd.
+The core research team comes from the School of Communication and Information Engineering, Shanghai University.
 
-<div style="text-align: center;">
-  {% include image.html file="DT_logo.png" max-width = '300' %}
-</div>
+{% include image.html file="shu_logo_vi.jpg" caption="Shanghai University" max-width="300" %}
 
+## Deep Transcend Ltd.
 
-{% include links.html %}
+Deep Transcend Ltd. is an industrial contributor to the project.
+
+{% include image.html file="DT_logo.png" caption="Deep Transcend Ltd." max-width="300" %}
+
+For collaboration, contact [shenyihao@shu.edu.cn](mailto:shenyihao@shu.edu.cn). [Meet the developer team](mydoc_developers.html).

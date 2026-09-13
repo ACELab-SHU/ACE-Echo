@@ -1,30 +1,26 @@
 ---
-title: Echo v0.1 Release Notes
-#tags: [getting_started]
-keywords: release notes, Echo, 0.1, 0.5, 1.0, Current, Feature
-last_updated: June 10, 2025
-summary: "Echo Version 0.1 Release Notes"
+title: Echo v0.1 release record
+layout: echo-doc
+summary: The early platform release, retained as project history.
 sidebar: mydoc_sidebar
 permalink: mydoc_beta_release_notes.html
-toc: false
-folder: mydoc
+section: Archive
+content_status: Historical release
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_beta_release_notes.html
 ---
 
-## Current v0.1 Capabilities
+This is a historical record of Echo v0.1, documented in June 2025. For the Gem5-based platform, use the [ACE-Echo 1.0 guide](venus1_get_started.html).
 
-* * *
-  
-**"Echo v0.1"** marks the first official release of our intelligent baseband development platform, laying the foundation for future innovations in communication systems. 
-<br><br>
+## What the early release introduced
 
-| Feature                                     | Highlights                                                                                                      |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Complete Application Development Support    | Includes compiler, libraries, debugging, and simulation tools.                                                  |
-| Hardware-Consistent Simulation              | Support fixed-point simulation and register usage analysis that comply with the hardware architecture.          |
-| 3GPP-Compliant 5G/LTE PHY Library           | ​Such as channel coding (Polar/Turbo/LDPC), OFDM, channel estimation and modulation.                             |
-| 5G Cell Search Demo Implemented             | End-to-end demo showcasing Venus-based baseband algorithm implementation.                                       |
-| A few AI operators                          | Facilitate the integration of AI with communication.                                                            |
+The original release combined task development, communication-oriented libraries, a hardware-oriented software model and early 5G cell-search experiments. It established the development workflow from which ACE-Echo evolved.
 
-This initial beta version kicks off the project's journey, with exciting milestones like floating-point simulation (v0.5) and full cycle-accurate simulation (v1.0) already on the horizon.
+Its original feature descriptions refer to that release's source and examples. They are not the current 1.0 support matrix or a blanket 3GPP qualification claim. The [original release notes](https://github.com/ACELab-SHU/ACE-Echo/blob/8770c29996116dfd2bb791fdd5132a0949c294b3/pages/mydoc/mydoc_beta_release_notes.md) remain available in source history.
 
-{% include links.html %}
+## What changed
+
+ACE-Echo 1.0 uses Gem5 for Venus application development and approximate cycle-level performance evaluation. Its initial Agent-assisted framework supports developer-guided work.
+
+The old v0.5 and v1.0 beta forecasts have been superseded. See the [current roadmap](roadmap.html) for the 1.0 scope and the 2.0 intent-driven development direction.

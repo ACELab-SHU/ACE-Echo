@@ -1,0 +1,73 @@
+---
+title: Get started with ACE-Echo 1.0
+layout: echo-doc
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+section: Documentation
+summary: Develop Venus applications, estimate performance with Gem5, and begin using the Agent-assisted development framework.
+sidebar: mydoc_sidebar
+permalink: venus1_get_started.html
+folder: mydoc
+lang: en
+translation_url: zh_venus1_get_started.html
+---
+
+ACE-Echo is the open development platform for our Venus communication–AI processor. Version 1.0 provides a Gem5-based simulator and an initial Agent-assisted development framework, so developers can build Venus applications and quickly explore their approximate performance. The public distribution lives in `platform/`; the repository's older root-level tools belong to the legacy release.
+
+## Prepare your tools
+
+Use a Linux host with Python 3.8 or later, Git, Make, a C/C++ compiler and the dependencies listed in `platform/docs/GETTING_STARTED.md`. You also need the **Venus-custom LLVM toolchain** and a compatible RISC-V GCC installation. Ordinary upstream LLVM does not implement the Venus instruction extensions. The compiler, RTL source and commercial EDA tools are separate prerequisites and are not bundled in this release.
+
+## Clone the source
+
+The 1.0 source is currently available in the release branch below while [upstream PR #5](https://github.com/ACELab-SHU/ACE-Echo/pull/5) is under review. This preview documents the pinned `db763e2` release snapshot; cloning the upstream default branch before that PR merges does not provide the same `platform/` distribution.
+
+```bash
+git clone --branch release/ace-echo-1.0 --single-branch \
+  https://github.com/HorryShenYH/ACE-Echo.git
+cd ACE-Echo/platform
+```
+
+The public source bundle includes pinned DSL sources, the eight Venus1 regression DAGs and a small onboarding smoke example. It does not require access to an internal submodule server. See `PUBLIC_SOURCE_MANIFEST.json` for the exact source revisions.
+
+## Select Venus 1.0
+
+Create the host configuration and edit the external tool paths in `.ace-echo/host-tools.json`:
+
+```bash
+mkdir -p .ace-echo
+cp configs/host.example.json .ace-echo/host-tools.json
+```
+
+Then resolve the 64-lane, 512-row Venus1 profile, with a nominal 300 MHz Tile clock and 150 MHz AXI clock:
+
+```bash
+python3 scripts/bootstrap.py fetch-json
+python3 scripts/bootstrap.py configure \
+  --tools .ace-echo/host-tools.json \
+  --backend configs/backends/venus1p0-64x512-300mhz.json
+python3 scripts/bootstrap.py build-gem5 --jobs 4 --mode opt
+./ace-echo --config .ace-echo/host/local.toml doctor \
+  --scope fast --backend .ace-echo/host/backend.json
+```
+
+## Check the installation
+
+```bash
+make test
+make smoke
+```
+
+The smoke compiles a fresh two-task DAG, runs Gem5 fast mode and compares both task outputs against its software reference. Its report includes the active clock and timing boundaries. This is an installation check; it does not qualify the eight radio algorithms or replace an RTL regression.
+
+Continue with the commands and backend contracts in `platform/docs/GETTING_STARTED.md`, `platform/docs/HARDWARE_SELECTION.md` and the CLI `--help` output. Read the [Venus1 validation report](venus1_validation.html) before interpreting timing or correctness results.
+
+## Agent-assisted development
+
+The 1.0 release includes the initial Forge development framework, which connects an AI coding host to the platform's toolchain, simulator and validation workflow. Read the repository's Forge documentation and skill instructions when using it. The CLI initializes and records work; the AI coding host provides the Agent, and developers guide and review the result.
+
+Fully automated intent-to-deployable-application generation is the **2.0 roadmap goal**, rather than a capability promised by the 1.0 release. See the [platform roadmap](roadmap.html).
+
+## Existing users
+
+Keep your host-specific paths in `.ace-echo/`. Use the release's paired DSL and workload sources together. The [legacy setup guide](mydoc_get_started.html) is retained for older experiments; its simulator instructions do not describe ACE-Echo 1.0.

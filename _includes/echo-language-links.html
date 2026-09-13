@@ -1,0 +1,4 @@
+{% if page.translation_url %}
+<link rel="alternate" hreflang="{{ page.lang | default: 'en' }}" href="https://acelab-shu.github.io/ACE-Echo/{{ page.permalink }}">
+<link rel="alternate" hreflang="{% if page.lang == 'zh-CN' %}en{% else %}zh-CN{% endif %}" href="https://acelab-shu.github.io/ACE-Echo/{{ page.translation_url }}">
+{% endif %}

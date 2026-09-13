@@ -1,0 +1,10 @@
+- version: "1.0"
+  status: Available in the release branch
+  title: You develop. Echo assists.
+  description: Develop applications for Venus with a usable Gem5 simulator, approximate cycle-level performance evaluation and an initial Agent-assisted development framework.
+  link: venus1_get_started.html
+  link_text: Get started with 1.0
+- version: "2.0"
+  status: Planned direction
+  title: Your intent. An application for Venus.
+  description: Our goal is for an Agent to turn your application intent into an implementation deployable on Venus, including generation, iteration and validation. This is a future platform goal; no release date is announced here.

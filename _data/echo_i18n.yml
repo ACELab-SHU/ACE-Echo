@@ -1,0 +1,76 @@
+en:
+  skip: Skip to content
+  home: ACE-Echo home
+  open_nav: Open navigation
+  main_nav: Main navigation
+  architecture: Architecture
+  platform: Platform
+  applications: Applications
+  roadmap: Roadmap
+  news: News
+  start: Get started
+  switch: 切换到中文
+  switch_label: 中文
+  search: Search the project
+  search_placeholder: Search documentation…
+  documentation: Documentation
+  explore: Explore ACE-Echo
+  sections_label: Documentation sections
+  no_results: No results found.
+  browse_guide: Browse this guide
+  footer: Footer
+  contact: Contact
+  tagline: Open development for communication–AI convergence.
+  lab: ACE Lab · Shanghai University
+  full_size: View full size
+  open_figure: 'Open full-size figure:'
+  news_archive: Browse the news archive
+  date_format: '%d %B %Y'
+  sections:
+    Documentation: Documentation
+    News: News
+    Project: Project
+    Community: Community
+    Applications: Applications
+    Archive: Archive
+    Evaluation: Evaluation
+    mydoc: Project
+    Explore: Explore
+zh-CN:
+  skip: 跳转到正文
+  home: ACE-Echo 首页
+  open_nav: 展开导航
+  main_nav: 主导航
+  architecture: 架构
+  platform: 平台
+  applications: 应用
+  roadmap: 路线图
+  news: 新闻
+  start: 开始使用
+  switch: Switch to English
+  switch_label: EN
+  search: 搜索项目文档
+  search_placeholder: 搜索指令、指南或主题…
+  documentation: 文档导航
+  explore: 探索 ACE-Echo
+  sections_label: 文档章节
+  no_results: 未找到相关内容。
+  browse_guide: 浏览本指南目录
+  footer: 页脚导航
+  contact: 联系我们
+  tagline: 面向通信与 AI 融合的开放开发。
+  lab: ACE Lab · 上海大学
+  full_size: 查看原图
+  open_figure: 打开完整图片：
+  news_archive: 浏览新闻归档
+  date_format: '%Y 年 %-m 月 %-d 日'
+  sections:
+    Documentation: 文档
+    News: 新闻
+    Project: 项目
+    Community: 社区
+    Applications: 应用
+    Archive: 归档
+    Evaluation: 评估
+    mydoc: 项目
+    Explore: 探索

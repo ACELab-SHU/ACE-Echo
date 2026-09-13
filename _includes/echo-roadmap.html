@@ -1,0 +1,6 @@
+<div class="roadmap-card">
+{% assign roadmap_data = site.data.echo_roadmap %}{% if page.lang == 'zh-CN' %}{% assign roadmap_data = site.data.echo_roadmap_zh %}{% endif %}
+{% for release in roadmap_data %}<article class="roadmap-version {% if release.version == '2.0' %}future{% endif %}">
+<p class="roadmap-status">{{ release.status }}</p><h3>{{ release.version }}</h3><h4>{{ release.title }}</h4><p>{{ release.description }}</p>
+{% if release.link %}<a href="{{ release.link }}">{{ release.link_text }} ↗</a>{% endif %}
+</article>{% endfor %}</div>

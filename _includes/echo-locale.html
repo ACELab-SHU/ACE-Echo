@@ -1,0 +1,3 @@
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign t = site.data.echo_i18n[current_lang] %}
+{% assign locale_prefix = '' %}{% if current_lang == 'zh-CN' %}{% assign locale_prefix = 'zh_' %}{% endif %}

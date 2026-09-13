@@ -1,0 +1,278 @@
+{
+  "index.html": {
+    "title": "ACE-Echo · 通信与 AI 融合",
+    "summary": "面向 Venus 可编程通信–AI 处理器的开源开发平台。了解架构、第一代芯片与 ACE-Echo 路线图。"
+  },
+  "mydoc_5g_baseband.html": {
+    "title": "Venus 上的 5G / NR",
+    "summary": "连接 NR 处理流程、芯片里程碑与当前仿真用例。"
+  },
+  "mydoc_beta_release_notes.html": {
+    "title": "Echo v0.1 发布记录",
+    "summary": "保留早期平台版本，记录项目演进。"
+  },
+  "mydoc_contributing_organizations.html": {
+    "title": "参与单位",
+    "summary": "参与 Echo 与 Venus 项目的学术和产业单位。"
+  },
+  "mydoc_developers.html": {
+    "title": "开发团队",
+    "summary": "Venus、AURA 与 ACE-Echo 开发平台背后的贡献者。"
+  },
+  "mydoc_dsl_user_guide.html": {
+    "title": "DSL 用户指南",
+    "summary": "BAS 语法、数据声明、任务绑定、编译配置、产物与完整示例。"
+  },
+  "mydoc_get_started.html": {
+    "title": "旧版安装指南（v0.1）",
+    "summary": "保留 VEMU 时代的本地编译与 Docker 部署步骤，供早期实验参考。"
+  },
+  "mydoc_gnss_baseband.html": {
+    "title": "Venus 上的 GNSS",
+    "summary": "卫星导航应用研究方向；发布验证依据单独说明。"
+  },
+  "mydoc_introduction.html": {
+    "title": "认识 ACE-Echo",
+    "summary": "面向 Venus 通信–AI 融合处理器的开源开发平台。"
+  },
+  "mydoc_l1_scheduler_user_guide.html": {
+    "title": "L1 Scheduler 用户指南",
+    "summary": "了解 DAG 执行、Scheduler 打包与 1.0 应用契约模型。"
+  },
+  "mydoc_lora_baseband.html": {
+    "title": "Venus 上的 LoRa",
+    "summary": "低功耗广域通信研究方向；发布验证依据单独说明。"
+  },
+  "mydoc_lte_baseband.html": {
+    "title": "Venus 上的 LTE",
+    "summary": "可用 LTE DAG 用例及其 1.0 评估范围。"
+  },
+  "mydoc_performance.html": {
+    "title": "性能与验证依据",
+    "summary": "区分 1.0 仿真精度与早期架构基准测试。"
+  },
+  "mydoc_programming_model.html": {
+    "title": "Venus 编程模型",
+    "summary": "定义任务图，面向同一后端编译，并评估生成的应用。"
+  },
+  "mydoc_supported_features.html": {
+    "title": "1.0 可以做什么",
+    "summary": "Venus 应用开发、Gem5 仿真与初版 Agent 辅助。"
+  },
+  "mydoc_venus_user_guide.html": {
+    "title": "Venus 用户指南",
+    "summary": "完整向量类型、原有指令分类、掩码、内存访问和任务示例参考。"
+  },
+  "roadmap.html": {
+    "title": "ACE-Echo 路线图",
+    "summary": "从实用的 Venus 应用开发，走向意图驱动的应用生成。"
+  },
+  "venus1_get_started.html": {
+    "title": "开始使用 ACE-Echo 1.0",
+    "summary": "开发 Venus 应用，用 Gem5 估计性能，并开始使用 Agent 辅助开发框架。"
+  },
+  "venus1_validation.html": {
+    "title": "Venus 1.0 验证报告",
+    "summary": "Gem5 与 RTL 的测量一致性，以及明确的时序和正确性边界。"
+  },
+  "academic_achievements.html": {
+    "title": "学术成果",
+    "summary": "通信–AI 融合架构、编译器与无线基带研究。"
+  },
+  "breakthroughs_in_application.html": {
+    "title": "应用进展",
+    "summary": "从 FPGA 演示到第一代芯片。"
+  },
+  "news.html": {
+    "title": "项目新闻",
+    "summary": "芯片里程碑、通信–AI 架构研究与 ACE-Echo 开发平台动态。"
+  },
+  "news_archive.html": {
+    "title": "新闻归档",
+    "summary": "按发布时间回顾项目进展。"
+  },
+  "academic-1.html": {
+    "title": "面向开放 6G 基带信号处理的领域专用计算架构",
+    "summary": "TURC 2023：RISC-V 扩展与多层数据流编程。"
+  },
+  "academic-2.html": {
+    "title": "面向无线基带处理的分层数据流驱动异构架构",
+    "summary": "ASPDAC 2025：无缓存 NUMA 架构与 pack-and-ship 数据分发。"
+  },
+  "academic-3.html": {
+    "title": "Zoozve：支持任意寄存器分组、无需 strip-mining 的 RISC-V 向量扩展（WIP）",
+    "summary": "LCTES 2025：向量扩展与 LLVM 编译工具链研究。"
+  },
+  "academic-4.html": {
+    "title": "Venus：面向 6G 边缘智能、融合 AI 与无线基带处理的 RISC-V 领域专用架构",
+    "summary": "Venus 架构研究发表于 IEEE Wireless Communications。"
+  },
+  "application-1.html": {
+    "title": "UVP 成功解码 5G PBCH MIB",
+    "summary": "2025 年 FPGA 评估板上的广播信道解码演示。"
+  },
+  "venus1-first-light.html": {
+    "title": "第一代芯片流片成功，顺利点亮",
+    "summary": "5G-Lite 推动 Venus 成为真实芯片，完成上电调试与真实信号 NR 小区搜索。"
+  },
+  "p1_landing_page.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample1.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample2.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample3.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample4.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample5.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample6.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p1_sample7.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_landing_page.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample1.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample10.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample11.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample12.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample13.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample14.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample2.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample3.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample4.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample5.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample6.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample7.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample8.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "p2_sample9.html": {
+    "title": "此主题示例已停用",
+    "summary": "保留旧链接，帮助访问者找到当前项目内容。"
+  },
+  "tag_collaboration.html": {
+    "title": "协作主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_content_types.html": {
+    "title": "内容类型主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_formatting.html": {
+    "title": "格式主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_getting_started.html": {
+    "title": "入门主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_mobile.html": {
+    "title": "移动端主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_navigation.html": {
+    "title": "导航主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_news.html": {
+    "title": "新闻",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_publishing.html": {
+    "title": "发布主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_single_sourcing.html": {
+    "title": "内容复用主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_special_layouts.html": {
+    "title": "特殊布局主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "tag_troubleshooting.html": {
+    "title": "问题排查主题",
+    "summary": "按主题浏览项目内容。"
+  },
+  "zoozve-tcad.html": {
+    "title": "Zoozve：从编译器到硬件的灵活向量寄存器",
+    "summary": "任意寄存器分组连接 RISC-V 向量扩展、LLVM 后端与硬件实现。"
+  },
+  "hybrid-scheduling.html": {
+    "title": "软硬件协同，让多核任务有序执行",
+    "summary": "离线依赖分析与运行时硬件分发协同，面向异构多核系统。"
+  },
+  "venusian-tvlsi.html": {
+    "title": "Venusian：面向无线基带的快速验证路径",
+    "summary": "结合高层编程与基于 FPGA 的 RISC-V 加速器协同设计，连接应用开发与硬件评估。"
+  },
+  "venus-gnss-iscas.html": {
+    "title": "基于 Venus 架构的灵活可升级 GNSS 接收机",
+    "summary": "ISCAS 2026 演示将 Venus 架构研究拓展到卫星导航接收。"
+  },
+  "baseband-soc-date.html": {
+    "title": "面向多制式通感融合的低功耗基带 SoC",
+    "summary": "DATE 2026 Late Breaking Results 论文介绍面向多制式通感融合的 RISC-V 基带 SoC 研究。"
+  },
+  "uvp-tvlsi.html": {
+    "title": "面向无线基带的 Unlimited Vector Processing",
+    "summary": "通过 RISC-V 扩展探索灵活向量长度与寄存器分组，面向信号处理工作负载。"
+  }
+}

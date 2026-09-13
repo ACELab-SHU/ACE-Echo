@@ -1,15 +1,16 @@
 ---
 layout: default
 ---
+{% include echo-locale.html %}
 <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
 
-    <header class="post-header">
+    <header class="post-header">{% include echo-content-meta.html %}
         <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time> {% if page.author %}<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">/ {{ page.author }}</span></span>{% endif %}{% if page.tags != null %}/
+        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: t.date_format }}</time> {% if page.author %}<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">/ {{ page.author }}</span></span>{% endif %}{% if page.tags != null %}/
             {% assign projectTags = site.data.tags.allowed-tags %}
             {% for tag in page.tags %}
             {% if projectTags contains tag %}
-            <a href="{{ "tag_" | append: tag | append: ".html"}}">{{tag}}</a>{% unless forloop.last %}, {% endunless%}
+            <a href="{{ locale_prefix | append: "tag_" | append: tag | append: ".html"}}">{{tag}}</a>{% unless forloop.last %}, {% endunless%}
             {% endif %}
             {% endfor %}
             {% endif %}
@@ -34,8 +35,8 @@ layout: default
 
 {% include commento.html %}
 
-{{site.data.alerts.hr_shaded}}
 
-{% include footer.html %}
+
+
 
 {% comment %} Copyright 2021 Google LLC {% endcomment %}

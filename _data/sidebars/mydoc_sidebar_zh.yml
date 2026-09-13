@@ -1,0 +1,90 @@
+entries:
+- title: sidebar
+  product: ACE-Echo
+  version: 1.0
+  folders:
+  - title: ACE-Echo 1.0
+    output: web, pdf
+    folderitems:
+    - title: 开始使用
+      url: /zh_venus1_get_started.html
+      output: web, pdf
+    - title: 验证范围
+      url: /zh_venus1_validation.html
+      output: web, pdf
+    - title: 编程模型
+      url: /zh_mydoc_programming_model.html
+      output: web, pdf
+    - title: 路线图
+      url: /zh_roadmap.html
+      output: web, pdf
+  - title: 项目概览
+    output: web, pdf
+    folderitems:
+    - title: 项目介绍
+      url: /zh_mydoc_introduction.html
+      output: web, pdf
+      type: homepage
+    - title: 支持功能
+      url: /zh_mydoc_supported_features.html
+      output: web, pdf
+    - title: 性能与依据
+      url: /zh_mydoc_performance.html
+      output: web, pdf
+  - title: 用户指南
+    output: web, pdf
+    folderitems:
+    - title: Venus
+      url: /zh_mydoc_venus_user_guide.html
+      output: web, pdf
+    - title: DSL
+      url: /zh_mydoc_dsl_user_guide.html
+      output: web, pdf
+    - title: L1 Scheduler
+      url: /zh_mydoc_l1_scheduler_user_guide.html
+      output: web, pdf
+  - title: 应用
+    output: web, pdf
+    folderitems:
+    - title: 5G 小区搜索
+      url: /zh_mydoc_5g_baseband.html
+      output: web, pdf
+    - title: LTE 小区搜索
+      url: /zh_mydoc_lte_baseband.html
+      output: web, pdf
+    - title: GNSS 基带
+      url: /zh_mydoc_gnss_baseband.html
+      output: web, pdf
+    - title: LoRa 基带
+      url: /zh_mydoc_lora_baseband.html
+      output: web, pdf
+  - title: 社区
+    output: web, pdf
+    folderitems:
+    - title: 开发团队
+      url: /zh_mydoc_developers.html
+      output: web, pdf
+    - title: 参与单位
+      url: /zh_mydoc_contributing_organizations.html
+      output: web, pdf
+  - title: 旧版归档
+    output: web, pdf
+    folderitems:
+    - title: 旧版安装
+      url: /zh_mydoc_get_started.html
+      output: web, pdf
+    - title: Echo v0.1 发布记录
+      url: /zh_mydoc_beta_release_notes.html
+      output: web, pdf
+  - title: null
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title: null
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title: null
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter

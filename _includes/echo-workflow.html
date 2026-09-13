@@ -1,0 +1,15 @@
+{% if page.lang == 'zh-CN' %}
+<figure class="workflow-figure"><ol class="workflow-strip">
+<li><span>01</span><strong>定义</strong><small>输入、输出与参考</small></li>
+<li><span>02</span><strong>开发</strong><small>Venus C 任务 + BAS DAG</small></li>
+<li><span>03</span><strong>仿真</strong><small>Gem5 与指定后端</small></li>
+<li><span>04</span><strong>评估</strong><small>输出一致性 + 时序</small></li>
+</ol><figcaption>ACE-Echo 1.0 软件开发循环。硬件和 RTL 验证是独立步骤。</figcaption></figure>
+{% else %}
+<figure class="workflow-figure"><ol class="workflow-strip">
+<li><span>01</span><strong>Define</strong><small>Inputs, outputs and reference</small></li>
+<li><span>02</span><strong>Develop</strong><small>Venus C tasks + BAS DAG</small></li>
+<li><span>03</span><strong>Simulate</strong><small>Gem5 on a selected backend</small></li>
+<li><span>04</span><strong>Evaluate</strong><small>Output agreement + timing</small></li>
+</ol><figcaption>The ACE-Echo 1.0 software development loop. Hardware and RTL validation are separate steps.</figcaption></figure>
+{% endif %}

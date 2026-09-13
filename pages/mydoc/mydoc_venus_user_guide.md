@@ -1,309 +1,427 @@
 ---
 title: Venus User Guide
-#tags: [getting_started]
-last_updated: June 10, 2025
-keywords: Venus, User, Guide, datatypes, intrinsics
-summary: "This guide provides essential information for working with the Venus framework, covering data types, intrinsic functions, and sample code for task and bas file creation."
+layout: echo-doc
+guide_reference: true
+summary: A practical reference for vector types, every original intrinsic family, masks, memory access and complete task examples.
 sidebar: mydoc_sidebar
 permalink: mydoc_venus_user_guide.html
-folder: mydoc
+section: Documentation
+content_status: Venus1 programming reference
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_venus_user_guide.html
 ---
 
-## DataType
+Use this guide while writing Venus C tasks. It contains the instruction families from the original guide, their call forms and examples, followed by task and BAS examples. For setup, see [Get started](venus1_get_started.html); for graph compilation, see the [DSL User Guide](mydoc_dsl_user_guide.html).
 
-Venus supports two types of vector lengths (8-bit or 16-bit), with the longest vector length being 65535. The definition method is as follows:
+[Base intrinsics](#base-intrinsics) · [Extended intrinsics](#extended-intrinsics) · [Complete example](#complete-two-task-example) · [Original CRC example](#crc-example-from-the-original-guide)
+
+The reference targets the Venus1 64-lane / 512-row profile and its LLVM 15.0.7 compiler revision `27fdd688`. Call forms are checked against the release's headers and paired compiler; operation descriptions use the published Gem5 implementation. The recorded DAG regression does not individually qualify every instruction or corner case against silicon.
+
+## Data types and lengths
 
 ```c
-//Define a variable a as a vector of x elements, each of which is y bits wide.
-//The definition length can be arbitrary.
+#include "venus.h"
 
-__v(x)i(y) a
-
-//Example:
-// Define a 1024-element vector short16 where each element is 16 bits wide.
-__v1024i16 short16;     
-// Define a 512-element vector char8 where each element is 8 bits wide.
-__v512i8 char8;         
+__v1024i16 samples;  // 1024 elements, 16 bits each: 2048 bytes
+__v512i8 bits;      // 512 elements, 8 bits each: 512 bytes
+__v32i16 small;     // 32 elements, 16 bits each: 64 bytes
 ```
 
-
-
-## Intrinsics
-
-### <font style="color:rgba(0, 0, 0, 0.85);">General Syntax Format</font>
+`__vNiW` describes **N elements of W bits**. The paired `venustype.h` supplies vector typedefs. When a needed spelling is not generated, the underlying compiler extension is:
 
 ```c
-/*
-input1  :vector1
-input2  :vector2 or constant
-MASKREAD_OFF/MASKREAD_ON (optional): Specifies whether to apply the mask register during computation. Elements are processed only if the corresponding mask bit is 1.
-MASKWRITE_OFF/MASKWRITE_ON (optional): Controls whether the computation result is written to the mask register.
-Length: Specifies the number of elements to process, up to the maximum vector length. If omitted, defaults to the full vector length.
-*/
-
-return_vector = vfunction(input1, input2, MASKREAD_OFF/MASKREAD_ON, MASKWRITE_OFF/MASKWRITE_ON，Length);
-
+typedef short __v96i16 __attribute__((ext_vector_type(96)));
 ```
 
-<font style="color:rgba(0, 0, 0, 0.85);"></font>
+| Quantity | Unit | Example |
+|---|---|---|
+| Vector type length | Elements | `__v32i16` holds 32 elements |
+| Intrinsic `length` / AVL | Elements to operate on | `vadd(a, b, MASKREAD_OFF, 32)` |
+| BAS `[capacity]` | Elements of the declared type | `return_value short sum[32]` |
+| `vreturn` length | **Bytes** | `vreturn(sum, 64)` |
+| Address increments | Bytes | A 16-bit element at index `i` is at `base + 2*i` |
 
-### <font style="color:rgb(0, 0, 0) !important;">Base Intrinsics</font>
+Venus1 arithmetic uses 8-bit and 16-bit elements. A large C vector type still has to fit the selected backend's physical storage together with other live vectors. The old “arbitrary length up to 65535” description was not a guarantee of allocatable vector memory.
 
-**<font style="color:rgb(0, 0, 0) !important;">1. Addition</font>**<font style="color:rgb(0, 0, 0) !important;">（vadd,vsadd,vsaddu）</font>
+## Intrinsic call conventions
 
 ```c
-// When MASKWREAD_ON is set, only positions with a value of 1 are calculated, 
-// positions with a value of 0 are filled with the vector in_1.
-
-out = vadd(in_1, in_2, MASKREAD_OFF,Length);    // in_2 + in_1
-out = vsadd(in_1, in_2, MASKREAD_OFF,Length);    // in_2 + in_1 using saturation
-out = vsaddu(in_1, in_2, MASKREAD_OFF,Length);    // unsigned(in_2) + unsigned(in_1) using saturation
+out = vadd(a, b, MASKREAD_OFF, length);
+out = vseq(a, b, MASKREAD_OFF, MASKWRITE_OFF, length);
+out = vmuladd(a, b, c, MASKREAD_OFF, length);
 ```
 
-**<font style="color:rgba(0, 0, 0, 0.85);">2. Subtraction</font>**<font style="color:rgba(0, 0, 0, 0.85);">（vrsub,vsub,vssub,vssubu）</font>
+- `a` is a vector. For ordinary binary operations, `b` can be a compatible vector or a scalar where the builtin supports that form.
+- `length` counts elements. When omitted on these arithmetic builtins, the paired compiler uses the first vector's declared element count. Explicit lengths make partial-vector operations easier to review.
+- `MASKREAD_OFF` / `MASKREAD_ON` select whether the mask participates. Comparison calls also need `MASKWRITE_OFF` / `MASKWRITE_ON`.
+- Ordinary arithmetic returns a vector value. `vclaim`, `vrange`, `vbrdcst` and `vshuffle` macros update their first argument, so use them as statements.
+
+**Operand order matters.** In the paired Venus1 compiler, the first C vector operand maps to `vs2`, and the second to `vs1` or the scalar operand. Venus names do not always follow ordinary C operand order: `vrsub(a,b)` computes `a-b`, while `vsub(a,b)` computes `b-a`. The tables below use C argument names throughout.
+
+The snippets in the reference sections assume compatible vectors `a`, `b`, `c`, `out` and a valid `length`. They are usage fragments. A complete compilable task is provided near the end.
+
+## Base intrinsics
+
+### Addition — vadd, vsadd, vsaddu
+
+| Call | Element operation |
+|---|---|
+| `vadd(a,b,mr,n)` | `a + b`, retaining the element width |
+| `vsadd(a,b,mr,n)` | Signed saturating addition |
+| `vsaddu(a,b,mr,n)` | Unsigned saturating addition |
 
 ```c
-// When MASKWREAD_ON is set, only positions with a value of 1 are calculated,
-// positions with a value of 0 are filled with the vector in_1.
-
-out = vrsub(in_1, in_2, MASKREAD_OFF,Length);    // in_1 - in_2
-out = vsub(in_1, in_2, MASKREAD_OFF,Length);    // in_2 - in_1
-out = vssub(in_1, in_2, MASKREAD_OFF,Length);      // in_2 - in_1 using saturation
-out = vssubu(in_1, in_2, MASKREAD_OFF,Length);     // unsigned(in_2) - unsigned(in_1) using saturation
+out = vadd(a, b, MASKREAD_OFF, length);
+out = vsadd(a, 10, MASKREAD_OFF, length);
+out = vsaddu(a, b, MASKREAD_OFF, length);
 ```
 
-**3. Multiplication**（vmul,vmulh,vmulhu,vmulhsu）
+For signed 8-bit data, `120 + 20` saturates to `127` with `vsadd`. For unsigned 8-bit data, `250 + 10` saturates to `255` with `vsaddu`. Plain addition retains the low element-width bits instead of saturating.
+
+### Subtraction — vrsub, vsub, vssub, vssubu
+
+| Call | Element operation |
+|---|---|
+| `vrsub(a,b,mr,n)` | `a - b` |
+| `vsub(a,b,mr,n)` | `b - a` |
+| `vssub(a,b,mr,n)` | Signed saturating `b - a` |
+| `vssubu(a,b,mr,n)` | Unsigned saturating `b - a` |
 
 ```c
-// When MASKWREAD_ON is set, only positions with a value of 1 are calculated, 
-// the value of the position vector a with a value of 0.
-
-out = vmul (in_1, in_2, MASKREAD_OFF,Length);    // in_2 * in_1,outputs the lower 8 or 16 bits of the multiplication result.
-out = vmulh(in_1, in_2, MASKREAD_OFF,Length);    // in_2 * in_1,outputs the high 8 or 16 bits of the multiplication result.
-out = vmulhu(in_1, in_2, MASKREAD_OFF,Length);     // unsigned(in_2) * unsigned(in_1),outputs the lower 8 or 16 bits of the multiplication result.
-out = vmulhsu(in_1, in_2, MASKREAD_OFF,Length);    // signed(in_2) * unsigned(in_1),outputs the lower 8 or 16 bits of the multiplication result.
+out = vrsub(a, b, MASKREAD_OFF, length);  // a - b
+out = vsub(a, b, MASKREAD_OFF, length);   // b - a
+out = vssub(a, b, MASKREAD_OFF, length);
+out = vssubu(a, b, MASKREAD_OFF, length);
 ```
 
-**4. Division**（vdiv,vdivu）
+With `a=7` and `b=2`, `vrsub` produces `5`; `vsub` produces `-5`. The bundled restore task uses `vrsub(sum,b)` to recover `a` from `sum=a+b`.
+
+### Multiplication — vmul, vmulh, vmulhu, vmulhsu
+
+With shift amount zero, `W` is the element width:
+
+| Call | Product and selected part |
+|---|---|
+| `vmul(a,b,mr,n)` | Low W bits of the product |
+| `vmulh(a,b,mr,n)` | High W bits of signed × signed product |
+| `vmulhu(a,b,mr,n)` | High W bits of unsigned × unsigned product |
+| `vmulhsu(a,b,mr,n)` | High W bits of **signed a × unsigned b** product |
 
 ```c
-// When MASKWREAD_ON is set, only positions with a value of 1 are calculated, 
-// positions with a value of 0 are filled with the vector in_1.
-
-out = vdiv(in_1, in_2, MASKREAD_OFF,Length);    // in_2/in_1
-out = vdivu(in_1, in_2, MASKREAD_OFF,Length);    // unsigned(in_2)/unsigned(in_1)
+vsetshamt(0);
+out = vmul(a, b, MASKREAD_OFF, length);
+out = vmulh(a, b, MASKREAD_OFF, length);
+out = vmulhu(a, b, MASKREAD_OFF, length);
+out = vmulhsu(a, b, MASKREAD_OFF, length);
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">5. Modulo</font>**<font style="color:rgb(0, 0, 0) !important;">（vrem,vremu）</font>
+The old guide incorrectly called `vmulhu` and `vmulhsu` low-part operations. Their high-part behavior and mixed signedness matter for fixed-point code. Shift and saturation settings affect the result; see the configuration section below.
+
+### Division and remainder — vdiv, vdivu, vrem, vremu
+
+At shift amount zero:
+
+| Call | Element operation |
+|---|---|
+| `vdiv(a,b,mr,n)` | Signed `b / a` |
+| `vdivu(a,b,mr,n)` | Unsigned `b / a` |
+| `vrem(a,b,mr,n)` | Signed remainder `b % a` |
+| `vremu(a,b,mr,n)` | Unsigned remainder `b % a` |
 
 ```c
-out = vrem(in_1, in_2, MASKREAD_OFF,Length);    // in_2 % in_1
-out = vremu(in_1, in_2, MASKREAD_OFF,Length);    // unsigned(in_2) % unsigned(in_1)
+vsetshamt(0);
+out = vdiv(a, b, MASKREAD_OFF, length);  // a is the denominator
+out = vrem(a, b, MASKREAD_OFF, length);
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">6. Logical Operations</font>**<font style="color:rgb(0, 0, 0) !important;">（vand,vor,vxor）</font>
+For positive `a=3`, `b=10`, quotient and remainder are `3` and `1`. The model's division path also uses the shift configuration and clips the quotient to the element range. Keep denominators nonzero in an introductory example; validate divide-by-zero and overflow cases explicitly when your algorithm relies on them.
+
+### Bitwise operations — vand, vor, vxor
 
 ```c
-// When MASKWREAD_ON is set, only positions with a value of 1 are calculated,
-// positions with a value of 0 are filled with the vector in_1.
-
-out = vand(in_1, in_2, MASKREAD_OFF,Length);    // Compute the bitwise AND of in_1 and in_2
-out = vor(in_1, in_2, MASKREAD_OFF,Length);        // Compute the bitwise OR of in_1 and in_2
-out = vxor(in_1, in_2, MASKREAD_OFF,Length);    // Compute the bitwise XOR of in_1 and in_2
+out = vand(a, b, MASKREAD_OFF, length);  // a & b
+out = vor(a, b, MASKREAD_OFF, length);   // a | b
+out = vxor(a, b, MASKREAD_OFF, length);  // a ^ b
+out = vand(a, 15, MASKREAD_OFF, length); // retain the low four bits
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">7. Arithmetic Shift Operations</font>**<font style="color:rgba(0, 0, 0, 0.85);">（vsll,vsrl,vsra）</font>
+The operation applies independently to each element's bit pattern. For example, `12 & 10 = 8`, `12 | 10 = 14`, and `12 ^ 10 = 6`.
+
+### Shifts — vsll, vsrl, vsra
 
 ```c
-out = vsll(in_1, constant, MASKREAD_OFF,Length);    // Shift signed integers in in_1 left by 'constant' bits
-out = vsrl(in_1, constant, MASKREAD_OFF,Length);    // Shift unsigned integers in in_1 right by 'constant' bits
-out = vsra(in_1, constant, MASKREAD_OFF,Length);    // Shift signed integers in in_1 right by 'constant' bits
+out = vsll(a, 2, MASKREAD_OFF, length);  // left shift
+out = vsrl(a, 2, MASKREAD_OFF, length);  // logical right shift, fill with zero
+out = vsra(a, 2, MASKREAD_OFF, length);  // arithmetic right shift, extend sign
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">8. Comparison</font>**<font style="color:rgb(0, 0, 0) !important;"> （vseq,vsne,vsltu,vslt,vsleu,vsle,vsgtu,vsgt）</font>
+The second operand supplies the shift count. Use counts in `[0,W-1]` for W-bit elements unless you have tested the backend's out-of-range behavior. `vsrl` interprets the bit pattern as unsigned; `vsra` preserves the signed interpretation.
+
+### Comparisons — vseq, vsne, vslt, vsle, vsgt
+
+All comparison calls include both mask controls. The unsigned variants use the same relation on unsigned element values:
+
+| Intrinsic | Relation using C arguments `a,b` |
+|---|---|
+| `vseq` | `b == a` |
+| `vsne` | `b != a` |
+| `vslt`, `vsltu` | `b < a` |
+| `vsle`, `vsleu` | `b <= a` |
+| `vsgt`, `vsgtu` | `b > a` — **strictly greater**, not `>=` |
 
 ```c
-// When MASKWRITE_ON is set, the instruction has no return value.
-// When MASKWREAD_ON is set, only positions with a value of 1 are compared, 
-// positions with a value of 0 are filled with the vector a.
-// Example: vseq(a, b, MASKREAD_OFF, MASKWRITE_ON);
-
-out = vseq(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // b == a
-out = vsne(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // b ≠ a
-out = vsltu(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);     // (unsigned)b < (unsigned)a
-out = vslt(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // b < a
-out = vsleu(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // (unsigned)b ≤ (unsigned)a
-out = vsle(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // b ≤ a
-out = vsgtu(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // (unsigned)b ≥ (unsigned)a
-out = vsgt(a, b, MASKREAD_OFF, MASKWRITE_OFF,Length);    // b ≥ a
+out = vseq(a, b, MASKREAD_OFF, MASKWRITE_OFF, length);
+out = vslt(a, b, MASKREAD_OFF, MASKWRITE_OFF, length);
+out = vsgtu(a, b, MASKREAD_OFF, MASKWRITE_OFF, length);
 ```
 
-<blockquote style="background: #f0f8ff; border-left: 3px solid #4682b4; padding: 10px;">
-💡 Note: 
-<p><font style="color:rgb(17, 17, 17);">Comparison functions must specify MASKWRITE_OFF / MASKWRITE_ON.</font> </p>
-</blockquote>
-
-**<font style="color:rgb(0, 0, 0) !important;">9. Composite Functions</font>**<font style="color:rgb(0, 0, 0) !important;">（vmuladd,vmulsub,vaddmul,vsubmul）</font>
+With `MASKWRITE_OFF`, compared positions produce vector predicates. With `MASKWRITE_ON`, use the call to populate the mask and do not consume an ordinary vector result:
 
 ```c
-out = vmuladd(a,b,c, MASKREAD_OFF,Length);    // (b * a) + c
-out = vmulsub(a,b,c, MASKREAD_OFF,Length);     // (b * a) - c
-out = vaddmul(a,b,c, MASKREAD_OFF,Length);    // (b + a) * c
-out = vsubmul(a,b,c, MASKREAD_OFF,Length);    // (b - a) * c
+vseq(a, b, MASKREAD_OFF, MASKWRITE_ON, length);
+out = vadd(a, 1, MASKREAD_ON, length);
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">10. Complex Multiplication Function</font>**<font style="color:rgb(0, 0, 0) !important;">（vcmxmul）</font>
+Here matching positions of `a` and `b` are incremented. For the ordinary binary arithmetic paths described above, positions disabled by the read mask pass through the first vector `a`. Do not assume this pass-through rule for reductions or shuffle; they have their own dataflow behavior.
+
+### Composite operations — vmuladd, vmulsub, vaddmul, vsubmul
+
+| Intrinsic | Algebraic form before element-width truncation, shift and saturation |
+|---|---|
+| `vmuladd(a,b,c,mr,n)` | `(a*b) + c` |
+| `vmulsub(a,b,c,mr,n)` | `(a*b) - c` |
+| `vaddmul(a,b,c,mr,n)` | `(b+a) * c` |
+| `vsubmul(a,b,c,mr,n)` | `(b-a) * c` |
 
 ```c
-__v4096i8 *cmxreal_part = &tempWnResult_real;
-__v4096i8 *cmximag_part = &tempWnResult_imag;
-
-vcmxmul(cmximag_part, cmxreal_part, tempWnResult_real, tempWnResult_imag, 
-        sin_stage0, cos_stage0, MASKREAD_OFF,calculate_length);
-//(tempWnResult_real + tempWnResult_imag * i) * (cos_stage0 + sin_stage0 * i) 
-// = (cmxreal_part + cmximag_part * i)
+out = vmuladd(a, b, c, MASKREAD_OFF, length);
+out = vmulsub(a, b, c, MASKREAD_OFF, length);
+out = vaddmul(a, b, c, MASKREAD_OFF, length);
+out = vsubmul(a, b, c, MASKREAD_OFF, length);
 ```
 
+These are fixed-width datapath operations. Intermediate narrowing and independently controlled arithmetic stages mean they need not equal an unlimited-precision C expression followed by a single final cast.
 
-
-### <font style="color:rgb(0, 0, 0) !important;">Extended intrinsics</font>
-
-**<font style="color:rgb(0, 0, 0) !important;">1. Gather/Scatter</font>**<font style="color:rgb(0, 0, 0) !important;">（vshuffle）</font>
+### Complex multiplication — vcmxmul
 
 ```c
-vshuffle(out, index, in, SHUFFLE_GATHER, Length);   // Void function. Places in[index(i)] into out(i) for i ∈ [0, Length-1].
-vshuffle(out, index, in, SHUFFLE_SCATTER, Length);  // Void function. Writes in(i) to out[index(i)] for i ∈ [0, Length-1].
+__v32i16 result_re, result_im;
+vclaim(result_re, 32);
+vclaim(result_im, 32);
+
+vcmxmul(&result_re, &result_im,
+        a_re, a_im, b_re, b_im, MASKREAD_OFF, 32);
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">2. Incremental Assignment Function</font>**<font style="color:rgb(0, 0, 0) !important;">（vrange）</font>
+The first two parameters are **real-output pointer, imaginary-output pointer**. The next four are **a real, a imaginary, b real, b imaginary**. It represents `(a_re + i*a_im) * (b_re + i*b_im)`, subject to the configured fixed-point behavior. Use the same vector element width and compatible capacity for all components. The old example swapped real/imaginary names; do not copy that ordering into new code.
+
+## Extended intrinsics
+
+### Gather and scatter — vshuffle
 
 ```c
-//Fill vector in_and_out with {0,1,2,…,Length-1}. Void function.
-vrange(in_and_out, Length); 
+__v32i16 index;
+vclaim(index, 32);
+vrange(index, 32);
+
+vshuffle(out, index, a, SHUFFLE_GATHER, 32);
+vshuffle(out, index, a, SHUFFLE_SCATTER, 32);
 ```
 
-<blockquote style="background: #f0f8ff; border-left: 3px solid #4682b4; padding: 10px;">
-💡 Note: <font style="color:rgba(0, 0, 0, 0.85);">vrange only supports 16-bit data.</font>
-</blockquote>
+| Mode | Data movement for each active index i |
+|---|---|
+| `SHUFFLE_GATHER` | `out[i] = a[index[i]]` |
+| `SHUFFLE_SCATTER` | `out[index[i]] = a[i]` |
 
-**<font style="color:rgb(0, 0, 0) !important;">3. Broadcast Function</font>**<font style="color:rgb(0, 0, 0) !important;">（vbrdcst）</font>
+Indices are **16-bit element indices**, including when the data vector uses 8-bit elements. The length counts index entries being processed. Ensure every referenced source/destination index is within its allocation. Initialize destination positions that are not written but will later be read. For scatter, avoid duplicate destinations unless the required conflict behavior has been verified.
+
+The current header routes `vshuffle` through `__Venus_shuffle_test`; this is the public macro to use, not a reason to rename application calls.
+
+### Index generation — vrange
 
 ```c
-// Void function. Broadcasts 'constant' to all elements of vector in_and_out.
-vbrdcst(in_and_out, constant, MASKREAD_OFF,Length);  
+__v32i16 index;
+vclaim(index, 32);
+vrange(index, 32);                         // 0,1,...,31
+index = vadd(index, 8, MASKREAD_OFF, 32); // 8,9,...,39
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">4. Shift and Output Function for Multiply and Divide</font>**<font style="color:rgb(0, 0, 0) !important;">（vsetshamt）</font>
+`vrange` fills the first `length` positions with sequential indices starting at zero. Use a 16-bit vector. The destination in the second example must subsequently index a data allocation covering index 39.
+
+### Broadcast — vbrdcst
 
 ```c
-/* Description: 
-When performing Venus multiplication with 8-bit vectors a and b, the result of a*b is 16 bits. 
-Standard multiplication instructions can only output the lower 8 bits or high 8 bits of this result. 
-To extract an arbitrary 8-bit segment from the 16-bit product, use the vsetshamt(constant) instruction beforehand. 
-This configures subsequent multiplication operations (e.g., vmul, vmulh) to apply shifts before output:
-    - vmul: Outputs the lower 8 bits of (a*b >> constant).
-    - vmulh: Outputs the upper 8 bits of (a*b << constant).
-*/
-vsetshamt(constant);
-out = vmul(a, b, MASKREAD_OFF,Length);
+vbrdcst(out, 0, MASKREAD_OFF, length);
+vbrdcst(out, 7, MASKREAD_ON, length);
 ```
 
-**<font style="color:rgba(0, 0, 0, 0.85);">5. Declaration</font>**<font style="color:rgba(0, 0, 0, 0.85);">（vclaim）</font>
+Broadcast writes a scalar value to the selected vector elements. The second argument is a scalar, not another vector. It updates `out` directly; do not write `out = vbrdcst(...)`.
+
+### Fixed-point configuration — vsetshamt and vsetcsr
 
 ```c
-// Void function. Ensures the address space of in_and_out is preserved and not eliminated by compiler optimizations.
-// Typically placed after the variable definition.
-vclaim(in_and_out);
+vsetshamt(7);
+out = vmul(a, b, MASKREAD_OFF, length);
+vsetshamt(0);  // restore the setting expected by subsequent operations
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">6. Address Retrieval Function</font>**<font style="color:rgb(0, 0, 0) !important;">（vaddr）</font>
+The multiplication model shifts a product right before selecting its low part for `vmul`. High-part operations select the high W bits after the configured left shift. For an 8-bit product and shift `s`, the conceptual slices are `low8(product >> s)` and `high8(product << s)`. Division also uses this setting, so do not treat it as local to one multiplication call.
+
+| Helper | Header mapping | Purpose |
+|---|---|---|
+| `vsetshamt(value)` | `vsetcsr(VCSR_MULSHAMT,value)` | Arithmetic shift configuration |
+| `vsetsaturate(value)` | `vsetcsr(VCSR_MULSATURATE,value)` | Arithmetic saturation control bits |
+| `vsetmsbhead(value)` | `vsetcsr(VCSR_MSBHEAD,value)` | Vector address/head configuration |
+| `vsetLSUmsb(value)` | `vsetcsr(VCSR_MSBLSU,value)` | LSU address configuration |
+| `vsetEXTENSIONcfg(value)` | `vsetcsr(VCSR_EXTCFG,value)` | Extension configuration |
+
+These are stateful settings. For the latter control fields, reuse the exact values from a matching hardware/backend example; they are not all simple Boolean flags. The header gives register identifiers, not a complete register bit-field specification.
+
+### Storage declaration — vclaim
 
 ```c
-// Returns the starting address of the vector,out is an integer.
-out = vaddr(vector);    
+__v32i16 scratch;
+vclaim(scratch, 32);
+vbrdcst(scratch, 0, MASKREAD_OFF, 32);
 ```
 
-**<font style="color:rgba(0, 0, 0, 0.85);">7. Memory Locking Function</font>**<font style="color:rgba(0, 0, 0, 0.85);">（vbarrier）</font>
+`vclaim` tells the compiler to retain vector storage/liveness. It does **not** initialize memory and is not a runtime heap allocation. Place it after the declaration when the storage is used by in-place intrinsics or scalar access. The length is in elements; the older `vclaim(scratch)` form uses the vector's full declared size.
+
+### Address and scalar access — vaddr, vbarrier, VSPM
 
 ```c
-// Example: memory locking for move the array data
+#include "venus.h"
+#include "riscv_printf.h"
 
-// Transfer of 16-bit array
-VSPM_OPEN();
+// Fragment inside a task, after samples has been produced.
+unsigned int address = (unsigned int)vaddr(samples);
 vbarrier();
-int testdata_16bit_a_addr = vaddr(testdata_16bit_a);
-for (int i = 0; i < 8; i++)
-{
-    *(volatile unsigned short *)(testdata_16bit_a_addr + (i << 1)) = testdata_16bit_1[i];
-}
-int testdata_16bit_b_addr = vaddr(testdata_16bit_b);
-for (int i = 0; i < 8; i++)
-{
-    *(volatile unsigned short *)(testdata_16bit_b_addr + (i << 1)) = testdata_16bit_2[i];
-}
-    VSPM_CLOSE();
-
-// Transfer of 8-bit array
 VSPM_OPEN();
-vbarrier();
-int testdata_8bit_a_addr = vaddr(testdata_8bit_a);
-for (int i = 0; i < 8; i++)
-{
-    *(volatile unsigned char *)(testdata_8bit_a_addr + i) = testdata_8bit_1[i];
-}
-int testdata_8bit_b_addr = vaddr(testdata_8bit_b);
-for (int i = 0; i < 8; i++)
-{
-    *(volatile unsigned char *)(testdata_8bit_b_addr + i) = testdata_8bit_2[i];
-}
+short first = *(volatile short *)address;
+*(volatile short *)(address + 2) = first; // second 16-bit element
 VSPM_CLOSE();
-
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">8. Mask Inversion Function</font>**<font style="color:rgb(0, 0, 0) !important;">（vmnot）</font>
+`vaddr` returns the vector's base address. `vbarrier()` provides the compiler/hardware synchronization operation used before scalar access. The paired `riscv_printf.h` defines `VSPM_OPEN()` and `VSPM_CLOSE()` for the access window. Keep the open/access/close sequence together and use a `volatile` access with the correct element width.
+
+For an 8-bit vector use `volatile unsigned char *` and `base+i`; for a 16-bit vector use `volatile short *` and `base+2*i`. Do not replace an access-window **OPEN** with **CLOSE** before a read, as the old CRC example did. These macros are specific to the hardware memory map, not portable host C.
+
+### Mask inversion — vmnot
+
+The old API form was `vmnot(mask_reg)` with an optional length. In the published `venus.h`, the `vmnot` wrapper is commented out, although the Venus1 compiler lists the underlying `__Venus_mnot` builtin. Consequently this spelling is **not an available public macro in the paired header**. It remains documented here so existing code can be understood; for new code, express the needed predicate directly with a comparison, or use a separately verified header/builtin integration.
+
+### Task returns — vreturn
 
 ```c
-vmnot(mask_reg); // Inverting the value of the mask register
+vreturn(out, length * sizeof(short)); // length 16-bit elements
 ```
 
-**<font style="color:rgba(0, 0, 0, 0.85);">9. Vector Return Function</font>**<font style="color:rgba(0, 0, 0, 0.85);">（vreturn）</font>
+The arguments are ordered **buffer, byte count** pairs. For multiple outputs:
 
 ```c
-typedef struct{
-    short data;
-}attribute_((aligned(64)))short_struct;
-
-__v2048i16 Vector;
-short length = 256;
-short_struct constant;
-constant.data = 10;
-
-vreturn (&constant,sizeof(constant),Vector,length,...,...);
-//The scalar data needs to be put into the short_struct structure, 
-//and the vector data needs to return the vector length length.
+typedef struct { short data; } __attribute__((aligned(64))) short_struct;
+short_struct status = {0};
+vreturn(out, 64, &status, sizeof(status));
 ```
 
-**<font style="color:rgb(0, 0, 0) !important;">10. Vector Operations</font>**<font style="color:rgb(0, 0, 0) !important;">（vredmin,vredmax,vredsum）</font>
+This returns 64 bytes from `out`, followed by the aligned scalar container. `sizeof(status)` includes alignment padding; it is not simply `sizeof(short)`. The BAS task call must bind outputs in the same order.
+
+The type's capacity, the BAS allocation and the runtime return length are different quantities. A BAS capacity may deliberately exceed the actual result. For ordinary Venus1 dependencies, the runtime byte count passes through the 16-bit DMT length field; oversized or overlapping live regions still require correct application memory planning. See [the full transfer contract](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/docs/CONSUMER_DMA_LENGTH.md).
+
+### Reductions — minimum, maximum, sum and logic
+
+The current header supplies width-specific signed min/max helpers:
+
+| Call | Result |
+|---|---|
+| `vredmin8(a,mr,n)`, `vredmin16(a,mr,n)` | Signed minimum, with the matching 8/16-bit seed |
+| `vredmax8(a,mr,n)`, `vredmax16(a,mr,n)` | Signed maximum, with the matching 8/16-bit seed |
+| `vredminu(a,mr,n)`, `vredmaxu(a,mr,n)` | Unsigned minimum / maximum |
+| `vredsum(a,mr,n)` | Sum reduction |
+| `vredand(a,mr,n)`, `vredor(a,mr,n)`, `vredxor(a,mr,n)` | Bitwise reduction |
 
 ```c
-/*compute the minimum\maximum values all elements and 
-the sum of all elements in a single vector.
-*/
-
-vector_b = vredmin(vector_a,MASKRED_OFF,length);
-//Find the minimum value of the first length variables in the vector_a, 
-//and store the value in the first variable of the vector_b.
-
-vector_b = vredmax(vector_a,MASKRED_OFF,length);
-//the usage method is the same as vredmin.
-//You can invert the variable and replace it with find Minimum.
-
-vector_b = vredsum(vector_a,MASKRED_OFF,length);
-//add up the first length variables in the vector_a
-//and the results are stored in the first four variables of the vector_b.
+__v32i16 minimum, maximum, total;
+minimum = vredmin16(a, MASKREAD_OFF, 32);
+maximum = vredmax16(a, MASKREAD_OFF, 32);
+total = vredsum(a, MASKREAD_OFF, 32);
 ```
 
-## A Sample Code for Single TASK File Creation
+Use the returned reduction buffer rather than assuming each lane contains the answer. Min/max are scalar results in the leading output; sum uses a wider accumulator/result representation. Its byte layout must be read according to the paired backend, not the old blanket rule “the first four elements” (four 8-bit elements and four 16-bit elements differ). The old names `vredmin` and `vredmax` are not generic wrappers in the current header; select the width-specific forms above. The correct mask constant is `MASKREAD_OFF`, not `MASKRED_OFF`.
+
+### Other header entries and backend availability
+
+The shared header generator also names `vsignset`, `vmin` and `vmax`, and the header includes `vload` / `vstore` wrappers. Those builtin names are absent from the paired Venus1 compiler's builtin table. They must not be advertised as usable Venus1 intrinsics merely because a shared macro exists. `vpseudo` is a compiler-oriented helper; it has no general application recipe in this guide. `vsync` combines synchronization with `wfi` and should only be used by code with the matching wake-up protocol.
+
+## Complete two-task example
+
+These task sources follow the release's `forge_vector_smoke` example. Each source includes `venus.h` and can be placed in its correspondingly named `.c` file.
+
+### Task_forgeAdd.c
+
+```c
+#include "venus.h"
+
+int Task_forgeAdd(__v32i16 a, __v32i16 b) {
+    __v32i16 sum;
+    vclaim(sum, 32);
+    sum = vadd(a, b, MASKREAD_OFF, 32);
+    vreturn(sum, 64);
+    return 0;
+}
+```
+
+### Task_forgeRestore.c
+
+```c
+#include "venus.h"
+
+int Task_forgeRestore(__v32i16 sum, __v32i16 b) {
+    __v32i16 restored;
+    vclaim(restored, 32);
+    restored = vrsub(sum, b, MASKREAD_OFF, 32);
+    vreturn(restored, 64);
+    return 0;
+}
+```
+
+### forge_vector_smoke.bas
+
+```basic
+return_value short sum[32]
+return_value short restored[32]
+parameter short a = {-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+parameter short b = {31,29,27,25,23,21,19,17,15,13,11,9,7,5,3,1,-1,-3,-5,-7,-9,-11,-13,-15,-17,-19,-21,-23,-25,-27,-29,-31}
+dag dag1 = {
+    [sum] = Task_forgeAdd(a, b)
+    [restored] = Task_forgeRestore(sum, b)
+}
+END
+```
+
+For index `i=0..31`, `a[i]=i-16`, `b[i]=31-2*i`, so `sum[i]=15-i` and `restored[i]=a[i]`. This gives an asymmetric reference that catches reversed subtraction. Both returns contain 32 signed 16-bit elements, or 64 bytes.
+
+After [configuring the release](venus1_get_started.html), compile the bundled target from `platform/`:
+
+```bash
+./ace-echo --config .ace-echo/host/local.toml compile dag \
+  --target forge_vector_smoke --backend .ace-echo/host/backend.json
+```
+
+Use the [programming model](mydoc_programming_model.html) for the run workflow. The complete source directory also contains the reference assets; retain them when reproducing the example.
+
+## CRC example from the original guide
+
+The original guide's larger `Task_nrCRC` demonstrates index generation, gather/scatter, XOR, comparison, reduction and scalar access. Its algorithm-specific input preparation and RNTI masking make it a poor generic CRC reference. The full original example is retained **inside this page** below for existing users; its corrections are called out before the code.
+
+<details class="guide-archive" markdown="1">
+<summary>Read the original CRC task and its migration notes</summary>
+
+- The example originally read a result after `VSPM_CLOSE()` instead of opening the window. Correct that sequence before reuse.
+- Define `short_struct` in the paired data-type header, and verify the reduction result's width before converting it into a status.
+- `sizeof(buf)` returns the full declared buffer capacity, including any uninitialized tail. For a new implementation, return the actual initialized bytes required by its consumers.
+- This is the original algorithm example, not the current passing smoke or proof of CRC correctness for arbitrary polynomials and inputs.
 
 ```c
 #include "data_type.h"
@@ -317,7 +435,7 @@ typedef char  __v4096i8 __attribute__((ext_vector_type(4096)));
  * @section DESCRIPTION
  * This Task checks the input data vector for a CRC error for 5G New Radio (NR)
  * physical channels as specified in 3GPP TS 38.212 .
- * 
+ *
  * Features
  * - Supports all 5G NR CRC polynomials (CRC24A, CRC24B, CRC24C, CRC16, CRC11, CRC6)
  *
@@ -327,7 +445,7 @@ typedef char  __v4096i8 __attribute__((ext_vector_type(4096)));
  * @param[in]     poly               : A 4096i8 vector (stored table in bas) for storing the CRC generation polynomial.
  * @param[out]    out_crc_result     : A short struct for storing error detection result.
  * @param[out]    buf                : A 4096i8 vector for storing calculated CRC value (optional).
- * 
+ *
  */
 
 int Task_nrCRC(__v4096i8 tmp_vin, short_struct in_fullLen, short_struct in_pariLen, __v4096i8 poly) {
@@ -411,42 +529,14 @@ int Task_nrCRC(__v4096i8 tmp_vin, short_struct in_fullLen, short_struct in_pariL
 }
 ```
 
-<blockquote style="background: #f0f8ff; border-left: 3px solid #4682b4; padding: 10px;">
-💡Notes:
-<p><font style="color:rgb(17, 17, 17);">Try not to have scalar operations before vector operations, and add vclaim when they occur.</font>
-</p>
-</blockquote>
+</details>
 
-## A Sample Code for BAS File Creation
+## Source reference and migration checklist
 
-```basic
-'Define vectors
-parameter char in_vec1 = {1,2,3,...}         'no ";" ending
-parameter short in_vec2 = {1,2,3,...}    
-'Define constants
-parameter short constant = {1}     
+- [Public macros and control constants](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/components/toolchain/dsl/venus_test/venus.h)
+- [Generated arithmetic/comparison macro catalog](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/components/toolchain/dsl/venus_test/gen_venusbuiltin_h.py)
+- [Published Gem5 arithmetic model](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/components/gem5/src/venus/venus_vfu.cc)
+- [Venus1 backend and compiler identity](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/configs/backends/venus1p0-64x512-300mhz.json)
+- [Complete smoke application](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/workloads/5g_lite/tasks/forge_vector_smoke)
 
-dfedata char dfe_input_0[4096]  'the input value of dfe
-dfedata char dfe_input_1[4096]     'the input value of dfe
-dag_input short NCELLID2[1]         'the input value of dag
-
-return_value short subFrameNum[1]  'dag return value
-
-dag dag1 = {
-  [dfe_output_0] = Task_example(dfe_input_0, dfe_input_1,in_vec1,in_vec2,constant)
-  ' _v4096i16 Task_example(_v4096i8 in_1, __v4096i8 in_2,__v409618 in_3,__v2048i16 in_4, short_struct const)
-  ' typedef struct {short data;}__attribute_((aligned(64))) short_struct;
-}
-
-END
-```
-
-
-
-<blockquote style="background: #f0f8ff; border-left: 3px solid #4682b4; padding: 10px;">
-💡Notes:
-<p>1、<font style="color:rgb(17, 17, 17);">A single task in a bas file cannot be printed.</font></p>
-<p>2、<font style="color:rgb(17, 17, 17);">Each line of code can not be added“ ; ”.</font></p>
-<p>3、<font style="color:rgb(17, 17, 17);">Comments can not be added to the bas variable definition.</font></p>
-<p>4、"<font style="color:rgb(17, 17, 17);">data" can not be used as a variable name for bas.</font></p>
-</blockquote>
+When migrating an older task, check operand order, explicit element lengths, output byte counts, real/imaginary ordering, reduction helper names and scalar-access sequencing. Compare outputs with representative asymmetric inputs before using timing to choose an optimization.

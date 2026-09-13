@@ -1,0 +1,114 @@
+{
+  "DT_logo.png": {
+    "width": 1512,
+    "height": 483
+  },
+  "Get_started.png": {
+    "width": 911,
+    "height": 357
+  },
+  "application1_1.png": {
+    "width": 1174,
+    "height": 1098
+  },
+  "application1_2.png": {
+    "width": 2109,
+    "height": 1097
+  },
+  "application1_3.png": {
+    "width": 1166,
+    "height": 891
+  },
+  "aura-architecture.png": {
+    "width": 1894,
+    "height": 830
+  },
+  "news_2023_9_25_fig1.png": {
+    "width": 1333,
+    "height": 500
+  },
+  "news_2023_9_25_fig2.png": {
+    "width": 1187,
+    "height": 694
+  },
+  "news_2025_3_4_fig1.png": {
+    "width": 994,
+    "height": 750
+  },
+  "news_2025_3_4_fig2.png": {
+    "width": 933,
+    "height": 803
+  },
+  "news_2025_6_13.png": {
+    "width": 2445,
+    "height": 1048
+  },
+  "news_2025_7_9_fig1.png": {
+    "width": 865,
+    "height": 870
+  },
+  "news_2025_7_9_fig2.png": {
+    "width": 1416,
+    "height": 762
+  },
+  "news_2025_7_9_fig3.png": {
+    "width": 1749,
+    "height": 468
+  },
+  "performance2.png": {
+    "width": 1434,
+    "height": 873
+  },
+  "performance3.png": {
+    "width": 1002,
+    "height": 552
+  },
+  "performance4.png": {
+    "width": 1487,
+    "height": 1734
+  },
+  "performance5.png": {
+    "width": 989,
+    "height": 453
+  },
+  "shu_logo_vi.jpg": {
+    "width": 11811,
+    "height": 3981
+  },
+  "terminal_out.png": {
+    "width": 173,
+    "height": 74
+  },
+  "venus-architecture.png": {
+    "width": 1891,
+    "height": 831
+  },
+  "news/zoozve-tcad.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/hybrid-scheduling.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/venusian-tvlsi.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/venus-gnss-iscas.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/baseband-soc-date.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/uvp-tvlsi.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "venus1-silicon.jpeg": {
+    "width": 1279,
+    "height": 1706
+  }
+}

@@ -1,0 +1,16 @@
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+  - title: 新闻
+    output: web, pdf
+    folderitems:
+    - title: 最新动态
+      url: /zh_news.html
+      output: web, pdf
+    - title: 学术成果
+      url: /zh_academic_achievements.html
+      output: web, pdf
+    - title: 应用进展
+      url: /zh_breakthroughs_in_application.html
+      output: web, pdf

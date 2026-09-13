@@ -1,0 +1,35 @@
+{% include echo-locale.html %}
+{% assign news_lang = 'en' %}{% if current_lang == 'zh-CN' %}{% assign news_lang = 'zh' %}{% endif %}
+<nav class="news-channels" aria-label="{% if news_lang == 'zh' %}新闻分类{% else %}News categories{% endif %}">
+{% assign all_news = locale_prefix | append: 'news.html' %}{% assign research_news = locale_prefix | append: 'academic_achievements.html' %}{% assign application_news = locale_prefix | append: 'breakthroughs_in_application.html' %}
+<a href="{{ all_news }}"{% if page.permalink == all_news %} aria-current="page"{% endif %}>{% if news_lang == 'zh' %}全部动态{% else %}All updates{% endif %}</a>
+<a href="{{ research_news }}"{% if page.permalink == research_news %} aria-current="page"{% endif %}>{% if news_lang == 'zh' %}论文与研究{% else %}Research{% endif %}</a>
+<a href="{{ application_news }}"{% if page.permalink == application_news %} aria-current="page"{% endif %}>{% if news_lang == 'zh' %}芯片与应用{% else %}Silicon & applications{% endif %}</a>
+</nav>
+{% assign show_silicon = false %}{% if include.category == nil or include.category == 'application' %}{% assign show_silicon = true %}{% endif %}
+{% if show_silicon %}
+{% assign lead = site.data.echo_news['venus1-first-light.html'] %}{% assign lead_copy = lead[news_lang] %}
+<article class="news-lead">
+<a class="news-lead-photo" href="{{ locale_prefix }}venus1-first-light.html" tabindex="-1" aria-hidden="true"><img src="images/{{ lead.image }}" width="1279" height="1706" alt="" fetchpriority="high"></a>
+<div class="news-lead-copy"><p class="news-eyebrow">{% if news_lang == 'zh' %}重要里程碑 · 第一代芯片{% else %}Featured milestone · First silicon{% endif %}</p>
+<h2><a href="{{ locale_prefix }}venus1-first-light.html">{{ lead_copy.title | escape | newline_to_br }}</a></h2><p class="news-lead-summary">{{ lead_copy.summary }}</p>
+<ul class="news-milestones"><li>{% if news_lang == 'zh' %}流片与封装{% else %}Tape-out & packaging{% endif %}</li><li>{% if news_lang == 'zh' %}芯片成功点亮{% else %}Successful bring-up{% endif %}</li><li>{% if news_lang == 'zh' %}真实信号 NR 小区搜索{% else %}Real-signal NR cell search{% endif %}</li></ul>
+<a class="news-lead-link" href="{{ locale_prefix }}venus1-first-light.html">{% if news_lang == 'zh' %}阅读芯片报道{% else %}Read the silicon story{% endif %} <span aria-hidden="true">↗</span></a>
+<p class="news-lead-date"><time datetime="2026-09-13">{% if news_lang == 'zh' %}新闻发布于 2026 年 9 月 13 日{% else %}Story published 13 September 2026{% endif %}</time></p></div>
+</article>
+{% endif %}
+<div class="news-grid-heading"><h2>{% if news_lang == 'zh' %}{% if include.category == 'academic' %}研究进展{% elsif include.category == 'application' %}应用探索{% else %}更多项目动态{% endif %}{% else %}{% if include.category == 'academic' %}Research progress{% elsif include.category == 'application' %}Application stories{% else %}More from ACE Lab{% endif %}{% endif %}</h2><p>{% if news_lang == 'zh' %}从架构与工具，到真实应用{% else %}From architecture and tools to applications{% endif %}</p></div>
+<ol class="news-grid">
+{% for post in site.posts %}{% if include.category == nil or post.category == include.category %}
+{% unless show_silicon and post.permalink == 'venus1-first-light.html' %}
+{% assign entry = site.data.echo_news[post.permalink] %}{% assign copy = entry[news_lang] %}{% assign translated_post = site.data.echo_translations[post.permalink] %}{% assign image_size = site.data.echo_figures[entry.image] %}
+<li class="news-card"><article>
+{% if entry.image %}<a class="news-card-image" href="{{ locale_prefix }}{{ post.url | remove_first: '/' }}" tabindex="-1" aria-hidden="true"><img src="images/{{ entry.image }}"{% if image_size %} width="{{ image_size.width }}" height="{{ image_size.height }}"{% endif %} alt="" loading="lazy" decoding="async"></a>{% endif %}
+<div class="news-card-copy"><p class="news-card-meta"><span>{{ entry.venue | default: 'ACE Lab' }}</span><time datetime="{% if entry.stamp %}{{ entry.stamp }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}">{% if copy.date %}{{ copy.date }}{% else %}{{ post.date | date: t.date_format }}{% endif %}</time></p>
+<h3><a href="{{ locale_prefix }}{{ post.url | remove_first: '/' }}">{% if copy.title %}{{ copy.title }}{% elsif news_lang == 'zh' %}{{ translated_post.title }}{% else %}{{ post.title }}{% endif %}</a></h3>
+<p class="news-card-summary">{% if copy.summary %}{{ copy.summary }}{% elsif news_lang == 'zh' %}{{ translated_post.summary }}{% elsif post.summary %}{{ post.summary | strip_html }}{% else %}{{ post.content | strip_html | truncatewords: 30 }}{% endif %}</p>
+<span class="news-card-read" aria-hidden="true">{% if news_lang == 'zh' %}阅读全文{% else %}Read story{% endif %} ↗</span></div>
+</article></li>
+{% endunless %}{% endif %}{% endfor %}
+</ol>
+{% unless page.permalink contains 'news_archive' %}<p class="news-archive-link"><a href="{{ locale_prefix }}news_archive.html">{{ t.news_archive }} ↗</a></p>{% endunless %}
