@@ -1,47 +1,154 @@
 ---
-layout: echo-home
-title: ACE-Echo · Communication and AI on Venus
-summary: "The open development platform for Venus, our programmable RISC-V processor for communication–AI convergence."
+layout: echo-classic
+title: ACE-Echo · Communication–AI Convergence
+#tags: [getting_started, troubleshooting]
+keywords: Echo, Venus, AURA, Feature, Email, Community
+summary: "An open development platform for Venus, our programmable communication–AI processor. Explore our architecture, first-generation silicon and the ACE-Echo roadmap."
+sidebar: mydoc_sidebar
 permalink: index.html
+folder: mydoc
+hide_sidebar: true
+hide_summary: true
+hide_title: true
+toc: false
 ---
-<a class="skip" href="#main">Skip to content</a>
-<header class="wrap nav">
-  <a class="brand" href="index.html" aria-label="ACE-Echo home"><img src="images/echo_mark.svg" width="32" height="32" alt="">ACE-Echo <small>1.0</small></a>
-  <nav class="nav-links" aria-label="Main navigation"><a href="#vision">Our vision</a><a href="#venus">Venus</a><a href="#platform">Platform</a><a href="#roadmap">Roadmap</a><a href="news.html">News</a><a class="nav-source" href="venus1_get_started.html">Get started ↗</a></nav>
-</header>
-<main id="main">
-<section class="wrap silicon-hero" aria-labelledby="hero-title">
-  <div class="silicon-copy"><p class="eyebrow">Communication–AI convergence / ACE Lab</p><h1 id="hero-title">Communication.<br>AI.<br><span>Built on Venus.</span></h1><p class="lead">ACE-Echo is the open development platform for <strong>Venus</strong>, our programmable RISC-V processor for communication and AI. We bring architecture, silicon and application development together so more people can build on our hardware.</p><div class="actions"><a class="button primary" href="#venus">Meet Venus ↗</a><a class="button" href="venus1_get_started.html">Develop with ACE-Echo 1.0 →</a></div><p class="hero-caption">AURA architecture · Venus silicon · ACE-Echo development platform</p></div>
-  <figure class="silicon-photo"><img src="images/venus1-silicon.jpeg" width="1279" height="1706" fetchpriority="high" alt="Our first-generation DT-VENUS-A1 AI-RAN SoC, photographed after fabrication and packaging"><figcaption><span>REAL SILICON / FIRST GENERATION</span><strong>Venus is here.</strong><p>Fabricated, packaged and successfully brought up.</p><a href="venus1-first-light.html">Read the silicon milestone ↗</a></figcaption></figure>
-</section>
-<a class="milestone-strip" href="venus1-first-light.html"><div class="wrap"><span class="milestone-label">LATEST NEWS</span><strong>Our first-generation chip has taped out and achieved first light.</strong><span class="milestone-link">Read the story ↗</span></div></a>
 
-<section class="wrap story-section" id="vision" aria-labelledby="vision-title">
-  <div class="story-heading"><p class="eyebrow">Why we are building this</p><h2 id="vision-title">Radio and intelligence<br>on a shared foundation.</h2></div>
-  <div class="vision-copy"><p class="large-copy">Wireless systems increasingly need to process signals and make intelligent decisions together. Our goal is a programmable chip architecture that brings communication processing and AI computation closer.</p><p>Radio workloads must meet timing and power constraints while algorithms keep evolving. Venus combines configurable communication primitives with programmable processing. ACE-Echo gives researchers and developers a way to explore applications for that hardware.</p><div class="research-directions"><div><h3>Communication processing</h3><p>Synchronization, channel processing and decoding form the foundation. The first-generation chip has demonstrated NR cell search using real over-the-air signals.</p></div><div><h3>Communication–AI convergence</h3><p>Our research direction brings neural workloads and signal processing into a shared programming and execution model for intelligent wireless systems.</p></div></div></div>
-</section>
+<main id="main" class="echo-home">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Open Platform for Communication-AI Convergence Fusion</p>
+      <p class="hero-product">ACE-Echo</p><h1>Communication.<br><span>Intelligence.</span><br>One architecture.</h1>
+      <p class="hero-summary">An open development platform built on <strong>Venus</strong>, our programmable RISC-V processor for communication–AI convergence. Explore the architecture. Build applications for our hardware. Shape what comes next.</p>
+      <div class="hero-actions">
+        <a class="hero-button primary" href="venus1_get_started.html">Explore ACE-Echo 1.0</a>
+        <a class="hero-button secondary" href="news.html">Latest Updates</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <p class="panel-kicker">The Echo ecosystem</p>
+      <ul class="hero-list">
+        <li>Communication &amp; AI operators for FFT, Decoder, Conv2D/3D, GELU/SiLU and more</li>
+        <li>An integrated development workflow with external compiler tools</li>
+        <li>Gem5 simulation for Venus application development and approximate performance evaluation</li>
+        <li>Real-world application demos: 5G/LTE, AI-Based Channel Estimation, GNSS, LoRa, and more</li>
+        <li>An initial Agent-assisted development framework in 1.0</li>
+      </ul>
+    </div>
+  </div>
 
-<section class="hardware-band" id="venus" aria-labelledby="venus-title"><div class="wrap">
-  <div class="hardware-heading"><div><p class="eyebrow">Our hardware</p><h2 id="venus-title">Venus.<br>Programmable where it matters.</h2></div><p>A RISC-V processor built around communication workloads, with vector execution, explicit data movement and hierarchical scheduling. Configurable DFE hardware handles the radio front end while Venus executes evolving algorithms.</p></div>
-  <div class="hardware-parts"><article><span class="part-number">01 / COMPUTE</span><h3>Venus Tile</h3><p>RISC-V processing and domain-specific vector instructions, with scratchpad memory close to the computation.</p></article><article><span class="part-number">02 / COORDINATE</span><h3>Venus Scheduler</h3><p>Hierarchical, dataflow-driven task scheduling coordinates compute resources and DMA transfers.</p></article><article><span class="part-number">03 / CONNECT</span><h3>Venus DFE</h3><p>Configurable mixing, filtering, resampling and correlation support timing-sensitive radio processing.</p></article></div>
-  <div class="hardware-bottom"><p><strong>First-generation silicon:</strong> successful bring-up and an NR cell-search result consistent with a commercial-network reference.</p><a href="venus1-first-light.html">See the chip story ↗</a></div>
-</div></section>
+  <section class="silicon-stage" aria-labelledby="silicon-title">
+    <div class="silicon-heading"><p class="section-tag">First-generation silicon</p><h2 id="silicon-title">An idea.<br>Now in your hands.</h2><p>Our first-generation chip has taped out<br>and achieved first light.</p><a href="venus1-first-light.html">Meet the first Venus chip ↗</a></div>
+    <figure class="silicon-portrait"><div class="photo-window"><img src="images/venus1-silicon.jpeg" width="1279" height="1706" alt="Our first-generation DT-VENUS-A1 chip after fabrication and packaging"></div><figcaption><span>DT-VENUS-A1</span><span>Real silicon. Successful bring-up.</span></figcaption></figure>
+  </section>
+  <section class="section-block" id="architecture">
+    <div class="section-heading">
+      <p class="section-tag">Architecture</p>
+      <h2>AURA inside.<br>Venus at the heart.</h2><p class="section-intro">The architecture, the chip and the tools.<br>Designed to evolve together.</p>
+    </div>
+    <div class="stack-grid">
+      <article class="stack-card">
+        <h3 class="stack-title">AURA: AI Unified Radio Architecture</h3>
+        <p>AURA is the foundational computing architecture behind Echo. It is designed for <strong>tight integration of perception, communication, and computation</strong>, optimized for edge and low-latency scenarios. It is composed of Venus Language, Zoozve Compiler, and Mathematic Libraries.</p>
+        <p>If you want to learn more about compilers, see <a href="https://doi.org/10.1145/3735452.3735526">Zoozve: A Strip-Mining-Free RISC-V Vector Extension with Arbitrary Register Grouping Compilation Support (WIP)</a>.</p>
+        <div class="visual-frame">
+          <img src="images/ComputingArchitecture.png" width="979" height="212" loading="lazy" alt="AURA programming architecture: Venus Language, Zoozve Compiler and Mathematic Libraries">
+        </div>
+      </article>
+      <article class="stack-card">
+        <h3 class="stack-title">Venus: Our RISC-V Communication-AI Chip</h3>
+        <p>Venus is a custom RISC-V processor based on the AURA architecture.</p>
+        <ul class="feature-list">
+          <li>Instruction set extensions for communication and neural workloads</li>
+          <li>Built-in accelerators such as the vector engine</li>
+          <li>Composed of Venus Tile, Venus Scheduler, and Venus DFE</li>
+          <li>Research directions spanning wireless baseband, edge AI and communication–AI integration</li>
+        </ul>
+        <p>For details, see <a href="https://doi.org/10.1145/3658617.3697558">A Hierarchical Dataflow-Driven Heterogeneous Architecture for Wireless Baseband Processing</a>.</p>
+        <div class="visual-frame">
+          <img src="images/RISC-VSoc.png" width="980" height="203" loading="lazy" alt="Venus RISC-V SoC: Venus Tile, Venus Scheduler and Venus DFE">
+        </div>
+      </article>
+    </div>
+  </section>
 
-<section class="wrap story-section aura-section" aria-labelledby="aura-title"><div class="story-heading"><p class="eyebrow">The architecture behind the project</p><h2 id="aura-title">AURA connects<br>software and silicon.</h2><p>AI Unified Radio Architecture</p></div><div><p class="large-copy">The hardware and its programming system evolve together.</p><p>AURA brings the Venus language, Zoozve compiler and mathematical libraries into the same architecture story. Venus implements the processing foundation; ACE-Echo makes application development accessible through an open software platform.</p><figure class="aura-figure"><img src="images/ComputingArchitecture.png" width="979" height="212" loading="lazy" alt="AURA computing architecture: Venus Language, Zoozve Compiler and Mathematic Libraries"><figcaption>The AURA programming system.</figcaption></figure><div class="text-links"><a href="academic-4.html">Venus and integrated AI / wireless processing ↗</a><a href="https://doi.org/10.1145/3735452.3735526">Zoozve compiler research ↗</a></div></div></section>
+  <section class="section-block" id="capabilities">
+    <div class="section-heading">
+      <p class="section-tag">Capabilities</p>
+      <h2>Your ideas.<br>Running on Venus.</h2>
+    </div>
+    <div class="capability-table">
+      <div class="release-intro"><span class="version-pill">ACE-Echo 1.0</span><p>A usable Gem5-based simulator and the first version of our Agent-assisted development framework.</p></div>
+      <table><thead><tr><th>Capability</th><th>What you can do in 1.0</th></tr></thead><tbody>
+        <tr><td>Develop for Venus</td><td>Write application tasks in Venus C and describe their dependencies in BAS.</td></tr>
+        <tr><td>Explore performance</td><td>Run the Gem5 model and quickly estimate task timing and data movement.</td></tr>
+        <tr><td>Iterate with an Agent</td><td>Use the initial Agent framework with developer guidance and review.</td></tr>
+        <tr><td>Build on shared work</td><td>Start with the paired DSL and Venus1 samples, then contribute your own applications.</td></tr>
+      </tbody></table>
+      <p class="capability-note">Cycle-level simulation supports approximate performance evaluation. See the <a href="venus1_validation.html">validation scope</a> for measured accuracy and model boundaries.</p>
+    </div>
+  </section>
 
-<section class="platform-band" id="platform" aria-labelledby="platform-title"><div class="wrap">
-  <div class="section-head"><div><p class="eyebrow">Open development platform / 1.0</p><h2 id="platform-title">Build applications for Venus.<br>Explore their performance.</h2></div><p>ACE-Echo 1.0 provides a usable Gem5-based simulator and an initial Agent-assisted development framework. You can develop Venus applications and quickly estimate how design choices affect performance.</p></div>
-  <div class="release-columns"><article><div class="release-label">GEM5 SIMULATION</div><h3>A faster way to explore.</h3><p>Compile Venus C and BAS workloads, run them on the Gem5 model and inspect task timing and data movement. Use cycle-level estimates to compare implementations before taking them to hardware.</p><p class="scope-note">Performance estimates guide development. Their accuracy depends on the workload and modelling scope.</p><a href="venus1_validation.html">Simulation validation and scope ↗</a></article><article><div class="release-label">INITIAL AGENT FRAMEWORK</div><h3>Assistance within your workflow.</h3><p>Begin using an Agent to help with application development through a structured framework connected to the toolchain, simulator and validation workflow. Developers still guide the work and review the result.</p><p class="scope-note">The 1.0 framework is an early foundation for broader Agent-assisted development.</p><a href="venus1_get_started.html">Start developing on Venus ↗</a></article></div>
-  <div class="development-path" aria-label="ACE-Echo 1.0 development workflow"><span>Your Venus application</span><b aria-hidden="true">→</b><span>Compile and simulate</span><b aria-hidden="true">→</b><span>Estimate and improve</span></div>
-  <div class="platform-footer"><p>The open-source release is the <strong>development platform for our chip</strong>. Start with the Venus1 examples and configure your external compiler tools.</p><a class="button primary" href="venus1_get_started.html">Get started with 1.0 →</a></div>
-</div></section>
+  <section class="section-block applications" id="applications"><div class="section-heading"><p class="section-tag">Communication meets intelligence</p><h2>One foundation.<br>Many possibilities.</h2><p class="section-intro">Explore the applications and research<br>behind the Echo ecosystem.</p></div><div class="application-grid"><a href="breakthroughs_in_application.html"><span class="application-index">01</span><h3>5G &amp; LTE</h3><p>Synchronization, cell search and baseband processing.</p><span class="round-link" aria-hidden="true">↗</span></a><a href="academic-4.html"><span class="application-index">02</span><h3>Communication + AI</h3><p>Architecture research connecting neural workloads and wireless processing.</p><span class="round-link" aria-hidden="true">↗</span></a><a href="mydoc_supported_features.html"><span class="application-index">03</span><h3>Beyond one protocol</h3><p>Explore GNSS, LoRa and other signal-processing directions.</p><span class="round-link" aria-hidden="true">↗</span></a></div><p class="ecosystem-note">Ecosystem examples and research directions. Available applications and validation coverage depend on the selected hardware and release.</p></section>
+  <section class="section-block" id="audience">
+    <div class="section-heading">
+      <p class="section-tag">Audience</p>
+      <h2>A platform for<br>what comes next.</h2>
+    </div>
+    <div class="audience-grid">
+      <article class="audience-card">
+        <p class="audience-title">Academia &amp; Researchers</p>
+        <p class="audience-subtitle">Open-Source Platform for Communication-AI Research</p>
+        <p>Explore communication–AI algorithms and hardware-aware implementations in a shared, programmable research environment.</p>
+      </article>
+      <article class="audience-card">
+        <p class="audience-title">Industry</p>
+        <p class="audience-subtitle">Decoupled Software-Hardware Baseband Chip Solution</p>
+        <p>Explore applications and system trade-offs for a programmable communication processor.</p>
+        <p>Use simulation to compare design choices before hardware evaluation.</p>
+      </article>
+      <article class="audience-card">
+        <p class="audience-title">Standards Organizations</p>
+        <p class="audience-subtitle">Explore Future Wireless Systems</p>
+        <p>Investigate new wireless processing ideas on an architecture designed around communication and intelligent computation.</p>
+        <p>Develop reusable experiments and share findings with the community.</p>
+      </article>
+    </div>
+    <blockquote class="home-quote">
+      <strong>Echo is your playground.</strong> Whether you're building, testing, or scaling, Echo gives you the freedom to create.
+    </blockquote>
+  </section>
 
-<section class="wrap roadmap-section" id="roadmap" aria-labelledby="roadmap-title"><div class="section-head"><div><p class="eyebrow">Where we are going</p><h2 id="roadmap-title">From assisted development<br>to intent-driven applications.</h2></div><p>The long-term goal is to make our hardware easier to program: describe the application you want, and let an Agent work toward an implementation that can run on Venus.</p></div>
-<div class="roadmap-track"><article class="roadmap-now"><div class="version-heading"><span>1.0</span><p>CURRENT RELEASE</p></div><h3>You develop. The platform assists.</h3><p>A Gem5-based simulator for Venus application development and approximate performance evaluation, paired with the initial Agent-assisted development framework.</p><ul><li>Develop and simulate Venus applications</li><li>Estimate performance and compare implementations</li><li>Use Agent assistance with developer guidance</li></ul><a href="venus1_get_started.html">Use ACE-Echo 1.0 ↗</a></article><article class="roadmap-next"><div class="version-heading"><span>2.0</span><p>PLANNED DIRECTION</p></div><h3>You describe intent. The Agent builds.</h3><p>Our goal is for an Agent to turn a user's intent into an application deployable on Venus, coordinating generation, compilation, simulation and validation.</p><ul><li>Describe the desired application and constraints</li><li>Let the Agent generate and refine an implementation</li><li>Produce an application for deployment on our hardware</li></ul><p class="scope-note">A roadmap goal. End-to-end intent-to-deployment automation is not a 1.0 capability.</p></article></div>
-</section>
+  <section class="section-block" id="roadmap">
+    <div class="section-heading">
+      <p class="section-tag">Roadmap</p>
+      <h2>Assistance today.<br>Intent-driven development next.</h2>
+    </div>
+    <div class="roadmap-card">
+      <article class="roadmap-version current"><p class="roadmap-status">CURRENT RELEASE</p><h3>1.0</h3><h4>You develop.<br>Echo assists.</h4><p>Develop Venus applications with Gem5, quickly estimate performance and begin using the Agent-assisted development framework.</p><a href="venus1_get_started.html">Get started with 1.0 <span aria-hidden="true">↗</span></a></article>
+      <article class="roadmap-version future"><p class="roadmap-status">PLANNED DIRECTION</p><h3>2.0</h3><h4>Your intent.<br>An application for Venus.</h4><p>Our goal: describe the application you want, and let an Agent generate, refine and validate an implementation deployable on our hardware.</p><p class="roadmap-note">Intent-to-deployment automation is a future goal, beyond the initial 1.0 framework.</p></article>
+    </div>
+  </section>
 
-<section class="wrap news-section" aria-labelledby="news-title"><div class="news-heading"><div><p class="eyebrow">Project updates</p><h2 id="news-title">The project in motion.</h2></div><a href="news.html">All news ↗</a></div><article class="featured-news"><div><span class="release-label">SILICON MILESTONE / 2026</span><h3><a href="venus1-first-light.html">First-generation chip: successful tape-out and first light.</a></h3><p>The 5G-Lite project has progressed through fabrication, packaging and board bring-up. The chip executes code, produces UART output and has demonstrated real-signal NR cell search.</p></div><a class="story-arrow" href="venus1-first-light.html" aria-label="Read the first-generation chip announcement">↗</a></article><div class="research-news"><a href="academic-4.html">Research / Venus for integrated AI and wireless baseband processing ↗</a><a href="academic-3.html">Research / Explore the Zoozve compiler work ↗</a></div></section>
-
-<section class="wrap join"><div><h2>Build with us.</h2><p>Explore communication–AI applications, develop for Venus, and help shape the open platform.</p></div><a class="button primary" href="https://github.com/ACELab-SHU/ACE-Echo">Explore the project ↗</a></section>
+  <section class="section-block latest-news" id="news"><div class="section-heading"><p class="section-tag">Latest from ACE Lab</p><h2>Silicon is only<br>the beginning.</h2></div><a class="news-feature" href="venus1-first-light.html"><span class="news-kicker">CHIP MILESTONE · 2026</span><h3>First-generation chip.<br>Successful tape-out. First light.</h3><p>From fabrication and packaging to bring-up and real-signal NR cell search.</p><span class="news-more">Read the announcement ↗</span></a><a class="all-news" href="news.html">All project news ↗</a></section>
+  <section class="section-block cta-section" id="get-started">
+    <div class="cta-card">
+      <div>
+        <p class="section-tag">Get Started</p>
+        <h2>Start building with Echo now</h2>
+      </div>
+      <ol class="start-list">
+        <li>Visit our quick-start guide: <a href="venus1_get_started.html">Get started with ACE-Echo 1.0</a></li>
+        <li>Get the platform source and configure the external compiler tools.</li>
+        <li>Join the community and start building.</li>
+      </ol>
+    </div>
+    <div class="cta-card community-card">
+      <p class="section-tag">Community</p>
+      <h2>Join the Echo Community</h2>
+      <p>Email: <a href="mailto:shenyihao@shu.edu.cn">shenyihao@shu.edu.cn</a></p>
+      <p><a href="https://github.com/ACELab-SHU/ACE-Echo">Explore the source on GitHub ↗</a></p>
+      <blockquote class="closing-quote">A shared foundation for communication and intelligence.</blockquote>
+      <p>We warmly welcome more developers, researchers, and collaborators to join us on this journey.</p>
+    </div>
+  </section>
 </main>
-<footer class="wrap footer"><div><strong>ACE Lab · Shanghai University</strong>ACE-Echo / Open development for communication–AI convergence</div><div class="footer-links"><a href="venus1_get_started.html">Documentation</a><a href="news.html">News</a><a href="https://github.com/ACELab-SHU/ACE-Echo">Source</a><a href="mailto:shenyihao@shu.edu.cn">Contact</a></div><span>© 2026 ACE Lab</span></footer>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title | escape }}</title>
+  <meta name="description" content="{{ page.summary | escape }}">
+  <meta name="theme-color" content="#fafafa">
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.summary | escape }}">
+  <meta property="og:image" content="https://acelab-shu.github.io/ACE-Echo/images/venus1-silicon.jpeg">
+  <link rel="canonical" href="https://acelab-shu.github.io/ACE-Echo/index.html">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/echo-classic.css?v=3">
+  <script src="js/echo-classic.js?v=3" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="global-nav"><div class="nav-inner">
+    <a class="wordmark" href="index.html" aria-label="ACE-Echo home"><img src="images/echo_mark.svg" width="24" height="24" alt=""><span>ACE-Echo</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav id="site-nav" aria-label="Main navigation"><a href="#architecture">Architecture</a><a href="#capabilities">Platform</a><a href="#applications">Applications</a><a href="#roadmap">Roadmap</a><a href="news.html">News</a><a class="nav-cta" href="venus1_get_started.html">Get started</a></nav>
+  </div><div class="reading-progress" aria-hidden="true"></div></header>
+  <div class="announcement">Our first-generation chip has achieved first light. <a href="venus1-first-light.html">Meet Venus <span aria-hidden="true">›</span></a></div>
+  {{ content }}
+  <footer class="global-footer"><div><a class="footer-wordmark" href="index.html">ACE-Echo</a><p>Open development for communication–AI convergence.<br>ACE Lab · Shanghai University</p></div><nav aria-label="Footer"><a href="venus1_get_started.html">Documentation</a><a href="news.html">News</a><a href="https://github.com/ACELab-SHU/ACE-Echo">GitHub</a><a href="mailto:shenyihao@shu.edu.cn">Contact</a></nav><p class="copyright">© {{ site.time | date: '%Y' }} ACE Lab</p></footer>
+</body>
+</html>
