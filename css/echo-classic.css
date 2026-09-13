@@ -4,4 +4,4 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.motion-ready .reveal:not(.is-visible){opacity:1;transform:none}.photo-window img{transform:none;will-change:auto}.reading-progress{display:none}}
 
 /* Architecture assets share the surrounding graphite surface. */
-.stack-card{display:flex;flex-direction:column}.stack-card .visual-frame{margin-top:auto;padding:0;background:#1d1d24;overflow:hidden;border-radius:16px}.stack-card .visual-frame img{display:block;width:100%;height:auto}.stack-card .visual-frame{margin-top:28px}
+.stack-card{display:flex;flex-direction:column}.stack-card .visual-frame{margin-top:auto;padding:0;background:#1d1d24;overflow:hidden;border-radius:16px}.stack-card .visual-frame img{display:block;width:100%;height:auto}.stack-card>p:last-of-type{margin-bottom:28px}.stack-card .visual-frame{margin-top:auto}
