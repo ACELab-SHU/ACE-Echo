@@ -1,13 +1,15 @@
 ---
-title: "DSL User Guide"
+title: DSL User Guide
 layout: echo-doc
 guide_reference: true
-summary: "BAS syntax, data declarations, task bindings, compiler configuration, artifacts and worked examples."
+summary: BAS syntax, data declarations, task bindings, compiler configuration, artifacts and worked examples.
 sidebar: mydoc_sidebar
 permalink: mydoc_dsl_user_guide.html
 section: Documentation
-content_status: "ACE-Echo 1.0"
-last_reviewed: 2026-09-13
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_dsl_user_guide.html
 ---
 
 BAS describes a directed acyclic graph: nodes invoke tasks, and edges carry returned data to later tasks. The release bundles a revision-pinned DSL frontend and uses an external Venus-custom LLVM installation for task compilation.

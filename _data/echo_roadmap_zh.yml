@@ -1,0 +1,10 @@
+- version: '1.0'
+  status: 发布分支已提供
+  title: 你来开发，Echo 辅助。
+  description: 用好用的 Gem5 仿真器开发 Venus 应用，进行近似周期级性能评估，并使用初版 Agent 辅助开发框架。
+  link: zh_venus1_get_started.html
+  link_text: 开始使用 1.0
+- version: '2.0'
+  status: 规划方向
+  title: 你的意图，面向 Venus 的应用。
+  description: 目标是由 Agent 将应用意图转化为可部署到 Venus 的实现，涵盖生成、迭代与验证。这是未来平台目标，尚未公布发布日期。

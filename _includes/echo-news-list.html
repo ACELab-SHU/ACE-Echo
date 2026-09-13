@@ -1,8 +1,9 @@
+{% include echo-locale.html %}
 <ol class="news-feed">
-{% for post in site.posts %}{% if post.category == include.category %}
-<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d %B %Y' }}</time>
-<h2><a href="{{ post.url | remove_first: '/' }}">{{ post.title }}</a></h2>
-<p>{% if post.summary %}{{ post.summary | strip_html }}{% else %}{{ post.content | strip_html | strip_newlines | truncatewords: 45 }}{% endif %}</p></li>
-{% endif %}{% endfor %}
-</ol>
-<p><a href="news_archive.html">Browse the news archive ↗</a></p>
+{% for post in site.posts %}{% if include.category == nil or post.category == include.category %}
+{% assign translated_post = site.data.echo_translations[post.permalink] %}
+<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: t.date_format }}</time>
+<h2><a href="{{ locale_prefix }}{{ post.url | remove_first: '/' }}">{% if current_lang == 'zh-CN' %}{{ translated_post.title }}{% else %}{{ post.title }}{% endif %}</a></h2>
+<p>{% if current_lang == 'zh-CN' %}{{ translated_post.summary }}{% elsif post.summary %}{{ post.summary | strip_html }}{% else %}{{ post.content | strip_html | strip_newlines | truncatewords: 45 }}{% endif %}</p></li>
+{% endif %}{% endfor %}</ol>
+{% unless page.permalink contains 'news_archive' %}<p><a href="{{ locale_prefix }}news_archive.html">{{ t.news_archive }} ↗</a></p>{% endunless %}

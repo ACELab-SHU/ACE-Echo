@@ -2,19 +2,16 @@
 title: Developers
 keywords: developers, Email
 last_updated: June 10, 2025
-#tags: [navigation]
-summary: "The people behind Venus, AURA and the ACE-Echo development platform."
+summary: The people behind Venus, AURA and the ACE-Echo development platform.
 sidebar: mydoc_sidebar
 permalink: mydoc_developers.html
 toc: false
 folder: mydoc
 section: Community
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_developers.html
 ---
-
-
-
-
 
 ## Project Overview
 

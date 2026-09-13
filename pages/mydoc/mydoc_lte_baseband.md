@@ -1,13 +1,15 @@
 ---
-title: "LTE on Venus"
+title: LTE on Venus
 layout: echo-doc
 toc: false
-summary: "Available LTE DAG cases and the scope of their 1.0 evaluation."
+summary: Available LTE DAG cases and the scope of their 1.0 evaluation.
 sidebar: mydoc_sidebar
 permalink: mydoc_lte_baseband.html
 section: Applications
-content_status: "Application scope"
-last_reviewed: 2026-09-13
+content_status: Application scope
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_lte_baseband.html
 ---
 
 LTE workloads are part of the Venus development and regression set. The old “available within two months” placeholder has been replaced with the recorded release scope.

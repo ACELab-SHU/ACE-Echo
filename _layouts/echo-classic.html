@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
+{% include echo-locale.html %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,15 +10,16 @@
   <meta property="og:title" content="{{ page.title | escape }}">
   <meta property="og:description" content="{{ page.summary | escape }}">
   <meta property="og:image" content="https://acelab-shu.github.io/ACE-Echo/images/venus1-silicon.jpeg">
-  <link rel="canonical" href="https://acelab-shu.github.io/ACE-Echo/index.html">
+  <link rel="canonical" href="https://acelab-shu.github.io/ACE-Echo/{{ page.permalink }}">
   <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/echo-classic.css?v=5">
-  <script src="js/echo-classic.js?v=4" defer></script>
+  <link rel="stylesheet" href="css/echo-classic.css?v=6">
+  <script src="js/echo-classic.js?v=5" defer></script>
+{% include echo-language-links.html %}
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">{{ t.skip }}</a>
   {% include echo-nav.html %}
-  <div class="announcement">Our first-generation chip has achieved first light. <a href="venus1-first-light.html">Meet Venus <span aria-hidden="true">›</span></a></div>
+  <div class="announcement">{% if current_lang == 'zh-CN' %}第一代芯片已成功点亮。<a href="zh_venus1-first-light.html">认识 Venus <span aria-hidden="true">›</span></a>{% else %}Our first-generation chip has achieved first light. <a href="venus1-first-light.html">Meet Venus <span aria-hidden="true">›</span></a>{% endif %}</div>
   {{ content }}
   {% include echo-footer.html %}
 </body>

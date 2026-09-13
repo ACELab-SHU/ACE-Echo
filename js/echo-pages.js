@@ -7,7 +7,7 @@
     if (table.closest('.table-scroll,.dataTables_wrapper')) return;
     const wrap = document.createElement('div');
     wrap.className = 'table-scroll'; wrap.tabIndex = 0;
-    wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Scrollable table');
+    wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', document.documentElement.lang === 'zh-CN' ? '可横向滚动的表格' : 'Scrollable table');
     table.before(wrap); wrap.append(table);
   });
   const groups = [...document.querySelectorAll('.doc-navigation nav > details.sidebar-group')];

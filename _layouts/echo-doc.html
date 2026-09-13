@@ -1,9 +1,10 @@
 ---
 layout: default
 ---
+{% include echo-locale.html %}
 <header class="post-header">{% include echo-content-meta.html %}<h1 class="post-title-main">{{ page.title }}</h1>
 {% if page.summary %}<p class="document-summary">{{ page.summary }}</p>{% endif %}</header>
 <article class="post-content document-body">
-{% unless page.section == 'News' or page.toc == false %}{% if page.guide_reference %}<details class="guide-index"><summary>Browse this guide</summary>{% include toc.html %}</details>{% else %}{% include toc.html %}{% endif %}{% endunless %}
+{% unless page.section == 'News' or page.toc == false %}{% if page.guide_reference %}<details class="guide-index"><summary>{{ t.browse_guide }}</summary>{% include toc.html %}</details>{% else %}{% include toc.html %}{% endif %}{% endunless %}
 {{ content }}
 </article>

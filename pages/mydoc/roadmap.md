@@ -1,13 +1,15 @@
 ---
-title: "ACE-Echo roadmap"
+title: ACE-Echo roadmap
 layout: echo-doc
 toc: false
-summary: "From practical Venus application development to intent-driven generation."
+summary: From practical Venus application development to intent-driven generation.
 sidebar: mydoc_sidebar
 permalink: roadmap.html
 section: Project
-content_status: "Current direction"
-last_reviewed: 2026-09-13
+content_status: Current direction
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_roadmap.html
 ---
 
 Our direction is to make communication–AI hardware easier to program. The first step is a useful simulator and a guided development workflow; the next is a more complete Agent-assisted path from intent to an application for Venus.

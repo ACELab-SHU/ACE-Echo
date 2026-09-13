@@ -1,5 +1,5 @@
 ---
-title: "Publishing pages"
+title: Publishing pages
 tagName: publishing
 search: exclude
 permalink: tag_publishing.html
@@ -8,5 +8,8 @@ folder: tags
 section: Topics
 toc: false
 robots: noindex, follow
+lang: en
+translation_url: zh_tag_publishing.html
 ---
+
 {% include taglogic.html %}

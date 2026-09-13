@@ -1,5 +1,9 @@
-  <header class="global-nav"><div class="nav-inner">
-    <a class="wordmark" href="index.html" aria-label="ACE-Echo home"><img src="images/echo_mark.svg" width="24" height="24" alt=""><span>ACE-Echo</span></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
-    <nav id="site-nav" aria-label="Main navigation"><a href="{{ include.home_prefix }}#architecture">Architecture</a><a href="{{ include.home_prefix }}#capabilities">Platform</a><a href="{{ include.home_prefix }}#applications">Applications</a><a href="{{ include.home_prefix }}#roadmap">Roadmap</a><a href="news.html">News</a><a class="nav-cta" href="venus1_get_started.html">Get started</a></nav>
-  </div><div class="reading-progress" aria-hidden="true"></div></header>
+{% include echo-locale.html %}
+{% assign home_link = locale_prefix | append: 'index.html' %}
+{% assign home_sections = home_link %}{% if page.permalink == home_link %}{% assign home_sections = '' %}{% endif %}
+<header class="global-nav"><div class="nav-inner">
+<a class="wordmark" href="{{ home_link }}" aria-label="{{ t.home }}"><img src="images/echo_mark.svg" width="24" height="24" alt=""><span>ACE-Echo</span></a>
+<button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="{{ t.open_nav }}"><span></span><span></span></button>
+<nav id="site-nav" aria-label="{{ t.main_nav }}"><a href="{{ home_sections }}#architecture">{{ t.architecture }}</a><a href="{{ home_sections }}#capabilities">{{ t.platform }}</a><a href="{{ home_sections }}#applications">{{ t.applications }}</a><a href="{{ home_sections }}#roadmap">{{ t.roadmap }}</a><a href="{{ locale_prefix }}news.html">{{ t.news }}</a><a class="nav-cta" href="{{ locale_prefix }}venus1_get_started.html">{{ t.start }}</a></nav>
+{% if page.translation_url %}<a class="language-switch" href="{{ page.translation_url }}" lang="{% if current_lang == 'en' %}zh-CN{% else %}en{% endif %}" hreflang="{% if current_lang == 'en' %}zh-CN{% else %}en{% endif %}" aria-label="{{ t.switch }}">{{ t.switch_label }}<span aria-hidden="true"> ⇄</span></a>{% endif %}
+</div><div class="reading-progress" aria-hidden="true"></div></header>

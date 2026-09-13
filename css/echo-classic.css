@@ -5,3 +5,9 @@
 
 /* Architecture assets share the surrounding graphite surface. */
 .stack-card{display:flex;flex-direction:column}.stack-card .visual-frame{margin-top:auto;padding:0;background:#1d1d24;overflow:hidden;border-radius:16px}.stack-card .visual-frame img{display:block;width:100%;height:auto}.stack-card>p:last-of-type{margin-bottom:28px}.stack-card .visual-frame{margin-top:auto}
+
+/* Language controls stay visible outside the compact mobile menu. */
+.nav-inner{gap:20px}#site-nav{margin-left:auto;gap:22px}.language-switch{flex-shrink:0;font-size:12px;line-height:1;padding:10px 12px;border:1px solid #d9d9de;border-radius:20px;color:#424247;white-space:nowrap;background:#ffffff70;transition:background .2s,border-color .2s}.language-switch:hover{background:#f0f4fb;border-color:#aabed9;text-decoration:none}.language-switch span{margin-left:3px;color:#7a7a80}
+html[lang="zh-CN"] body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3,html[lang="zh-CN"] h4{letter-spacing:-.02em;line-height:1.18}html[lang="zh-CN"] .hero-summary{line-height:1.65;letter-spacing:0}html[lang="zh-CN"] .hero-copy h1{line-height:1.13}html[lang="zh-CN"] .section-intro{letter-spacing:0;line-height:1.6}
+@media(max-width:900px) and (min-width:761px){.nav-inner{gap:12px}#site-nav{gap:13px}}
+@media(max-width:760px){.nav-inner{gap:12px}.wordmark{margin-right:auto}.language-switch{order:1;padding:10px}.menu-toggle{order:2;margin-left:0}#site-nav{margin-left:0}.language-switch span{display:none}}

@@ -1,14 +1,15 @@
 ---
 title: Legacy installation (v0.1)
-#tags: [getting_started, troubleshooting]
 keywords: Echo, Venus, docker, deploy, start, run, install
-summary: "This guide provides a comprehensive getting started tutorial for developers working with the Echo × Venus open-source platform."
+summary: This guide provides a comprehensive getting started tutorial for developers working with the Echo × Venus open-source platform.
 sidebar: mydoc_sidebar
 permalink: mydoc_get_started.html
 folder: mydoc
 content_status: Historical workflow
 section: Archive
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_get_started.html
 ---
 
 > **For older experiments only.** These commands describe the original VEMU-era installation. For ACE-Echo 1.0, follow the [Gem5 getting-started guide](venus1_get_started.html); its compiler and backend configuration is different.

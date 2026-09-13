@@ -1,0 +1,12 @@
+---
+title: search
+layout: none
+search: exclude
+---
+{% assign docs = site.html_pages | where: 'lang', 'zh-CN' | where_exp: 'item', "item.search != 'exclude'" %}
+{% assign posts = site.posts | where: 'lang', 'zh-CN' %}
+{% assign results = docs | concat: posts %}
+[
+{% for item in results %}{"title":{{ item.title | jsonify }},"tags":{{ item.tags | jsonify }},"keywords":{{ item.keywords | jsonify }},"url":{{ item.url | remove_first: '/' | jsonify }},"summary":{{ item.summary | default: '' | strip_html | strip | jsonify }}}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

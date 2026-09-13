@@ -1,5 +1,5 @@
 ---
-title: "Collaboration pages"
+title: Collaboration pages
 tagName: collaboration
 search: exclude
 permalink: tag_collaboration.html
@@ -8,5 +8,8 @@ folder: tags
 section: Topics
 toc: false
 robots: noindex, follow
+lang: en
+translation_url: zh_tag_collaboration.html
 ---
+
 {% include taglogic.html %}

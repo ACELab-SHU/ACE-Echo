@@ -1,12 +1,18 @@
 ---
-title:  "UVP Makes It: 5G PBCH MIB Decoded Successfully"
+title: 'UVP Makes It: 5G PBCH MIB Decoded Successfully'
 published: true
 category: application
 permalink: application-1.html
 summary: false
-tags: [5G,PBCH,MIB,decode]
+tags:
+- 5G
+- PBCH
+- MIB
+- decode
 content_status: Historical project news
 section: News
+lang: en
+translation_url: zh_application-1.html
 ---
 
 On January 1, 2025, <b>our team successfully decoded the Master Information Block (MIB) in the 5G Physical Broadcast Channel (PBCH) </b>using a system based on the UVP architecture in the laboratory. This achievement validates the application value of UVP in practical wireless communication scenarios.

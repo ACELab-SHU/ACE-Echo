@@ -1,13 +1,15 @@
 ---
-title: "GNSS on Venus"
+title: GNSS on Venus
 layout: echo-doc
 toc: false
-summary: "A research direction for satellite navigation; release evidence is tracked separately."
+summary: A research direction for satellite navigation; release evidence is tracked separately.
 sidebar: mydoc_sidebar
 permalink: mydoc_gnss_baseband.html
 section: Applications
-content_status: "Research direction"
-last_reviewed: 2026-09-13
+content_status: Research direction
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_gnss_baseband.html
 ---
 
 GNSS remains an application direction for the programmable Venus architecture. This page does not publish a complete 1.0 demonstration or a qualified end-to-end result.

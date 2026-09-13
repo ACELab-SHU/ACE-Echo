@@ -1,7 +1,7 @@
-{% assign matching_pages = site.pages | where_exp: 'item', 'item.tags contains page.tagName' %}
-{% assign matching_posts = site.posts | where_exp: 'item', 'item.tags contains page.tagName' %}
-{% assign item_count = matching_pages.size | plus: matching_posts.size %}
-{% if item_count > 0 %}<p>Project material tagged <strong>{{ page.tagName }}</strong>.</p><ul class="topic-list">
-{% for item in matching_pages %}<li><a href="{{ item.url | remove_first: '/' }}">{{ item.title }}</a>{% if item.summary %}<p>{{ item.summary | strip_html }}</p>{% endif %}</li>{% endfor %}
-{% for item in matching_posts %}<li><a href="{{ item.url | remove_first: '/' }}">{{ item.title }}</a>{% if item.summary %}<p>{{ item.summary | strip_html }}</p>{% endif %}</li>{% endfor %}</ul>
-{% else %}<p>This topic came from the original website taxonomy and currently has no project articles.</p><div class="related-links"><a href="venus1_get_started.html">Start developing ↗</a><a href="news.html">Browse project news ↗</a></div>{% endif %}
+{% include echo-locale.html %}
+{% assign matching_pages = site.pages | where_exp: 'item', 'item.tags contains page.tagName' | where: 'lang', current_lang %}
+{% assign matching_posts = site.posts | where_exp: 'item', 'item.tags contains page.tagName' | where: 'lang', current_lang %}
+{% assign items = matching_pages | concat: matching_posts %}
+{% if items.size > 0 %}<p>{% if current_lang == 'zh-CN' %}主题：{% else %}Project material tagged {% endif %}<strong>{{ page.tagName }}</strong></p><ul class="topic-list">
+{% for item in items %}<li><a href="{{ item.url | remove_first: '/' }}">{{ item.title }}</a>{% if item.summary %}<p>{{ item.summary | strip_html }}</p>{% endif %}</li>{% endfor %}</ul>
+{% else %}<p>{% if current_lang == 'zh-CN' %}此主题来自原网站分类，目前没有对应的项目文章。{% else %}This topic came from the original website taxonomy and currently has no project articles.{% endif %}</p><div class="related-links"><a href="{{ locale_prefix }}venus1_get_started.html">{{ t.start }} ↗</a><a href="{{ locale_prefix }}news.html">{{ t.news }} ↗</a></div>{% endif %}

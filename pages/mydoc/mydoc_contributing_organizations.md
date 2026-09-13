@@ -1,13 +1,15 @@
 ---
-title: "Contributing organizations"
+title: Contributing organizations
 layout: echo-doc
 toc: false
-summary: "Academic and industrial contributors to the Echo and Venus project."
+summary: Academic and industrial contributors to the Echo and Venus project.
 sidebar: mydoc_sidebar
 permalink: mydoc_contributing_organizations.html
 section: Community
-content_status: "Project contributors"
-last_reviewed: 2026-09-13
+content_status: Project contributors
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_contributing_organizations.html
 ---
 
 ACE-Echo builds on the work of the project's academic and industrial contributors. The organizations below are acknowledged in the original project record.

@@ -1,9 +1,8 @@
 ---
 layout: echo-classic
 title: ACE-Echo · Communication–AI Convergence
-#tags: [getting_started, troubleshooting]
 keywords: Echo, Venus, AURA, Feature, Email, Community
-summary: "An open development platform for Venus, our programmable communication–AI processor. Explore our architecture, first-generation silicon and the ACE-Echo roadmap."
+summary: An open development platform for Venus, our programmable communication–AI processor. Explore our architecture, first-generation silicon and the ACE-Echo roadmap.
 sidebar: mydoc_sidebar
 permalink: index.html
 folder: mydoc
@@ -11,6 +10,8 @@ hide_sidebar: true
 hide_summary: true
 hide_title: true
 toc: false
+lang: en
+translation_url: zh_index.html
 ---
 
 <main id="main" class="echo-home">
@@ -30,7 +31,7 @@ toc: false
         <li>Communication &amp; AI operators for FFT, Decoder, Conv2D/3D, GELU/SiLU and more</li>
         <li>An integrated development workflow with external compiler tools</li>
         <li>Gem5 simulation for Venus application development and approximate performance evaluation</li>
-        <li>Real-world application demos: 5G/LTE, AI-Based Channel Estimation, GNSS, LoRa, and more</li>
+        <li>Application demonstrations and research directions: 5G/LTE, AI-based channel estimation, GNSS, LoRa and more</li>
         <li>An initial Agent-assisted development framework in 1.0</li>
       </ul>
     </div>

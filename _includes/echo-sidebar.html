@@ -1,11 +1,12 @@
+{% include echo-locale.html %}
 <div class="doc-search">
-  <label for="search-input">Search the project</label>
-  <input type="search" id="search-input" placeholder="Search documentation…" autocomplete="off" aria-controls="results-container">
+  <label for="search-input">{{ t.search }}</label>
+  <input type="search" id="search-input" placeholder="{{ t.search_placeholder }}" autocomplete="off" aria-controls="results-container">
   <ul id="results-container" aria-live="polite"></ul>
 </div>
 <details class="doc-navigation" open>
-  <summary>{% if page.sidebar == "mydoc_sidebar" %}Documentation{% else %}Explore ACE-Echo{% endif %}</summary>
-  <nav aria-label="Documentation sections">
+  <summary>{{ t.documentation }}</summary>
+  <nav aria-label="{{ t.sections_label }}">
     {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
     {% for entry in sidebar %}{% for folder in entry.folders %}{% if folder.output contains 'web' %}
     <details class="sidebar-group"><summary>{{ folder.title }}</summary>
@@ -19,4 +20,4 @@
   </nav>
 </details>
 <script src="js/jekyll-search.js"></script>
-<script>SimpleJekyllSearch.init({searchInput:document.getElementById('search-input'),resultsContainer:document.getElementById('results-container'),dataSource:'search.json',searchResultTemplate:'<li><a href="{url}">{title}</a></li>',noResultsText:'No results found.',limit:8,fuzzy:true});</script>
+<script>SimpleJekyllSearch.init({searchInput:document.getElementById('search-input'),resultsContainer:document.getElementById('results-container'),dataSource:'{% if current_lang == 'zh-CN' %}search-zh.json{% else %}search.json{% endif %}',searchResultTemplate:'<li><a href="{url}">{title}</a></li>',noResultsText:{{ t.no_results | jsonify }},limit:8,fuzzy:true});</script>

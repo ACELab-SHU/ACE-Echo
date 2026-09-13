@@ -1,13 +1,15 @@
 ---
-title: "Meet ACE-Echo"
+title: Meet ACE-Echo
 layout: echo-doc
 toc: false
-summary: "The open development platform for our Venus communication\u2013AI processor."
+summary: The open development platform for our Venus communication–AI processor.
 sidebar: mydoc_sidebar
 permalink: mydoc_introduction.html
 section: Project
-content_status: "ACE-Echo 1.0"
-last_reviewed: 2026-09-13
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_introduction.html
 ---
 
 ACE-Echo connects our communication–AI chip research with application development. **Venus** is the programmable RISC-V processor. **AURA** is the architecture and programming foundation. **ACE-Echo** is the open platform used to develop applications for that hardware.

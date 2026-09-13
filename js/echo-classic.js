@@ -1,5 +1,8 @@
 (() => {
   'use strict';
+  const isZh = document.documentElement.lang === 'zh-CN';
+  const openLabel = isZh ? '展开导航' : 'Open navigation';
+  const closeLabel = isZh ? '收起导航' : 'Close navigation';
   const nav = document.querySelector('.global-nav');
   const menu = document.querySelector('#site-nav');
   const toggle = document.querySelector('.menu-toggle');
@@ -7,12 +10,12 @@
   function closeMenu() {
     menu.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
+    toggle.setAttribute('aria-label', openLabel);
   }
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    toggle.setAttribute('aria-label', open ? closeLabel : openLabel);
     menu.classList.toggle('is-open', open);
   });
   menu.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
@@ -68,4 +71,13 @@
     if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; } else requestRender();
   });
   requestRender();
+})();
+
+// Both translations use the deployed English heading IDs, preserving deep links.
+(() => {
+  const link = document.querySelector('.language-switch');
+  if (!link) return;
+  const target = new URL(link.href);
+  const update = () => { target.hash = location.hash; link.href = target.href; };
+  update(); addEventListener('hashchange', update);
 })();

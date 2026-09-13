@@ -1,5 +1,5 @@
 ---
-title: "Formatting pages"
+title: Formatting pages
 tagName: formatting
 search: exclude
 permalink: tag_formatting.html
@@ -8,5 +8,8 @@ folder: tags
 section: Topics
 toc: false
 robots: noindex, follow
+lang: en
+translation_url: zh_tag_formatting.html
 ---
+
 {% include taglogic.html %}

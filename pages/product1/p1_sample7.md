@@ -8,6 +8,8 @@ toc: false
 search: exclude
 robots: noindex, follow
 section: Archive
+lang: en
+translation_url: zh_p1_sample7.html
 ---
 
 This address belonged to a sample page in the original website theme. It does not describe an ACE-Echo product or a supported platform feature.

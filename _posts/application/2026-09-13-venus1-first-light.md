@@ -1,15 +1,17 @@
 ---
 layout: echo-doc
-title: "Our first-generation chip has taped out and achieved first light"
-summary: "The 5G-Lite project brings Venus to silicon, with successful bring-up and real-signal NR cell search."
+title: Our first-generation chip has taped out and achieved first light
+summary: The 5G-Lite project brings Venus to silicon, with successful bring-up and real-signal NR cell search.
 section: News
 date: 2026-09-13 00:00:00 +0800
 published: true
 category: application
 permalink: venus1-first-light.html
-tags: [news]
+tags:
+- news
+lang: en
+translation_url: zh_venus1-first-light.html
 ---
-
 
 <p class="document-date">Published 13 September 2026 · Silicon milestone</p>
 

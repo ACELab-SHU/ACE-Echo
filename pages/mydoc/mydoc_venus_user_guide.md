@@ -1,13 +1,15 @@
 ---
-title: "Venus User Guide"
+title: Venus User Guide
 layout: echo-doc
 guide_reference: true
-summary: "A practical reference for vector types, every original intrinsic family, masks, memory access and complete task examples."
+summary: A practical reference for vector types, every original intrinsic family, masks, memory access and complete task examples.
 sidebar: mydoc_sidebar
 permalink: mydoc_venus_user_guide.html
 section: Documentation
-content_status: "Venus1 programming reference"
-last_reviewed: 2026-09-13
+content_status: Venus1 programming reference
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_venus_user_guide.html
 ---
 
 Use this guide while writing Venus C tasks. It contains the instruction families from the original guide, their call forms and examples, followed by task and BAS examples. For setup, see [Get started](venus1_get_started.html); for graph compilation, see the [DSL User Guide](mydoc_dsl_user_guide.html).

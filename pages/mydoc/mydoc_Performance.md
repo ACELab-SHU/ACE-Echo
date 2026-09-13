@@ -1,12 +1,14 @@
 ---
-title: "Performance and evidence"
+title: Performance and evidence
 layout: echo-doc
-summary: "Separate 1.0 simulation accuracy from earlier architecture benchmarks."
+summary: Separate 1.0 simulation accuracy from earlier architecture benchmarks.
 sidebar: mydoc_sidebar
 permalink: mydoc_performance.html
 section: Evaluation
-content_status: "Measured scope + research archive"
-last_reviewed: 2026-09-13
+content_status: Measured scope + research archive
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_performance.html
 ---
 
 ACE-Echo 1.0 helps developers estimate the performance of Venus applications. Its cycle-level model is evaluated against RTL for specific cases. That simulator comparison is separate from comparisons between hardware architectures.

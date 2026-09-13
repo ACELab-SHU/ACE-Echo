@@ -1,13 +1,15 @@
 ---
-title: "L1 Scheduler User Guide"
+title: L1 Scheduler User Guide
 layout: echo-doc
 guide_reference: true
-summary: "Understand DAG execution, Scheduler packaging and the 1.0 application-contract model."
+summary: Understand DAG execution, Scheduler packaging and the 1.0 application-contract model.
 sidebar: mydoc_sidebar
 permalink: mydoc_l1_scheduler_user_guide.html
 section: Documentation
-content_status: "ACE-Echo 1.0"
-last_reviewed: 2026-09-13
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_l1_scheduler_user_guide.html
 ---
 
 The Scheduler connects task execution with dependencies and data movement. ACE-Echo 1.0 distinguishes a Gem5 DAG run, a compiled Scheduler package and an application-contract run.

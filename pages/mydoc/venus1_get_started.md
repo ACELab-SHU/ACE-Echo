@@ -2,12 +2,14 @@
 title: Get started with ACE-Echo 1.0
 layout: echo-doc
 content_status: ACE-Echo 1.0
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-13'
 section: Documentation
-summary: "Develop Venus applications, estimate performance with Gem5, and begin using the Agent-assisted development framework."
+summary: Develop Venus applications, estimate performance with Gem5, and begin using the Agent-assisted development framework.
 sidebar: mydoc_sidebar
 permalink: venus1_get_started.html
 folder: mydoc
+lang: en
+translation_url: zh_venus1_get_started.html
 ---
 
 ACE-Echo is the open development platform for our Venus communication–AI processor. Version 1.0 provides a Gem5-based simulator and an initial Agent-assisted development framework, so developers can build Venus applications and quickly explore their approximate performance. The public distribution lives in `platform/`; the repository's older root-level tools belong to the legacy release.

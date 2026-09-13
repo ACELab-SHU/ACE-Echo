@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ page.lang | default: 'en' }}">
+{% include echo-locale.html %}
 <head>
     {% include head.html %}
     <script>
@@ -73,14 +74,14 @@
 
 </head>
 <body class="echo-subpage">
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">{{ t.skip }}</a>
 {% include echo-nav.html home_prefix="index.html" %}
 <div class="doc-shell {% if page.hide_sidebar %}doc-shell-wide{% endif %}">
   {% unless page.hide_sidebar %}
-  <aside class="doc-sidebar" aria-label="Section navigation">{% include echo-sidebar.html %}</aside>
+  <aside class="doc-sidebar" aria-label="{{ t.sections_label }}">{% include echo-sidebar.html %}</aside>
   {% endunless %}
   <main id="main" class="doc-main">
-    <div class="doc-breadcrumb"><a href="index.html">ACE-Echo</a><span aria-hidden="true">/</span>{{ page.section | default: page.folder | default: 'Explore' | capitalize }}</div>
+    <div class="doc-breadcrumb"><a href="{{ locale_prefix }}index.html">ACE-Echo</a><span aria-hidden="true">/</span>{% assign section_key = page.section | default: page.folder | default: 'Explore' %}{{ t.sections[section_key] | default: section_key }}</div>
     {{ content }}
   </main>
 </div>

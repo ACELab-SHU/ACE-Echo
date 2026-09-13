@@ -1,12 +1,14 @@
 ---
-title: "What you can build with 1.0"
+title: What you can build with 1.0
 layout: echo-doc
-summary: "Venus application development, Gem5 simulation and initial Agent assistance."
+summary: Venus application development, Gem5 simulation and initial Agent assistance.
 sidebar: mydoc_sidebar
 permalink: mydoc_supported_features.html
 section: Documentation
-content_status: "ACE-Echo 1.0"
-last_reviewed: 2026-09-13
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_supported_features.html
 ---
 
 ACE-Echo 1.0 is the development platform for Venus applications. Its current scope is defined by the release source, selected hardware backend and recorded validation cases.

@@ -1,12 +1,14 @@
 ---
-title: "Echo v0.1 release record"
+title: Echo v0.1 release record
 layout: echo-doc
-summary: "The early platform release, retained as project history."
+summary: The early platform release, retained as project history.
 sidebar: mydoc_sidebar
 permalink: mydoc_beta_release_notes.html
 section: Archive
-content_status: "Historical release"
-last_reviewed: 2026-09-13
+content_status: Historical release
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_beta_release_notes.html
 ---
 
 This is a historical record of Echo v0.1, documented in June 2025. For the Gem5-based platform, use the [ACE-Echo 1.0 guide](venus1_get_started.html).

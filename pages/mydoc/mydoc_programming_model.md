@@ -1,12 +1,14 @@
 ---
-title: "The Venus programming model"
+title: The Venus programming model
 layout: echo-doc
-summary: "Define a task graph, compile for one backend, and evaluate the resulting application."
+summary: Define a task graph, compile for one backend, and evaluate the resulting application.
 sidebar: mydoc_sidebar
 permalink: mydoc_programming_model.html
 section: Documentation
-content_status: "ACE-Echo 1.0"
-last_reviewed: 2026-09-13
+content_status: ACE-Echo 1.0
+last_reviewed: '2026-09-13'
+lang: en
+translation_url: zh_mydoc_programming_model.html
 ---
 
 In ACE-Echo, a **task** contains computation written in Venus C. A **DAG** connects tasks through their inputs and returns. The selected **backend** keeps compiler geometry, memory conventions and simulation settings consistent.

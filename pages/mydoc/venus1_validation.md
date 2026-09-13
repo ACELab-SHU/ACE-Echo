@@ -2,12 +2,14 @@
 title: Venus 1.0 validation
 layout: echo-doc
 content_status: Recorded regression
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-13'
 section: Evaluation
-summary: "Measured Gem5–RTL agreement, with explicit timing and correctness boundaries."
+summary: Measured Gem5–RTL agreement, with explicit timing and correctness boundaries.
 sidebar: mydoc_sidebar
 permalink: venus1_validation.html
 folder: mydoc
+lang: en
+translation_url: zh_venus1_validation.html
 ---
 
 The 13 September 2026 regression completed eight DAGs, covering **202 tasks and 557 returns**, using Gem5 fast mode with the L1 contract timing engine and fresh full-SoC RTL runs. Nominal clocks were 300 MHz for the Tile and 150 MHz for AXI.

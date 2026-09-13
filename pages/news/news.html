@@ -2,17 +2,10 @@
 layout: echo-doc
 title: Project news
 section: News
-summary: "Silicon milestones, communication–AI architecture research and updates to the ACE-Echo development platform."
+summary: Silicon milestones, communication–AI architecture research and updates to the ACE-Echo development platform.
 permalink: news.html
+lang: en
+translation_url: zh_news.html
 ---
 
-<ol class="news-feed">
-{% for post in site.posts limit:10 %}
-  <li>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %B %Y" }}</time>
-    <h2><a href="{{ post.url | remove_first: '/' }}">{{ post.title }}</a></h2>
-    {% if post.summary %}<p>{{ post.summary | strip_html }}</p>{% else %}<p>{{ post.content | strip_html | strip_newlines | truncatewords: 45 }}</p>{% endif %}
-  </li>
-{% endfor %}
-</ol>
-<p><a href="news_archive.html">Browse the news archive ↗</a></p>
+{% include echo-news-list.html %}
