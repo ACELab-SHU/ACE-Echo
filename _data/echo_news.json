@@ -181,7 +181,7 @@
       "alt": "The first-generation DT-VENUS-A1 chip after packaging"
     },
     "zh": {
-      "title": "第一代芯片\n流片成功，顺利点亮",
+      "title": "第一代芯片\n流片成功\n顺利点亮",
       "summary": "Venus 已在真实芯片上运行。从制造与封装，到上电调试，再到真实信号 NR 小区搜索。",
       "alt": "封装后的第一代 DT-VENUS-A1 芯片实物"
     }
