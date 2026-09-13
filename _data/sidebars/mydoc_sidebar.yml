@@ -43,7 +43,7 @@ entries:
     - title: L1 Scheduler
       url: /mydoc_l1_scheduler_user_guide.html
       output: web, pdf
-  - title: Application demos
+  - title: Applications
     output: web, pdf
     folderitems:
     - title: 5G Cell Search
