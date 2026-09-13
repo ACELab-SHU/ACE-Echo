@@ -25,7 +25,7 @@
   }
   input.addEventListener('input', event => { if (!event.isComposing) render(); });
   input.addEventListener('compositionend', render);
-  fetch(isZh ? 'search-zh.json' : 'search.json')
+  fetch(isZh ? 'search-zh.json?v=2' : 'search.json?v=2')
     .then(response => { if (!response.ok) throw new Error('Search index unavailable'); return response.json(); })
     .then(data => {
       entries = data.filter(record => /^[a-zA-Z0-9_-]+\.html$/.test(record.url)).map(record => ({
