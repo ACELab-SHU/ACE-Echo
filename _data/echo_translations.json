@@ -250,5 +250,29 @@
   "tag_troubleshooting.html": {
     "title": "问题排查主题",
     "summary": "按主题浏览项目内容。"
+  },
+  "zoozve-tcad.html": {
+    "title": "Zoozve：从编译器到硬件的灵活向量寄存器",
+    "summary": "任意寄存器分组连接 RISC-V 向量扩展、LLVM 后端与硬件实现。"
+  },
+  "hybrid-scheduling.html": {
+    "title": "软硬件协同，让多核任务有序执行",
+    "summary": "离线依赖分析与运行时硬件分发协同，面向异构多核系统。"
+  },
+  "venusian-tvlsi.html": {
+    "title": "Venusian：面向无线基带的快速验证路径",
+    "summary": "结合高层编程与基于 FPGA 的 RISC-V 加速器协同设计，连接应用开发与硬件评估。"
+  },
+  "venus-gnss-iscas.html": {
+    "title": "基于 Venus 架构的灵活可升级 GNSS 接收机",
+    "summary": "ISCAS 2026 演示将 Venus 架构研究拓展到卫星导航接收。"
+  },
+  "baseband-soc-date.html": {
+    "title": "面向多制式通感融合的低功耗基带 SoC",
+    "summary": "DATE 2026 Late Breaking Results 论文介绍面向多制式通感融合的 RISC-V 基带 SoC 研究。"
+  },
+  "uvp-tvlsi.html": {
+    "title": "面向无线基带的 Unlimited Vector Processing",
+    "summary": "通过 RISC-V 扩展探索灵活向量长度与寄存器分组，面向信号处理工作负载。"
   }
 }

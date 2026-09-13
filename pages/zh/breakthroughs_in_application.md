@@ -1,4 +1,6 @@
 ---
+layout: echo-doc
+hide_sidebar: true
 title: 应用进展
 sidebar: home_sidebar_zh
 keywords: ACE-Echo, Venus, 应用进展

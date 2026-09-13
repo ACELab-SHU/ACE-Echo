@@ -1,0 +1,189 @@
+{
+  "zoozve-tcad.html": {
+    "image": "news/zoozve-tcad.svg",
+    "venue": "IEEE TCAD",
+    "stamp": "2026-09",
+    "en": {
+      "title": "Zoozve: flexible vector registers, from compiler to hardware",
+      "summary": "Arbitrary register grouping connects a RISC-V vector extension, an LLVM backend and a hardware implementation.",
+      "date": "September 2026 · Journal issue",
+      "alt": "Zoozve: flexible vector registers, from compiler to hardware — research schematic"
+    },
+    "zh": {
+      "title": "Zoozve：从编译器到硬件的灵活向量寄存器",
+      "summary": "任意寄存器分组连接 RISC-V 向量扩展、LLVM 后端与硬件实现。",
+      "date": "2026 年 9 月 · 期刊卷期",
+      "alt": "Zoozve：从编译器到硬件的灵活向量寄存器：研究主题示意"
+    }
+  },
+  "hybrid-scheduling.html": {
+    "image": "news/hybrid-scheduling.svg",
+    "venue": "IEEE ESL",
+    "stamp": "2026-08",
+    "en": {
+      "title": "Coordinating many-core execution with hardware and software",
+      "summary": "Offline dependency analysis meets runtime hardware dispatch for heterogeneous many-core systems.",
+      "date": "August 2026 · Journal issue",
+      "alt": "Coordinating many-core execution with hardware and software — research schematic"
+    },
+    "zh": {
+      "title": "软硬件协同，让多核任务有序执行",
+      "summary": "离线依赖分析与运行时硬件分发协同，面向异构多核系统。",
+      "date": "2026 年 8 月 · 期刊卷期",
+      "alt": "软硬件协同，让多核任务有序执行：研究主题示意"
+    }
+  },
+  "venusian-tvlsi.html": {
+    "image": "news/venusian-tvlsi.svg",
+    "venue": "IEEE TVLSI",
+    "stamp": "2026-06",
+    "en": {
+      "title": "Venusian: a faster path to wireless baseband validation",
+      "summary": "High-level programming and FPGA-based RISC-V accelerator co-design bring application development and hardware evaluation closer.",
+      "date": "June 2026 · Journal issue",
+      "alt": "Venusian: a faster path to wireless baseband validation — research schematic"
+    },
+    "zh": {
+      "title": "Venusian：面向无线基带的快速验证路径",
+      "summary": "结合高层编程与基于 FPGA 的 RISC-V 加速器协同设计，连接应用开发与硬件评估。",
+      "date": "2026 年 6 月 · 期刊卷期",
+      "alt": "Venusian：面向无线基带的快速验证路径：研究主题示意"
+    }
+  },
+  "venus-gnss-iscas.html": {
+    "image": "news/venus-gnss-iscas.svg",
+    "venue": "IEEE ISCAS 2026",
+    "stamp": "2026-05-25",
+    "en": {
+      "title": "A flexible GNSS receiver on the Venus architecture",
+      "summary": "The ISCAS 2026 demonstration brings Venus architecture research to satellite-navigation reception.",
+      "date": "25 May 2026 · Conference demo",
+      "alt": "A flexible GNSS receiver on the Venus architecture — research schematic"
+    },
+    "zh": {
+      "title": "基于 Venus 架构的灵活可升级 GNSS 接收机",
+      "summary": "ISCAS 2026 演示将 Venus 架构研究拓展到卫星导航接收。",
+      "date": "2026 年 5 月 25 日 · 会议演示",
+      "alt": "基于 Venus 架构的灵活可升级 GNSS 接收机：研究主题示意"
+    }
+  },
+  "baseband-soc-date.html": {
+    "image": "news/baseband-soc-date.svg",
+    "venue": "DATE 2026",
+    "stamp": "2026-04-20",
+    "en": {
+      "title": "A power-efficient baseband SoC for sensing and communications",
+      "summary": "The DATE 2026 Late Breaking Results paper reports RISC-V baseband SoC research for multi-standard integrated sensing and communications.",
+      "date": "20 April 2026 · Conference paper",
+      "alt": "A power-efficient baseband SoC for sensing and communications — research schematic"
+    },
+    "zh": {
+      "title": "面向多制式通感融合的低功耗基带 SoC",
+      "summary": "DATE 2026 Late Breaking Results 论文介绍面向多制式通感融合的 RISC-V 基带 SoC 研究。",
+      "date": "2026 年 4 月 20 日 · 会议论文",
+      "alt": "面向多制式通感融合的低功耗基带 SoC：研究主题示意"
+    }
+  },
+  "uvp-tvlsi.html": {
+    "image": "news/uvp-tvlsi.svg",
+    "venue": "IEEE TVLSI",
+    "stamp": "2025-12",
+    "en": {
+      "title": "Unlimited Vector Processing for wireless baseband",
+      "summary": "A RISC-V extension explores flexible vector lengths and register grouping for signal-processing workloads.",
+      "date": "December 2025 · Journal issue",
+      "alt": "Unlimited Vector Processing for wireless baseband — research schematic"
+    },
+    "zh": {
+      "title": "面向无线基带的 Unlimited Vector Processing",
+      "summary": "通过 RISC-V 扩展探索灵活向量长度与寄存器分组，面向信号处理工作负载。",
+      "date": "2025 年 12 月 · 期刊卷期",
+      "alt": "面向无线基带的 Unlimited Vector Processing：研究主题示意"
+    }
+  },
+  "academic-1.html": {
+    "image": "news_2023_9_25_fig1.png",
+    "venue": "ACM TURC 2023",
+    "en": {
+      "title": "A programmable architecture for open 6G baseband",
+      "summary": "A many-core design combines RISC-V extensions with multi-level dataflow programming.",
+      "alt": "A programmable architecture for open 6G baseband"
+    },
+    "zh": {
+      "title": "面向开放 6G 基带的可编程架构",
+      "summary": "多核设计结合 RISC-V 扩展与多级数据流编程。",
+      "alt": "面向开放 6G 基带的可编程架构"
+    }
+  },
+  "academic-2.html": {
+    "image": "news_2025_3_4_fig1.png",
+    "venue": "ASP-DAC 2025",
+    "en": {
+      "title": "A hierarchical dataflow architecture for wireless baseband",
+      "summary": "A heterogeneous architecture organizes tasks and data movement around wireless baseband processing.",
+      "alt": "A hierarchical dataflow architecture for wireless baseband"
+    },
+    "zh": {
+      "title": "分层数据流驱动的无线基带架构",
+      "summary": "围绕无线基带任务及数据搬移组织异构计算架构。",
+      "alt": "分层数据流驱动的无线基带架构"
+    }
+  },
+  "academic-3.html": {
+    "image": "news_2025_6_13.png",
+    "venue": "ACM LCTES 2025",
+    "en": {
+      "title": "Zoozve: exploring strip-mining-free vector compilation",
+      "summary": "The LCTES work-in-progress paper explores arbitrary register grouping and compilation support.",
+      "alt": "Zoozve: exploring strip-mining-free vector compilation"
+    },
+    "zh": {
+      "title": "Zoozve：探索无需 strip-mining 的向量编译",
+      "summary": "LCTES WIP 论文探索任意寄存器分组及编译支持。",
+      "alt": "Zoozve：探索无需 strip-mining 的向量编译"
+    }
+  },
+  "academic-4.html": {
+    "image": "news_2025_7_9_fig1.png",
+    "venue": "IEEE Wireless Communications",
+    "en": {
+      "title": "Venus connects AI and wireless baseband processing",
+      "summary": "A programmable RISC-V architecture for communication–AI workloads at the 6G edge.",
+      "alt": "Venus connects AI and wireless baseband processing"
+    },
+    "zh": {
+      "title": "Venus：连接 AI 与无线基带处理",
+      "summary": "面向 6G 边缘通信与 AI 工作负载的可编程 RISC-V 架构。",
+      "alt": "Venus：连接 AI 与无线基带处理"
+    }
+  },
+  "application-1.html": {
+    "image": "application1_1.png",
+    "venue": "5G NR",
+    "en": {
+      "title": "A 5G NR cell-search workflow on Venus",
+      "summary": "From synchronization to broadcast-channel processing in a programmable baseband workflow.",
+      "alt": "A 5G NR cell-search workflow on Venus"
+    },
+    "zh": {
+      "title": "Venus 上的 5G NR 小区搜索流程",
+      "summary": "从同步到广播信道处理，探索可编程基带工作流。",
+      "alt": "Venus 上的 5G NR 小区搜索流程"
+    }
+  },
+  "venus1-first-light.html": {
+    "image": "venus1-silicon.jpeg",
+    "venue": "VENUS · FIRST SILICON",
+    "photo": true,
+    "en": {
+      "title": "First silicon.\nSuccessfully brought to life.",
+      "summary": "Our first-generation Venus chip has taped out and achieved first light, with real-signal NR cell search demonstrated.",
+      "alt": "The first-generation DT-VENUS-A1 chip after packaging"
+    },
+    "zh": {
+      "title": "第一代芯片\n流片成功，顺利点亮",
+      "summary": "Venus 已在真实芯片上运行。从制造与封装，到上电调试，再到真实信号 NR 小区搜索。",
+      "alt": "封装后的第一代 DT-VENUS-A1 芯片实物"
+    }
+  }
+}

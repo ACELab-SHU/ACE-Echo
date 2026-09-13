@@ -82,5 +82,33 @@
   "venus-architecture.png": {
     "width": 1891,
     "height": 831
+  },
+  "news/zoozve-tcad.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/hybrid-scheduling.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/venusian-tvlsi.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/venus-gnss-iscas.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/baseband-soc-date.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "news/uvp-tvlsi.svg": {
+    "width": 1200,
+    "height": 675
+  },
+  "venus1-silicon.jpeg": {
+    "width": 1279,
+    "height": 1706
   }
 }

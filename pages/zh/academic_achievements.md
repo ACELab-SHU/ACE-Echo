@@ -1,4 +1,6 @@
 ---
+layout: echo-doc
+hide_sidebar: true
 title: 学术成果
 sidebar: home_sidebar_zh
 keywords: ACE-Echo, Venus, 学术成果

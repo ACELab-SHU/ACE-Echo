@@ -1,4 +1,5 @@
 ---
+hide_sidebar: true
 layout: echo-doc
 title: 项目新闻
 section: News

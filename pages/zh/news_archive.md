@@ -1,4 +1,6 @@
 ---
+layout: echo-doc
+hide_sidebar: true
 title: 新闻归档
 sidebar: mydoc_sidebar_zh
 keywords: ACE-Echo, Venus, 新闻归档

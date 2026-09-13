@@ -39,4 +39,4 @@ Venus 利用开放 RISC-V 生态与领域专用优化，探索可编程性和效
 
 [阅读 IEEE Wireless Communications 论文](https://doi.org/10.1109/MWC.2025.3600950)
 
-论文链接根据 [ACE Lab 发表记录](https://acelab-shu.github.io/authors/shan-cao/)更新。本文报道架构研究，配图不属于新的 ACE-Echo 1.0 基准测试。
+更多相关工作见 [ACE Lab 发表记录](https://acelab-shu.github.io/authors/shan-cao/)。本文结果对应论文中的架构与实验配置。
