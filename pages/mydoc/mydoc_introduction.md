@@ -30,15 +30,15 @@ summary:
 
 🔋 Powered by AURA Architecture & Venus Chip
 ----------------------------------------------
-**<span style="font-size: 120%; color: red;">AURA: AI Unified Radio Architecture</span>**
+**<span class="intro-emphasis">AURA: AI Unified Radio Architecture</span>**
 
 AURA is the foundational computing architecture behind Echo. It is designed for **tight integration of perception, communication, and computation**, optimized for edge and low-latency scenarios.It is composed of Venus Language, Zoozve Compiler, and Mathematic Libraries. ( If you want to learn more about compilers, you can see [Zoozve: A Strip-Mining-Free RISC-V Vector Extension with Arbitrary Register Grouping Compilation Support (WIP)](https://dl.acm.org/doi/abs/10.1145/3735452.3735526.html) )
 <div style="text-align: center;">
-  {% include image.html file="ComputingArchitecture.png" max-width = '600'%}
+  {% include image.html file="aura-architecture.png" max-width = '600'%}
 </div>
 <br><br>
 
-**<span style="font-size: 120%; color: red;">Venus: Our RISC-V Communication-AI Chip</span>**
+**<span class="intro-emphasis">Venus: Our RISC-V Communication-AI Chip</span>**
 
 Venus is a custom RISC-V processor based on the AURA architecture:
 
@@ -46,7 +46,7 @@ Venus is a custom RISC-V processor based on the AURA architecture:
 * Built-in accelerators (vector engine, etc.)
 * Composed of Venus Tile, Venus Scheduler, and Venus DFE ( For details, see [A Hierarchical Dataflow-Driven Heterogeneous Architecture for Wireless Baseband Processing](https://dl.acm.org/doi/abs/10.1145/3658617.3697558.html) )
 <div style="text-align: center;">
-  {% include image.html file="RISC-VSoc.png" max-width = '600'%}
+  {% include image.html file="venus-architecture.png" max-width = '600'%}
 </div>
 <br><br>
 
@@ -73,19 +73,19 @@ Venus is a custom RISC-V processor based on the AURA architecture:
 👨‍💻 Who Is Echo For?
 -------------------
 
-**<span style="font-size: 120%; color: red;">Academia & Researchers</span>****→ Open-Source Platform for Communication-AI Research**
+**<span class="intro-emphasis">Academia & Researchers</span>****→ Open-Source Platform for Communication-AI Research**
 
 Echo provides a low-cost, low-power environment to prototype and validate communication algorithms with real-world performance. Ideal for academic research and rapid innovation.
 <br><br>
 
-**<span style="font-size: 120%; color: red;">Industry</span>****→ Decoupled Software-Hardware Baseband Chip Solution**
+**<span class="intro-emphasis">Industry</span>****→ Decoupled Software-Hardware Baseband Chip Solution**
 
 Accelerate your baseband chip development with a modular, software-first approach.
 
 • **R&D Cycle Reduced:** From 12–18 months to just 3–6 months.
 <br><br>
 
-**<span style="font-size: 120%; color: red;">Standards Organizations</span>****→ Fast-Track 6G Technology Validation**
+**<span class="intro-emphasis">Standards Organizations</span>****→ Fast-Track 6G Technology Validation**
 
 Streamline the path to 6G standardization with efficient tools and full-stack communication-AI libraries.
 

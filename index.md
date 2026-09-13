@@ -51,7 +51,7 @@ toc: false
         <p>AURA is the foundational computing architecture behind Echo. It is designed for <strong>tight integration of perception, communication, and computation</strong>, optimized for edge and low-latency scenarios. It is composed of Venus Language, Zoozve Compiler, and Mathematic Libraries.</p>
         <p>If you want to learn more about compilers, see <a href="https://doi.org/10.1145/3735452.3735526">Zoozve: A Strip-Mining-Free RISC-V Vector Extension with Arbitrary Register Grouping Compilation Support (WIP)</a>.</p>
         <div class="visual-frame">
-          <img src="images/ComputingArchitecture.png" width="979" height="212" loading="lazy" alt="AURA programming architecture: Venus Language, Zoozve Compiler and Mathematic Libraries">
+          <img src="images/aura-architecture.png" width="1894" height="830" loading="lazy" alt="AURA programming architecture: Venus Language, Zoozve Compiler and Mathematic Libraries">
         </div>
       </article>
       <article class="stack-card">
@@ -65,7 +65,7 @@ toc: false
         </ul>
         <p>For details, see <a href="https://doi.org/10.1145/3658617.3697558">A Hierarchical Dataflow-Driven Heterogeneous Architecture for Wireless Baseband Processing</a>.</p>
         <div class="visual-frame">
-          <img src="images/RISC-VSoc.png" width="980" height="203" loading="lazy" alt="Venus RISC-V SoC: Venus Tile, Venus Scheduler and Venus DFE">
+          <img src="images/venus-architecture.png" width="1891" height="831" loading="lazy" alt="Venus RISC-V SoC: Venus Tile, Venus Scheduler and Venus DFE">
         </div>
       </article>
     </div>

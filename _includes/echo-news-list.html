@@ -1,0 +1,8 @@
+<ol class="news-feed">
+{% for post in site.posts %}{% if post.category == include.category %}
+<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d %B %Y' }}</time>
+<h2><a href="{{ post.url | remove_first: '/' }}">{{ post.title }}</a></h2>
+<p>{% if post.summary %}{{ post.summary | strip_html }}{% else %}{{ post.content | strip_html | strip_newlines | truncatewords: 45 }}{% endif %}</p></li>
+{% endif %}{% endfor %}
+</ol>
+<p><a href="news_archive.html">Browse the news archive ↗</a></p>

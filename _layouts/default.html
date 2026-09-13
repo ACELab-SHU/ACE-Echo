@@ -72,39 +72,18 @@
     {% endif %}
 
 </head>
-<body class="{% if page.url == '/' or page.url == '/index.html' %}home-page{% endif %}">
-{% include topnav.html %}
-<!-- Page Content -->
-<div class="site-shell">
-<div class="container main-shell">
-  <div id="main">
-    <!-- Content Row -->
-    <div class="row">
-        {% assign content_col_size = "col-md-12" %}
-        {% unless page.hide_sidebar %}
-            <!-- Sidebar Column -->
-            <div class="col-md-3" id="tg-sb-sidebar">
-                {% include sidebar.html %}
-            </div>
-            {% assign content_col_size = "col-md-9" %}
-        {% endunless %}
-
-        <!-- Content Column -->
-        <div class="{{content_col_size}}" id="tg-sb-content">
-            {{content}}
-        </div>
-    <!-- /.row -->
+<body class="echo-subpage">
+<a class="skip-link" href="#main">Skip to content</a>
+{% include echo-nav.html home_prefix="index.html" %}
+<div class="doc-shell {% if page.hide_sidebar %}doc-shell-wide{% endif %}">
+  {% unless page.hide_sidebar %}
+  <aside class="doc-sidebar" aria-label="Section navigation">{% include echo-sidebar.html %}</aside>
+  {% endunless %}
+  <main id="main" class="doc-main">
+    <div class="doc-breadcrumb"><a href="index.html">ACE-Echo</a><span aria-hidden="true">/</span>{{ page.section | default: page.folder | default: 'Explore' | capitalize }}</div>
+    {{ content }}
+  </main>
 </div>
-<!-- /.container -->
-</div>
-<!-- /#main -->
-    </div>
-{% include footer.html %}
-</div>
+{% include echo-footer.html %}
 </body>
-{% if site.google_analytics %}
-{% include google_analytics.html %}
-{% endif %}
 </html>
-
-{% comment %} Copyright 2021 Google LLC {% endcomment %}
