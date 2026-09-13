@@ -31,7 +31,7 @@ git clone --branch release/ace-echo-1.0 --single-branch \
 cd ACE-Echo/platform
 ```
 
-公开源码包包含固定版本的 DSL 源码、八个 Venus1 回归 DAG 和一个小型入门 smoke 示例，无需访问内部子模块服务器。具体源码版本见 `PUBLIC_https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/_MANIFEST.json`。
+公开源码包包含固定版本的 DSL 源码、八个 Venus1 回归 DAG 和一个小型入门 smoke 示例，无需访问内部子模块服务器。具体源码版本见 [PUBLIC_SOURCE_MANIFEST.json](https://github.com/HorryShenYH/ACE-Echo/blob/db763e2a0826ac4e8c1db3e1cdfc1f1dd3bf9a1e/platform/PUBLIC_SOURCE_MANIFEST.json)。
 
 ## 选择 Venus 1.0
 {: #select-venus-10 }

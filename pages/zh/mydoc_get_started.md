@@ -130,7 +130,7 @@ docker load -i /[path]/ace-echo-docker.tar
 ## 项目目录概览
 {: #project-structure-overview }
 
-以下目录和代码注释保留原样，对应旧版项目结构。
+v0.1 项目目录结构如下。
 
 ```plain
 ACE-ECHO/
