@@ -26,3 +26,7 @@ html[lang="zh-CN"] .hero-copy .hero-title-zh{font-family:-apple-system,BlinkMacS
 html[lang="zh-CN"] .hero-title-zh .hero-line{display:block;width:fit-content;max-width:100%;margin-inline:auto;background:none;color:var(--ink);white-space:nowrap}
 html[lang="zh-CN"] .hero-title-zh .hero-accent{background:linear-gradient(105deg,#005fcc 15%,#7953cc 56%,#bb448e 95%);background-clip:text;-webkit-background-clip:text;color:transparent}
 html[lang="zh-CN"] .hero-summary{line-height:1.65;text-wrap:pretty}
+
+/* Keep all Chinese section titles and subtitles on the same visual axis. */
+html[lang="zh-CN"] .echo-home .section-heading{text-align:center}
+html[lang="zh-CN"] .echo-home .section-heading .display-line{display:block;width:fit-content;max-width:100%;margin-inline:auto;text-align:center;text-wrap:balance}
