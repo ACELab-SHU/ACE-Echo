@@ -1,6 +1,7 @@
 {% assign figure_alt = include.alt | default: include.caption | default: include.file %}
+{% assign figure_size = site.data.echo_figures[include.file] %}
 <figure class="doc-figure"{% if include.max-width %} style="max-width:{{ include.max-width }}px"{% endif %}>
 <a class="figure-link" href="{% if include.url %}{{ include.url }}{% else %}images/{{ include.file }}{% endif %}" target="_blank" rel="noopener" aria-label="Open full-size figure: {{ figure_alt | strip_html | escape }}">
-<img class="docimage" src="images/{{ include.file }}" alt="{{ figure_alt | strip_html | escape }}" loading="lazy" decoding="async"><span class="figure-open" aria-hidden="true">View full size ↗</span></a>
+<img class="docimage" src="images/{{ include.file }}" alt="{{ figure_alt | strip_html | escape }}"{% if figure_size %} width="{{ figure_size.width }}" height="{{ figure_size.height }}"{% endif %} loading="lazy" decoding="async"><span class="figure-open" aria-hidden="true">View full size ↗</span></a>
 {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
 </figure>
