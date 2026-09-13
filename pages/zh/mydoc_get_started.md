@@ -16,8 +16,7 @@ translation_url: mydoc_get_started.html
 
 早期 Echo 提供两种部署方式：**本地编译工具链（方案 1）**适合长期开发和底层调试；**Docker 快速部署（方案 2）**适合体验、临时验证和统一环境。
 
-## 系统要求
-{: #-system-requirements }
+<h2 id="-system-requirements">系统要求</h2>
 
 仅支持 Linux。原记录推荐 Ubuntu 18.04+（测试过 18.04、20.04、22.04、24.04）或 Debian 10+。
 
