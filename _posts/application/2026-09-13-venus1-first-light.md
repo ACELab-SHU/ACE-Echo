@@ -56,20 +56,33 @@ The silicon tests exercised the path from real radio input through DFE synchroni
 
 Successful bring-up and this over-the-air result validate the implemented NR cell-search path on silicon, connecting the programmable architecture to a real communication workload.
 
-## Measured power on the evaluation board
+## Low-power operation. Built for communication.
+{: #measured-power-on-the-evaluation-board }
 
-Power measurements covered nine operating scenarios, from the always-on baseline to the SSB decode-loop workload. **The evaluation board and Venus SoC together consumed approximately 1.06 W while running the SSB decode loop.**
+Venus combines configurable communication primitives with programmable processing and has demonstrated NR cell search on silicon. With its Cluster fully loaded, the evaluation board consumes **0.95 W excluding the DFE**, providing a low-power computing foundation for radio monitoring, synchronization and edge communication applications.
 
-| Test scenario | Measured board + SoC power |
-| --- | --- |
-| Always-on baseline | 0.2877 W |
-| DFE computation scenario | 0.7683 W |
-| Cluster computation scenario | 0.8923 W |
-| SSB decode loop | 1.0597 W |
+<section class="energy-showcase" aria-label="ENERGY COMPARISON · NORMALIZED TO 28 nm">
+<div class="energy-power"><div><span class="energy-eyebrow">VENUS</span><p>Full Cluster load · Entire evaluation board, excluding DFE</p></div><strong class="energy-power-value">0.95 <small>W</small></strong></div>
+<p class="energy-comparison-label">ENERGY COMPARISON · NORMALIZED TO 28 nm</p>
+<div class="energy-duel">
+<div class="energy-contender"><p class="energy-versus">VENUS VS ARM</p><h3 class="energy-opponent">NEON</h3><p class="energy-metric-label">ENERGY EFFICIENCY</p><strong class="energy-value"><small>≈</small>7.7<span>×</span><span class="energy-up" aria-hidden="true"><svg viewBox="0 0 32 40" focusable="false"><path d="M16 34V7M5 18 16 7 27 18" /></svg></span></strong><p class="energy-result">28 nm normalized calculation · Reference / Venus</p><p class="energy-platform">RK3588 · Cortex-A76</p></div>
+<div class="energy-contender"><p class="energy-versus">VENUS VS INTEL</p><h3 class="energy-opponent">AVX-512</h3><p class="energy-metric-label">ENERGY EFFICIENCY</p><strong class="energy-value"><small>≈</small>25.6<span>×</span><span class="energy-up" aria-hidden="true"><svg viewBox="0 0 32 40" focusable="false"><path d="M16 34V7M5 18 16 7 27 18" /></svg></span></strong><p class="energy-result">28 nm normalized calculation · Reference / Venus</p><p class="energy-platform">Xeon 6434</p></div>
+</div>
+</section>
 
-These are measured system power values for the stated test configurations, including the evaluation board's power-supply path.
+**Measurement scope: the entire development board for RK3588, CPU package power for Xeon, and the entire evaluation board with the Cluster fully loaded and DFE excluded for Venus.** Both ratios are calculated from the single-core comparison data below, normalized to 28 nm.
 
-<figure class="doc-figure"><a class="figure-link" href="images/venus1-power-measurements.png"><img src="images/venus1-power-measurements.png" width="1684" height="353" loading="lazy" alt="Original nine-scenario power measurement matrix for the development board and Venus SoC"></a><figcaption>Power measurements and domain configurations across nine test scenarios. Select the image to view the full-resolution record.</figcaption></figure>
+<details class="doc-figure"><summary>Measurement scope and energy calculation</summary>
+<p><strong>Power measurement.</strong>The ARM Cortex-A76 reference runs on RK3588, with power measured across the entire development board. Xeon 6434 uses CPU package power. Venus uses 0.95 W for its entire evaluation board with the Cluster fully loaded, excluding the DFE. In the single-core comparison, CPU idle power is apportioned by physical core count.</p>
+<p><strong>Workloads and data.</strong>The CPU reference data comes from LDPC workloads: the RK3588 Cortex-A76 baseline uses NEON, and the Xeon 6434 baseline uses AVX-512. Venus uses an SSB processing workload. The Venus calculation is 0.95 W / 8.448 Mbps, yielding approximately 112.45 nJ/bit. The comparison results apply to these workloads and measurement scopes.</p>
+<p><strong>Process normalization.</strong>Energy is scaled using E₂₈ = E × (28 / L)², with process-node values of 8 nm for RK3588, 7 nm for Xeon 6434 and 40 nm for Venus. The normalized reference-to-Venus energy ratios are (34.58 × 12.25) / (112.45 × 0.49) ≈ 7.7 and (88.33 × 16) / (112.45 × 0.49) ≈ 25.6.</p>
+</details>
+
+### Bring your communication workload to Venus
+
+Start with a cell-search or signal-processing example, then adapt its algorithm and dataflow to your application. **ACE-Echo 1.0 lets you compile and simulate Venus applications and quickly explore approximate cycle-level performance before deploying to hardware.**
+
+[Start developing with ACE-Echo 1.0 →](venus1_get_started.html) · [Explore the NR cell-search example →](mydoc_5g_baseband.html)
 
 ## Echo and Venus come together
 
