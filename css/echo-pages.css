@@ -108,3 +108,23 @@ html[lang="zh-CN"] .post-content{line-height:1.9}html[lang="zh-CN"] .post-title-
 @media(max-width:900px){.document-body .news-lead{grid-template-columns:1fr 1fr}.news-lead-copy{padding:28px}.news-lead-photo{min-height:470px}.document-body .news-lead h2{font-size:32px}.document-body .news-lead-summary{font-size:16px}.news-card-copy{padding:22px}.document-body .news-card h3{font-size:23px}}
 @media(max-width:650px){.document-body .news-lead{grid-template-columns:1fr;border-radius:22px;margin-bottom:44px}.news-lead-photo{min-height:0;height:320px}.document-body .news-lead-photo img{object-position:50% 56%}.news-lead-copy{padding:28px 24px}.document-body .news-lead h2{font-size:32px}.document-body .news-grid{grid-template-columns:1fr;gap:22px}.document-body .news-grid-heading{display:block}.document-body .news-grid-heading h2{font-size:27px;margin-bottom:8px}.document-body .news-card h3{font-size:24px}.document-body .news-channels a{font-size:13px;padding:8px 13px}}
 @media(prefers-reduced-motion:reduce){.news-card,.news-card-image img,.news-lead-photo img{transition:none!important;transform:none!important}}
+
+/* Energy comparison: explicit baselines with large, unclipped figures. */
+.post-content .energy-showcase{margin:32px 0 30px}
+.energy-power{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 30px;border:1px solid #dce4f9;border-radius:22px;background:linear-gradient(120deg,#f5f8ff,#edf2ff)}
+.energy-power .energy-eyebrow{font-size:12px;font-weight:650;letter-spacing:.12em;color:#2854d8}.energy-power p{font-size:14px;line-height:1.6;margin:6px 0 0}
+.post-content .energy-power-value{font-size:54px;line-height:1.2;font-weight:650;letter-spacing:-.055em;color:#2854d8;white-space:nowrap}.energy-power-value small{font-size:.5em;letter-spacing:0}
+.post-content .energy-comparison-label{font-size:12px;font-weight:600;letter-spacing:.035em;margin:28px 0 12px;color:#6e6e73}
+.energy-duel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.energy-contender{min-width:0;padding:30px 28px 28px;border-radius:26px;border:1px solid #2b3757;background:radial-gradient(ellipse at 90% 0%,#263a67 0%,transparent 68%),#111824;box-shadow:0 12px 30px #1118240b}
+.energy-contender .energy-versus{font-size:12px;font-weight:600;letter-spacing:.09em;color:#aebad2;margin:0 0 12px}.post-content .energy-contender .energy-opponent{font-size:clamp(48px,5.8vw,68px);font-weight:700;line-height:1.12;letter-spacing:-.045em;color:#fff;margin:0;padding-right:.04em;white-space:nowrap}.energy-contender .energy-platform{font-size:12px;color:#97a6c3;margin:16px 0 0;padding-top:14px;border-top:1px solid #ffffff18}
+.post-content .energy-value{display:block;font-size:clamp(66px,7.8vw,98px);font-weight:650;line-height:1.22;letter-spacing:-.055em;color:#a7bcff;margin:24px 0 20px;padding-right:.08em;white-space:nowrap}.energy-value small{font-size:.4em;vertical-align:baseline;letter-spacing:0;margin-right:.04em}.energy-value span{font-size:.6em;font-weight:500;margin-left:.02em}
+.energy-contender .energy-result{font-size:14px;line-height:1.6;color:#c9d3e9;margin:0}
+@media(max-width:600px){.energy-duel{grid-template-columns:1fr}.energy-contender{padding:26px}.energy-power{padding:22px;align-items:flex-start;flex-direction:column;gap:8px}.post-content .energy-value{font-size:84px}.post-content .energy-power-value{font-size:48px}}
+
+.energy-showcase .anchorjs-link{display:none}
+
+.energy-contender .energy-metric-label{font-size:22px;font-weight:650;letter-spacing:.015em;color:#dfe8ff;margin:24px 0 0}
+.post-content .energy-contender .energy-value{margin:6px 0 18px}
+.energy-value .energy-up{display:inline-flex;align-items:center;justify-content:center;width:.48em;height:.68em;font-size:1em;line-height:1;color:#83f5c5;margin:0 0 0 .08em;vertical-align:.025em;filter:drop-shadow(0 0 9px rgba(87,235,171,.28))}.energy-up svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:600px){.post-content .energy-contender .energy-value{font-size:clamp(48px,16vw,68px)}.energy-contender .energy-metric-label{font-size:21px}}

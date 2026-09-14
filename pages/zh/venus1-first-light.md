@@ -60,21 +60,33 @@ sidebar: home_sidebar_zh
 
 从成功点亮到真实空口小区搜索，芯片上的 NR 小区搜索链路通过了实际信号验证，可编程架构也由此承载起真实通信任务。
 
-## 开发板实测功耗
+## 低功耗运行，专为通信计算而设计
 {: #measured-power-on-the-evaluation-board }
 
-团队对从 always-on 基线到 SSB 解码循环的九种运行场景进行了功耗测试。**运行 SSB 解码循环时，开发板与 Venus SoC 的合计实测功耗约为 1.06 W。**
+Venus 将可配置通信原语与可编程计算结合，在真实芯片上跑通 NR 小区搜索。Cluster 满载时，评估板不计 DFE 的功耗为 **0.95 W**，为无线信号监测、同步处理和边缘通信应用提供低功耗计算基础。
 
-| 测试场景 | 开发板与 SoC 合计实测功耗 |
-| --- | --- |
-| Always-on 基线 | 0.2877 W |
-| DFE 计算场景 | 0.7683 W |
-| Cluster 计算场景 | 0.8923 W |
-| SSB 解码循环 | 1.0597 W |
+<section class="energy-showcase" aria-label="28 nm 工艺归一化对比">
+<div class="energy-power"><div><span class="energy-eyebrow">VENUS</span><p>Cluster 满载 · 整个评估板，不计 DFE</p></div><strong class="energy-power-value">0.95 <small>W</small></strong></div>
+<p class="energy-comparison-label">28 nm 工艺归一化对比</p>
+<div class="energy-duel">
+<div class="energy-contender"><p class="energy-versus">VENUS 对比 ARM</p><h3 class="energy-opponent">NEON</h3><p class="energy-metric-label">能效对比</p><strong class="energy-value"><small>≈</small>7.7<span>×</span><span class="energy-up" aria-hidden="true"><svg viewBox="0 0 32 40" focusable="false"><path d="M16 34V7M5 18 16 7 27 18" /></svg></span></strong><p class="energy-result">28 nm 归一化算例 · 参考平台 / Venus</p><p class="energy-platform">RK3588 · Cortex-A76</p></div>
+<div class="energy-contender"><p class="energy-versus">VENUS 对比 INTEL</p><h3 class="energy-opponent">AVX-512</h3><p class="energy-metric-label">能效对比</p><strong class="energy-value"><small>≈</small>25.6<span>×</span><span class="energy-up" aria-hidden="true"><svg viewBox="0 0 32 40" focusable="false"><path d="M16 34V7M5 18 16 7 27 18" /></svg></span></strong><p class="energy-result">28 nm 归一化算例 · 参考平台 / Venus</p><p class="energy-platform">Xeon 6434</p></div>
+</div>
+</section>
 
-以上为对应测试配置下的系统功耗，包含开发板供电链路。
+**测量范围：RK3588 采用整块开发板功耗，Xeon 采用 CPU package 功耗，Venus 采用 Cluster 满载时整个评估板不计 DFE 的功耗。** 两项倍数由下述单核比较数据按 28 nm 工艺归一化计算。
 
-<figure class="doc-figure"><a class="figure-link" href="images/venus1-power-measurements.png"><img src="images/venus1-power-measurements.png" width="1684" height="353" loading="lazy" alt="开发板与 Venus SoC 在九种场景下的原始功耗测量矩阵"></a><figcaption>九种测试场景的实测功耗与各域配置。点击图片可查看完整分辨率记录。</figcaption></figure>
+<details class="doc-figure"><summary>测量范围与能耗计算方法</summary>
+<p><strong>功耗测量。</strong>ARM Cortex-A76 参考平台为 RK3588，测量覆盖整块开发板；Xeon 6434 测量 CPU package；Venus 测量整个评估板在 Cluster 满载时、不计 DFE 的功耗，数值为 0.95 W。单核比较中，CPU 空闲功耗按物理核心数分摊。</p>
+<p><strong>工作负载与数据。</strong>CPU 参考数据来自 LDPC 工作负载：RK3588 的 Cortex-A76 基线启用 NEON，Xeon 6434 基线启用 AVX-512；Venus 数据来自 SSB 处理链路。Venus 采用 0.95 W / 8.448 Mbps 计算单位数据处理能耗，得到约 112.45 nJ/bit。比较结果对应这些工作负载和测量范围。</p>
+<p><strong>工艺归一化。</strong>按 E₂₈ = E × (28 / L)² 折算，RK3588、Xeon 6434 与 Venus 的工艺节点分别按 8 nm、7 nm 和 40 nm 计入。参考平台与 Venus 的归一化能耗比为：(34.58 × 12.25) / (112.45 × 0.49) ≈ 7.7；(88.33 × 16) / (112.45 × 0.49) ≈ 25.6。</p>
+</details>
+
+### 让你的通信应用运行在 Venus 上
+
+从小区搜索或信号处理示例出发，逐步替换算法、调整数据流，探索自己的应用。**通过 ACE-Echo 1.0 编译并仿真 Venus 应用，在部署到硬件之前，快速了解大致的周期级性能表现。**
+
+[开始使用 ACE-Echo 1.0 →](zh_venus1_get_started.html) · [探索 NR 小区搜索示例 →](zh_mydoc_5g_baseband.html)
 
 ## Echo 与 Venus 汇聚
 {: #echo-and-venus-come-together }
